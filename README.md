@@ -23,6 +23,12 @@ Bufor rośnie zależnie od wejścia i liczby zapisów: **10 000 → 200 000 wpis
 
 Sprawdziany: **18/18** pamięci, **20/20** integracji HTTP, **15/15** przywołań trzech informacji po nowej rozmowie. Mediana pełnej odpowiedzi: **208 ms wcześniej, 215 ms po zmianie** — 15 próbek na wariant. Sam odczyt bazy 50 000 wpisów: **1066 → 14 ms**, 60 zapytań. [Zakres i wyniki](docs/INKUBATOR_PAMIECI_TSI_2026-10-24.md).
 
+## Ostatni trening i kontrola kontekstu
+
+W rozwijanym modelu zastąpiono stały limit **2 faktów / 4 tur** doborem kontekstu do dostępnego miejsca. Zapisane informacje pozostają w pamięci. Bufor generatora w sprawdzonych krótkich próbach był zachowany aż do zakończenia odpowiedzi.
+
+Trening z powtórkami: **0/36 → 6/36** nowych ćwiczeń; wcześniejsze odpowiedzi **56/56**. Osobne pytania z innymi imionami: **0/8 → 1/8**. Moduł logiki: **82/82**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Wagi w panelu i aplikacjach pozostały bez zmian. [Przebieg i zakres](docs/KONTEKST_I_POWTORKI_TSI_2026-10-24.md).
+
 ## Model i rozmiar
 
 | Zakres | Aktualny stan |
@@ -34,7 +40,7 @@ Sprawdziany: **18/18** pamięci, **20/20** integracji HTTP, **15/15** przywoła�
 
 Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie podmieniono w panelu ani portable w ramach tej zmiany. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Dokładny wcześniejszy pomiar katalogu](docs/POMIAR_TSI_2026-10-23.json).
 
-Adaptacja nowej pamięci do **MUZ i walidatora** jest następnym etapem. Ich dokumentacja zostanie zaktualizowana po podłączeniu i sprawdzianach. W walidatorze rozwijana będzie rola nauczyciela: wskazówki, kontrola kroków i ćwiczenia dobierane do błędów.
+**Rozmowę i nową pamięć podłączono również do lokalnych MUZ i walidatora.** Każda aplikacja ma własne zapisy. Kontrole połączeń: **10/10**; działające aplikacje przez HTTP: **12/12**. Osobne portable nie zostały w tym etapie przebudowane. W walidatorze rozwijana będzie rola nauczyciela: wskazówki, kontrola kroków i ćwiczenia dobierane do błędów.
 
 ## Jak korzystać
 
