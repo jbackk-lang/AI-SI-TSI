@@ -40,3 +40,14 @@ Opis wiąże pamięć ze stabilizacją reprezentacji, czasowym zapisem zmiany i 
 
 
 Kontrola zapisanych wag potwierdziła zmiany w obu enkoderach (po 71 tensorów), obu pamięciach H512 (po 8) i generatorze (246), przy niezmienionych sześciu macierzach reguł. Plik kandydata: **97,80 MB**; liczba parametrów pozostaje **23 542 811**.
+
+
+## PC_TIMDR / KHIPU i zapis T/F/U
+
+Po wskazaniu PC_TIMDR sprawdzono historyczny `TransitionMemory`, adresowanie 252 stanów i cztery zarezerwowane kody sterujące oraz rozwinięcie w KHIPU (`Rope256`, `Rope48`, `Node256`). Obecny `Node256` jest strukturą Pythona, a nie gotowym, fizycznie spakowanym słowem 256-bitowym.
+
+Przygotowano osobny wariant badawczy słowa 16-bitowego: 8-bitowy adres stanu i cztery dwubitowe statusy ról — wykonawcy, relacji, obiektu i wartości. Kody: U=00, F=01, T=10; 11 zarezerwowano, a nie potraktowano jako czwartą wartość logiczną. Adresy RESET/NULL/OVER_TAU/OVER_DELTA_S zachowano i rozdzielono od faktów. Wartości liczbowe, treść źródła i powiązania encji pozostają w osobnym zapisie, bez kwantyzacji.
+
+Test objął całe 65 536 słów: 20 412 poprawnych kombinacji danych, cztery niezmienione kody sterujące i odrzucenie 45 120 pozostałych zapisów. To sprawdzenie kodowania; wariant nie jest podłączony do działającego TSI i nie zmierzono jego wpływu na rozmowę.
+
+Osobny szkic pamięci dwóch sprzężonych śladów przeszedł 32 sekwencje sprawdzające odczyt bez wygaszania, izolację nazwanych tematów oraz stałą migawkę przez czas odpowiedzi. Pozostaje wariantem badawczym; nie zastępuje pamięci aplikacji.

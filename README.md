@@ -29,6 +29,8 @@ W rozwijanym modelu zastąpiono stały limit **2 faktów / 4 tur** doborem konte
 
 Trening z powtórkami: **0/36 → 6/36** nowych ćwiczeń; wcześniejsze odpowiedzi **56/56**. Osobne pytania z innymi imionami: **0/8 → 1/8**. Moduł logiki: **82/82**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Wagi w panelu i aplikacjach pozostały bez zmian. [Przebieg i zakres](docs/KONTEKST_I_POWTORKI_TSI_2026-10-24.md).
 
+Przygotowano także lokalny wariant badawczy kodowania T/F/U w pamięci inspirowany PC_TIMDR/KHIPU; format sprawdzono na wszystkich 65 536 słowach. Nie jest jeszcze podłączony do rozmowy.
+
 ## Model i rozmiar
 
 | Zakres | Aktualny stan |
