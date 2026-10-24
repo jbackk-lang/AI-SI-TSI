@@ -363,3 +363,8 @@ Kolejnym etapem dla walidatora jest rozmowa nauczycielska powiązana z aktualnym
 ## 24 października — kontekst i powtórki
 
 Nowe ćwiczenia: 0/36 → 6/36; wcześniejsze odpowiedzi 56/56. Usunięto stały limit 2 faktów i 4 tur w wariancie rozwijanym. [Szczegóły](docs/KONTEKST_I_POWTORKI_TSI_2026-10-24.md).
+
+
+## 24 października — powtórki, odczyt T/F/U i pamięć rekurencyjna
+
+Wykonano powtórki 59 znanych przykładów przed nowym treningiem. Porównano projekcję statusów do pamięci z uczoną warstwą wyjściową. Następnie podłączono eksperymentalny stan rekurencyjny do generowania i porównano go z bazową siecią oraz ponownym podaniem źródła. [Dokładne wyniki i odpowiedzi](docs/REKURENCJA_I_ODCZYT_TFU_2026-10-24.md). Działających wag nie podmieniono.
