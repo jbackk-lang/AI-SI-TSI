@@ -373,3 +373,8 @@ Wykonano powtórki 59 znanych przykładów przed nowym treningiem. Porównano pr
 ## 24 października — trwała pamięć T/F/U i rekurencyjna pamięć robocza
 
 Połączono istniejącą bazę inkubatora z pakowanymi statusami i pomocniczym stanem generatora. Naprawiono przekazywanie F/U bez odrzuconego źródła. Wykonano kontrolowany trening wyłącznie warstwy odczytu oraz sprawdzono pełne odpowiedzi i poprzedni interfejs. [Wyniki, zakres i odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md). Wdrożone aplikacje i portable pozostały bez zmian.
+
+
+## 24 października — dalsze powtórki F/U
+
+Trening odczytu na 84 przykładach; kontrola 6/9 → 9/9, nowe imiona 6/6, poprzedni interfejs 1/4 → 1/4. [Odpowiedzi i zakres](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md). Aplikacji i portable nie podmieniono.

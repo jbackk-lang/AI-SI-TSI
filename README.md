@@ -35,6 +35,8 @@ Przygotowano także lokalny wariant badawczy kodowania T/F/U w pamięci inspirow
 
 W wariancie badawczym połączono istniejący inkubator z pakowanymi statusami T/F/U i rekurencyjną pamięcią roboczą. Poprawki, odrzucenia i konflikty wycofują stary ślad roboczy. Kontrole pamięci: **24/24**. Po treningu odczytu pełne odpowiedzi w tym zestawie: **2/8 → 4/8**; osobne pytania F/U: **6/9**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Nowego połączenia nie wdrożono do panelu ani portable. [Zakres i rzeczywiste odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md).
 
+Najnowsze powtórki odczytu F/U: **6/9 → 9/9** w powtórzonej kontroli oraz **6/6** na nowych imionach. Poprzedni interfejs ze źródłem: **1/4 → 1/4**. To wynik odczytu statusów; ostatni pełny sprawdzian połączenia pamięci pozostaje 4/8. [Szczegóły powtórek](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md#kolejne-powtórki-odczytu-fu--24-października).
+
 ## Model i rozmiar
 
 | Zakres | Aktualny stan |

@@ -66,3 +66,34 @@ W każdym przebiegu sprawdzono dobór i wycofywanie źródeł w **16/16** odpowi
 **Wniosek:** połączono trwały zapis ze stanem roboczym i poprawiono odczyt F/U w części prób. Pomyłki dotyczące osób i odmiany pozostają. W tym zestawie sama rekurencja nie podniosła poprawności ponad wariant z pamięcią trwałą. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**.
 
 Nowe połączenie oraz wytrenowany odczyt pozostają w wariancie badawczym. Panel, MUZ, walidator i portable zachowują dotychczasowe wagi i obsługę pamięci. Publikacja zawiera dokumentację, bez kodu i wag.
+
+
+## Kolejne powtórki odczytu F/U — 24 października
+
+Kontynuowano trening tej samej warstwy odczytu na **84 przykładach**, z zachowaniem wcześniejszych ćwiczeń i dodaniem różnych imion oraz pytań. Treści testowych dla Ewy, Kuby, Heleny, Ireny i Leona nie dodano do treningu. Pierwsze trzy imiona to powtórzona kontrola, ostatnie dwa to nowe próby. Wagi enkoderów, pozostałego generatora i macierzy reguł pozostały identyczne.
+
+Pełne, samodzielne odpowiedzi:
+
+- Powtórzona kontrola: **6/9 → 9/9**.
+- Nowe imiona: **6/6**.
+- Poprzedni interfejs ze źródłem: **1/4 → 1/4**.
+
+Kandydat zachowany do dalszych badań bez spadku liczby poprawnych odpowiedzi w tych kontrolach. Wyniki dotyczą odpowiedzi na statusy F/U. Ostatni sprawdzian całego połączenia pamięci pozostaje **4/8**; nie powtórzono go w tej krótkiej turze. Panel i portable pozostały bez zmian.
+
+| Imię | Status wartości / pozostałych ról | Pełna odpowiedź |
+|---|---|---|
+| Ewy | F / T | Ta informacja została odrzucona. |
+| Ewy | U / T | Potrzebuję potwierdzenia tej informacji. |
+| Ewy | U / U | Potrzebuję potwierdzenia tej informacji. |
+| Kuby | F / T | Ta informacja została odrzucona. |
+| Kuby | U / T | Potrzebuję potwierdzenia tej informacji. |
+| Kuby | U / U | Potrzebuję potwierdzenia tej informacji. |
+| Heleny | F / T | Ta informacja została odrzucona. |
+| Heleny | U / T | Potrzebuję potwierdzenia tej informacji. |
+| Heleny | U / U | Potrzebuję potwierdzenia tej informacji. |
+| Ireny | F / T | Ta informacja została odrzucona. |
+| Ireny | U / T | Potrzebuję potwierdzenia tej informacji. |
+| Ireny | U / U | Potrzebuję potwierdzenia tej informacji. |
+| Leona | F / T | Ta informacja została odrzucona. |
+| Leona | U / T | Potrzebuję potwierdzenia tej informacji. |
+| Leona | U / U | Potrzebuję potwierdzenia tej informacji. |
