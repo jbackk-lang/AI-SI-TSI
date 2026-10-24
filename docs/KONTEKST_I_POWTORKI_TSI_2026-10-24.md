@@ -37,3 +37,6 @@ Sprzęt tego przebiegu: **CPU**, bez dostępnego CUDA. Internetowa nauka wag poz
 Źródłem jest dawny opis, a nie aktualny formalizm: [historia README, sekcja 4](https://github.com/jbackk-lang/GIA-TIMDR/blob/main/HISTORIA_README.md), [Model AG, sekcja 9 „TIMDR a pamięć AI”](https://github.com/jbackk-lang/GIA-TIMDR/blob/main/docs/theory/Model_AG_AI_Theory.md) oraz historyczny `TIMTopoGeneratorDoubleMem` w archiwum koncepcji.
 
 Opis wiąże pamięć ze stabilizacją reprezentacji, czasowym zapisem zmiany i podtrzymywanym obiegiem. Dawny kod zawiera dwie sprzężone, rekurencyjne pamięci h1 i h2. Następna próba ma sprawdzić podtrzymanie śladu i stabilny odczyt podczas generowania odpowiedzi. Nie jest to wdrożona zmiana architektury w tym przebiegu treningowym.
+
+
+Kontrola zapisanych wag potwierdziła zmiany w obu enkoderach (po 71 tensorów), obu pamięciach H512 (po 8) i generatorze (246), przy niezmienionych sześciu macierzach reguł. Plik kandydata: **97,80 MB**; liczba parametrów pozostaje **23 542 811**.

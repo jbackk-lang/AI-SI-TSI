@@ -35,6 +35,7 @@ Trening z powtórkami: **0/36 → 6/36** nowych ćwiczeń; wcześniejsze odpowie
 |---|---|
 | Wagi działającej aplikacji | Zachowane przy podłączeniu pamięci; inkubator nie zastępuje modelu |
 | Rozwijany wspólny model językowy | Dwa enkodery z H512 oraz dekoder transformera; **23 542 811 parametrów**, około **94,67 MB** zapisu wag |
+| Kandydat po ostatnich powtórkach | **23 542 811 parametrów**, **97,80 MB** zapisu wag; zachowany lokalnie |
 | Kontrola ostatniego treningu | Chronione odpowiedzi **56/56**; pytania o wcześniejsze informacje **5/12 → 7/12** |
 | Katalog aplikacji z kodem i danymi | Ostatni pomiar z 23 października: **1 989,89 MB**, bez środowiska Pythona, treningów i kopii |
 
