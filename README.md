@@ -31,9 +31,9 @@ Trening z powtórkami: **0/36 → 6/36** nowych ćwiczeń; wcześniejsze odpowie
 
 Przygotowano także lokalny wariant badawczy kodowania T/F/U w pamięci inspirowany PC_TIMDR/KHIPU; format sprawdzono na wszystkich 65 536 słowach. Jest podłączony w wariancie testowym: **14/14** kontroli pamięci; w czterech rozmowach poprawność pozostała **1/4 → 1/4**. [Zakres integracji](docs/PAMIEC_BITOWA_TFU_2026-10-24.md).
 
-## Pamięć rekurencyjna — próba
+## Pamięć trwała i robocza — nowe połączenie
 
-Podłączono w wariancie badawczym adaptację historycznej pamięci TIMDR do generatora. Pełne odpowiedzi: **3/10 bez dodatku, 4/10 przy rekurencji 0,5, 4/10 przy 0,8**. Ponowne podanie źródła bez rekurencji: **4/10**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**; działające aplikacje zachowują dotychczasowe wagi. [Wyniki i odpowiedzi](docs/REKURENCJA_I_ODCZYT_TFU_2026-10-24.md).
+W wariancie badawczym połączono istniejący inkubator z pakowanymi statusami T/F/U i rekurencyjną pamięcią roboczą. Poprawki, odrzucenia i konflikty wycofują stary ślad roboczy. Kontrole pamięci: **24/24**. Po treningu odczytu pełne odpowiedzi w tym zestawie: **2/8 → 4/8**; osobne pytania F/U: **6/9**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Nowego połączenia nie wdrożono do panelu ani portable. [Zakres i rzeczywiste odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md).
 
 ## Model i rozmiar
 
@@ -42,7 +42,7 @@ Podłączono w wariancie badawczym adaptację historycznej pamięci TIMDR do gen
 | Wagi działającej aplikacji | Zachowane przy podłączeniu pamięci; inkubator nie zastępuje modelu |
 | Rozwijany wspólny model językowy | Dwa enkodery z H512 oraz dekoder transformera; **23 542 811 parametrów**, około **94,67 MB** zapisu wag |
 | Najnowszy kandydat z odczytem T/F/U | **23 843 739 parametrów**, **95,874 MB** zapisu wag; zachowany lokalnie |
-| Kontrola ostatniego treningu | Chronione odpowiedzi **59/59**; pełne odpowiedzi nowego odczytu w rozmowie **1/6** |
+| Kontrola nowego połączenia | Pamięć **24/24**; pełne odpowiedzi po treningu odczytu **4/8** |
 | Katalog aplikacji z kodem i danymi | Ostatni pomiar z 23 października: **1 989,89 MB**, bez środowiska Pythona, treningów i kopii |
 
 Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie podmieniono w panelu ani portable w ramach tej zmiany. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Dokładny wcześniejszy pomiar katalogu](docs/POMIAR_TSI_2026-10-23.json).

@@ -368,3 +368,8 @@ Nowe ćwiczenia: 0/36 → 6/36; wcześniejsze odpowiedzi 56/56. Usunięto stały
 ## 24 października — powtórki, odczyt T/F/U i pamięć rekurencyjna
 
 Wykonano powtórki 59 znanych przykładów przed nowym treningiem. Porównano projekcję statusów do pamięci z uczoną warstwą wyjściową. Następnie podłączono eksperymentalny stan rekurencyjny do generowania i porównano go z bazową siecią oraz ponownym podaniem źródła. [Dokładne wyniki i odpowiedzi](docs/REKURENCJA_I_ODCZYT_TFU_2026-10-24.md). Działających wag nie podmieniono.
+
+
+## 24 października — trwała pamięć T/F/U i rekurencyjna pamięć robocza
+
+Połączono istniejącą bazę inkubatora z pakowanymi statusami i pomocniczym stanem generatora. Naprawiono przekazywanie F/U bez odrzuconego źródła. Wykonano kontrolowany trening wyłącznie warstwy odczytu oraz sprawdzono pełne odpowiedzi i poprzedni interfejs. [Wyniki, zakres i odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md). Wdrożone aplikacje i portable pozostały bez zmian.
