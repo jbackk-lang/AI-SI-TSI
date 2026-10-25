@@ -31,6 +31,12 @@ Gotowe zaplecze lekcji zapisuje temat, materiał, źródło, słowa i skrót z z
 
 Testy: **13/13** przebiegów wyjaśniania słów, **10/10** lekcji oraz **14/14** kontroli działającej aplikacji. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. [Przebiegi i zakres sprawdzeń](docs/SLOWNIK_I_LEKCJE_TSI_2026-10-25.md).
 
+### Pytania do materiału lekcji
+
+Podłączono odczyt relacji **obiekt → właściwość → liczba**. Z materiału „Trójkąt ma trzy boki. Kwadrat ma cztery boki.” TSI odpowiada odpowiednio „trzy boki” i „cztery boki”, z odnośnikiem do zapisanego źródła. Przy innych pytaniach korzysta z istniejącego odczytu ról albo wskazuje powiązany fragment. Brak właściwości oraz sprzeczne wartości wymagają doprecyzowania.
+
+Sprawdzono **23/23** warianty relacji, **12/12** pytań do lekcji i **10/10** kontroli działającej aplikacji. Obsługa jest podłączona do API lekcji i rozmowy z identyfikatorem wybranej lekcji; wybór lekcji w panelu pozostaje do wykonania. Wagi nie były trenowane. [Zakres i przykłady](docs/PYTANIA_DO_LEKCJI_TSI_2026-10-25.md).
+
 ## Trwała pamięć
 
 **Podłączony do lokalnej aplikacji TSI.** Panel „Inkubator pamięci” znajduje się na istniejącej stronie. Nowa rozmowa zachowuje zapisane informacje. Przy sprzeczności lub niejasnym temacie TSI prosi o wybór kontekstu. Można zamknąć temat, cofnąć jedną lub dwie decyzje oraz zatrzymać korzystanie z pamięci.

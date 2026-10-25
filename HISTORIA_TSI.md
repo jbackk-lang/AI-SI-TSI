@@ -400,3 +400,8 @@ Przerwano wspólny trening po cofnięciu aktualizacji z wynikiem chronionym 80/8
 ## 25 października — słownik i lekcje tematyczne
 
 Przebudowano zapis znaczeń, zachowując oddzielne gałęzie i źródła. Naprawiono zapętlenie pytania po wyjaśnieniu nowego słowa. Wdrożono zaplecze lekcji, panel odłożono. Wyniki: dialog 13/13, lekcje 10/10, aplikacja 14/14. Bez nowych wag. [Opis i testy](docs/SLOWNIK_I_LEKCJE_TSI_2026-10-25.md). [README przed zmianą](docs/archiwum/README_before_lexicon_2026-10-25.md).
+
+
+## 25 października — pytania do lekcji
+
+Podłączono matrycę obiekt–właściwość–liczba, istniejący odczyt ról i wyszukiwanie fragmentów przez formy podstawowe. Wyniki: 23/23 relacje, 12/12 pytania do lekcji i 10/10 kontrole HTTP. Wagi bez zmian, panel później. [Zakres](docs/PYTANIA_DO_LEKCJI_TSI_2026-10-25.md).
