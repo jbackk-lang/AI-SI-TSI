@@ -31,6 +31,12 @@ Gotowe zaplecze lekcji zapisuje temat, materiał, źródło, słowa i skrót z z
 
 Testy: **13/13** przebiegów wyjaśniania słów, **10/10** lekcji oraz **14/14** kontroli działającej aplikacji. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. [Przebiegi i zakres sprawdzeń](docs/SLOWNIK_I_LEKCJE_TSI_2026-10-25.md).
 
+### Pytania do słownika bez wklejania lekcji
+
+Nowe TSI wyszukuje fragmenty przypisane do znaczeń słownikowych także dla krótkich pytań. „Suma kątów w trójkącie?”, „Jaka jest suma kątów w trójkącie?” i „Ile wynosi suma kątów wewnętrznych trójkąta?” zwracają cytat o **180° dla trójkąta płaskiego**. Odpowiedź zachowuje pochodzenie i warunki z materiału. Działają też formy „Czym jest…”, „Wyjaśnij…” i „Podaj definicję…”.
+
+Sprawdzono **12/12** przypadków odczytu i **10/10** kontroli aplikacji. W badanym zestawie iloczyn, inna figura i trójkąt sferyczny nie otrzymały cytatu o sumie w trójkącie płaskim. Wagi oraz panel walidatora pozostały bez zmian; tę aktualizację wdrożono tylko w ogólnym TSI.
+
 ### Pytania do materiału lekcji
 
 Podłączono odczyt relacji **obiekt → właściwość → liczba**. Z materiału „Trójkąt ma trzy boki. Kwadrat ma cztery boki.” TSI odpowiada odpowiednio „trzy boki” i „cztery boki”, z odnośnikiem do zapisanego źródła. Przy innych pytaniach korzysta z istniejącego odczytu ról albo wskazuje powiązany fragment. Brak właściwości oraz sprzeczne wartości wymagają doprecyzowania.

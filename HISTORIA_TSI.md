@@ -405,3 +405,8 @@ Przebudowano zapis znaczeń, zachowując oddzielne gałęzie i źródła. Napraw
 ## 25 października — pytania do lekcji
 
 Podłączono matrycę obiekt–właściwość–liczba, istniejący odczyt ról i wyszukiwanie fragmentów przez formy podstawowe. Wyniki: 23/23 relacje, 12/12 pytania do lekcji i 10/10 kontrole HTTP. Wagi bez zmian, panel później. [Zakres](docs/PYTANIA_DO_LEKCJI_TSI_2026-10-25.md).
+
+
+## 25 października — pytania do znaczeń słownikowych
+
+Podłączono wyszukiwanie fragmentów przypisanych do znaczeń przez formy podstawowe słów, bez wklejania osobnej lekcji. Przykład o sumie kątów pochodzi z istniejącego hasła „trójkąt”; nie dopisano osobnej odpowiedzi z liczbą 180. Zachowano kwalifikator trójkąta płaskiego i źródło. Odczyt 12/12, aplikacja 10/10. Bez treningu wag i bez zmian w walidatorze.
