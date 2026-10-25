@@ -378,3 +378,8 @@ Połączono istniejącą bazę inkubatora z pakowanymi statusami i pomocniczym s
 ## 24 października — dalsze powtórki F/U
 
 Trening odczytu na 84 przykładach; kontrola 6/9 → 9/9, nowe imiona 6/6, poprzedni interfejs 1/4 → 1/4. [Odpowiedzi i zakres](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md). Aplikacji i portable nie podmieniono.
+
+
+## 25 października — powtórki i źródła
+
+Trening odczytu F/U na 148 przykładach. Starszy interfejs: 1/4 → 4/4, nowe źródła 8/8, wcześniejsze kontrole 15/15 → 15/15. [Wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md). Działające aplikacje pozostały bez zmian.
