@@ -15,7 +15,13 @@
 | Sygnały | Serie liczbowe JSON, wykresy i uczona ocena wybranych trendów, anomalii i okresowości |
 | Obsługa | PL/EN, Enter wysyła, Shift+Enter dodaje wiersz, nowa rozmowa, pomoc i przykłady |
 
-## Najnowsza zmiana — inkubator pamięci
+## Podłączone lokalnie — odczyt F/U
+
+**Nowy odczyt działa w panelu AI-SI-TSI** przy pytaniach o odrzuconą albo niepotwierdzoną informację w wybranym temacie inkubatora. Kontrole zgodności: **11/11**, uruchomiony panel przez HTTP: **6/6**. PL/EN; w szczegółach odpowiedzi pojawia się `truth_readout`. Wyłączenie: **COFNIJ_ODCZYT_FU.bat**; ponowne włączenie: **WLACZ_ODCZYT_FU.bat**. [Zakres, pomiary i cofnięcie](docs/WDROZENIE_ODCZYTU_FU_2026-10-25.md).
+
+Główny rdzeń, pełna rozmowa, MUZ, walidator i portable zachowują dotychczasową konfigurację. Podłączono tylko sprawdzoną obsługę F/U.
+
+## Trwała pamięć
 
 **Podłączony do lokalnej aplikacji TSI.** Panel „Inkubator pamięci” znajduje się na istniejącej stronie. Nowa rozmowa zachowuje zapisane informacje. Przy sprzeczności lub niejasnym temacie TSI prosi o wybór kontekstu. Można zamknąć temat, cofnąć jedną lub dwie decyzje oraz zatrzymać korzystanie z pamięci.
 
@@ -23,23 +29,15 @@ Bufor rośnie zależnie od wejścia i liczby zapisów: **10 000 → 200 000 wpis
 
 Sprawdziany: **18/18** pamięci, **20/20** integracji HTTP, **15/15** przywołań trzech informacji po nowej rozmowie. Mediana pełnej odpowiedzi: **208 ms wcześniej, 215 ms po zmianie** — 15 próbek na wariant. Sam odczyt bazy 50 000 wpisów: **1066 → 14 ms**, 60 zapytań. [Zakres i wyniki](docs/INKUBATOR_PAMIECI_TSI_2026-10-24.md).
 
-## Ostatni trening i kontrola kontekstu
+## Pamięć i rozwijana rozmowa
 
-W rozwijanym modelu zastąpiono stały limit **2 faktów / 4 tur** doborem kontekstu do dostępnego miejsca. Zapisane informacje pozostają w pamięci. Bufor generatora w sprawdzonych krótkich próbach był zachowany aż do zakończenia odpowiedzi.
+W wariancie badawczym połączono trwały zapis T/F/U z rekurencyjną pamięcią roboczą. Kontrole pamięci: **24/24**; ostatni sprawdzian pełnych odpowiedzi tego połączenia: **4/8**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Pełnego połączenia rekurencyjnego nie ustawiono jako domyślnego w panelu. [Zakres i odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md).
 
-Trening z powtórkami: **0/36 → 6/36** nowych ćwiczeń; wcześniejsze odpowiedzi **56/56**. Osobne pytania z innymi imionami: **0/8 → 1/8**. Moduł logiki: **82/82**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Wagi w panelu i aplikacjach pozostały bez zmian. [Przebieg i zakres](docs/KONTEKST_I_POWTORKI_TSI_2026-10-24.md).
-
-Przygotowano także lokalny wariant badawczy kodowania T/F/U w pamięci inspirowany PC_TIMDR/KHIPU; format sprawdzono na wszystkich 65 536 słowach. Jest podłączony w wariancie testowym: **14/14** kontroli pamięci; w czterech rozmowach poprawność pozostała **1/4 → 1/4**. [Zakres integracji](docs/PAMIEC_BITOWA_TFU_2026-10-24.md).
-
-## Pamięć trwała i robocza — nowe połączenie
-
-W wariancie badawczym połączono istniejący inkubator z pakowanymi statusami T/F/U i rekurencyjną pamięcią roboczą. Poprawki, odrzucenia i konflikty wycofują stary ślad roboczy. Kontrole pamięci: **24/24**. Po treningu odczytu pełne odpowiedzi w tym zestawie: **2/8 → 4/8**; osobne pytania F/U: **6/9**. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Nowego połączenia nie wdrożono do panelu ani portable. [Zakres i rzeczywiste odpowiedzi](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md).
-
-Najnowsze powtórki odczytu F/U: **6/9 → 9/9** w powtórzonej kontroli oraz **6/6** na nowych imionach. Poprzedni interfejs ze źródłem: **1/4 → 1/4**. To wynik odczytu statusów; ostatni pełny sprawdzian połączenia pamięci pozostaje 4/8. [Szczegóły powtórek](docs/PAMIEC_HYBRYDOWA_TSI_2026-10-24.md#kolejne-powtórki-odczytu-fu--24-października).
+W rozwijanym generatorze dobór kontekstu uwzględnia dostępne miejsce zamiast sztywnego limitu dwóch faktów i czterech tur. Przebieg wcześniejszych treningów znajduje się w [historii](HISTORIA_TSI.md).
 
 ## Ostatni trening — 25 października
 
-Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcześniejsze kontrole bez treści źródła: **15/15 → 15/15**. Trenowano warstwę odczytu na 148 przykładach z powtórkami. Nowe wagi pozostają badawcze; aplikacji i portable nie podmieniono. [Pełne wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md).
+Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcześniejsze kontrole bez treści źródła: **15/15 → 15/15**. Trenowano warstwę odczytu na 148 przykładach z powtórkami. Wytrenowane wagi wykorzystuje teraz ograniczony odczyt F/U w lokalnym panelu; pełnej rozmowy i portable nie podmieniono. [Pełne wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md).
 
 ## Model i rozmiar
 
@@ -47,11 +45,11 @@ Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcze
 |---|---|
 | Wagi działającej aplikacji | Zachowane przy podłączeniu pamięci; inkubator nie zastępuje modelu |
 | Rozwijany wspólny model językowy | Dwa enkodery z H512 oraz dekoder transformera; **23 542 811 parametrów**, około **94,67 MB** zapisu wag |
-| Najnowszy kandydat z odczytem T/F/U | **23 843 739 parametrów**, **95,874 MB** zapisu wag; zachowany lokalnie |
+| Model odczytu F/U i badań nad rozmową | **23 843 739 parametrów**, **95,874 MB** zapisu wag; w panelu używany tylko do obsługiwanych F/U |
 | Kontrola nowego połączenia | Pamięć **24/24**; pełne odpowiedzi po treningu odczytu **4/8** |
 | Katalog aplikacji z kodem i danymi | Ostatni pomiar z 23 października: **1 989,89 MB**, bez środowiska Pythona, treningów i kopii |
 
-Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie podmieniono w panelu ani portable w ramach tej zmiany. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Dokładny wcześniejszy pomiar katalogu](docs/POMIAR_TSI_2026-10-23.json).
+Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie ustawiono jako głównego generatora panelu ani portable. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Dokładny wcześniejszy pomiar katalogu](docs/POMIAR_TSI_2026-10-23.json).
 
 **Rozmowę i nową pamięć podłączono również do lokalnych MUZ i walidatora.** Każda aplikacja ma własne zapisy. Kontrole połączeń: **10/10**; działające aplikacje przez HTTP: **12/12**. Osobne portable nie zostały w tym etapie przebudowane. W walidatorze rozwijana będzie rola nauczyciela: wskazówki, kontrola kroków i ćwiczenia dobierane do błędów.
 

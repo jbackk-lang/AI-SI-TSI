@@ -383,3 +383,10 @@ Trening odczytu na 84 przykładach; kontrola 6/9 → 9/9, nowe imiona 6/6, poprz
 ## 25 października — powtórki i źródła
 
 Trening odczytu F/U na 148 przykładach. Starszy interfejs: 1/4 → 4/4, nowe źródła 8/8, wcześniejsze kontrole 15/15 → 15/15. [Wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md). Działające aplikacje pozostały bez zmian.
+
+
+## 25 października — podłączenie odczytu F/U w panelu
+
+Wdrożono ocenione wagi jako osobny, ograniczony moduł dla wybranego tematu inkubatora. Zgodność 11/11, uruchomiony panel 6/6 przez HTTP. Dodano wyłączenie i ponowne włączenie plikami BAT, zachowano poprzednie pliki. Głównego rdzenia, pełnej rozmowy ani portable nie podmieniono. [Zakres i wyniki](docs/WDROZENIE_ODCZYTU_FU_2026-10-25.md).
+
+[README sprzed podłączenia odczytu F/U](docs/archiwum/README_before_scoped_readout_2026-10-25.md).
