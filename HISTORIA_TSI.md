@@ -395,3 +395,8 @@ Wdrożono ocenione wagi jako osobny, ograniczony moduł dla wybranego tematu ink
 ## 25 października — zatrzymanie wymuszania odpowiedzi i audyt
 
 Przerwano wspólny trening po cofnięciu aktualizacji z wynikiem chronionym 80/83. Nowych wag nie wdrożono. Wyłączono podłączony wcześniej odczyt F/U i potwierdzono wcześniejszą odmowę w panelu. Zbadano rozbiór pytania, wybór tematu, słownik i rzeczywiste wywołanie logiki. [Ustalenia i stan](docs/AUDYT_ODMOW_I_ZNACZEN_TSI_2026-10-25.md).
+
+
+## 25 października — słownik i lekcje tematyczne
+
+Przebudowano zapis znaczeń, zachowując oddzielne gałęzie i źródła. Naprawiono zapętlenie pytania po wyjaśnieniu nowego słowa. Wdrożono zaplecze lekcji, panel odłożono. Wyniki: dialog 13/13, lekcje 10/10, aplikacja 14/14. Bez nowych wag. [Opis i testy](docs/SLOWNIK_I_LEKCJE_TSI_2026-10-25.md). [README przed zmianą](docs/archiwum/README_before_lexicon_2026-10-25.md).

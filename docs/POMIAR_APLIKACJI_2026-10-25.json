@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-25",
+  "application_files": 2467,
+  "application_bytes": 2239847259,
+  "application_MB": 2239.847,
+  "application_exclusions": [
+    ".git",
+    ".pytest_cache",
+    ".venv",
+    "__pycache__",
+    "archive",
+    "archiwum",
+    "backups",
+    "runtime",
+    "tests",
+    "training",
+    "venv"
+  ],
+  "environment_included": false,
+  "read_errors": 0
+}

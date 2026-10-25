@@ -8,7 +8,7 @@
 |---|---|
 | Tekst i rozmowa | Pytania do podanej treści, skróty, listy, wiadomości i obsługiwane korekty |
 | Dokumenty | Wklejanie treści oraz TXT, MD, CSV, PDF, DOCX i DOC; do 10 plików, 8 MB na plik i 32 MB łącznie; DOC wymaga Worda, skany OCR |
-| Słownik offline | 114 215 haseł, 125 720 wpisów, 1 437 842 powiązania form odmiany; znaczenia, przykłady i źródła |
+| Słownik offline | 114 215 haseł, 172 772 znaczenia, 1 437 842 powiązania form; ścieżki znaczeń, przykłady i źródła |
 | Pamięć | Notatki, źródła oraz nowy inkubator: trwałość między rozmowami, tematy, powiązania, konflikty, cofanie, pauza i eksport |
 | Matematyka | Działania, równania, pochodne, całki, macierze i wykresy przez narzędzia obliczeniowe |
 | Logika | Dziewięć bramek T/F/U, nawiasy, symbole i kroki; formalne wyrażenia w poleceniach PL/EN |
@@ -20,6 +20,16 @@
 **Zatrzymano trening gotowych odpowiedzi i wyłączono nowy odczyt F/U w panelu.** Przywrócono wcześniejsze komunikaty o brakujących danych. Wagi i kopie zachowano. Problem dotyczy powiązania znaczeń słów, tematu i szukanej właściwości; samo rozpoznanie rodzaju pytania oraz poprawne tablice T/F/U tego nie rozwiązują.
 
 Dalsza praca: odczyt słownika i znaczeń, przypisanie osoby i tematu, sprawdzenie danych oraz konkretne doprecyzowanie, gdy czegoś brakuje. Nowego treningu samych docelowych odpowiedzi nie wznowiono. [Wyniki audytu i cofnięcia](docs/AUDYT_ODMOW_I_ZNACZEN_TSI_2026-10-25.md).
+
+## Słowa, znaczenia i lekcje tematyczne
+
+**Wdrożono w lokalnym TSI:** sieć słownika z **114 215 hasłami**, **172 772 oddzielnymi znaczeniami**, **733 529 relacjami** i **60 730 powiązaniami tematycznymi**. Formy odmiany prowadzą do hasła, znaczenia i źródła. Relacje bez przypisanego znaczenia pozostają oddzielne. Baza zawiera również nazwy własne i imiona.
+
+TSI przyjmuje wyjaśnienie nieznanego słowa w rozmowie i zachowuje je dla danego profilu oraz tematu. Przy wieloznaczności przedstawia znaczenia do wyboru. Odpowiedź „nie wiem” pozostawia znaczenie nierozstrzygnięte. Schowek słów pozwala sprawdzić źródło, wybrać znaczenie i cofnąć zmianę.
+
+Gotowe zaplecze lekcji zapisuje temat, materiał, źródło, słowa i skrót z zachowanych fragmentów. Sprawdzono pobranie materiału o trójkącie. **Panel lekcji pozostaje do przygotowania**; stara internetowa pętla treningu wag nie została wznowiona.
+
+Testy: **13/13** przebiegów wyjaśniania słów, **10/10** lekcji oraz **14/14** kontroli działającej aplikacji. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. [Przebiegi i zakres sprawdzeń](docs/SLOWNIK_I_LEKCJE_TSI_2026-10-25.md).
 
 ## Trwała pamięć
 
@@ -35,10 +45,6 @@ W wariancie badawczym połączono trwały zapis T/F/U z rekurencyjną pamięcią
 
 W rozwijanym generatorze dobór kontekstu uwzględnia dostępne miejsce zamiast sztywnego limitu dwóch faktów i czterech tur. Przebieg wcześniejszych treningów znajduje się w [historii](HISTORIA_TSI.md).
 
-## Ostatni trening — 25 października
-
-Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcześniejsze kontrole bez treści źródła: **15/15 → 15/15**. Trenowano warstwę odczytu na 148 przykładach z powtórkami. Wytrenowane wagi zachowano; odczyt F/U podłączony po tym treningu został następnie wyłączony podczas audytu znaczeń. [Pełne wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md).
-
 ## Model i rozmiar
 
 | Zakres | Aktualny stan |
@@ -47,9 +53,9 @@ Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcze
 | Rozwijany wspólny model językowy | Dwa enkodery z H512 oraz dekoder transformera; **23 542 811 parametrów**, około **94,67 MB** zapisu wag |
 | Model odczytu F/U i badań nad rozmową | **23 843 739 parametrów**, **95,874 MB** zapisu wag; zachowany lokalnie; nowy odczyt w panelu wyłączony |
 | Kontrola nowego połączenia | Pamięć **24/24**; pełne odpowiedzi po treningu odczytu **4/8** |
-| Katalog aplikacji z kodem i danymi | Ostatni pomiar z 23 października: **1 989,89 MB**, bez środowiska Pythona, treningów i kopii |
+| Katalog aplikacji z kodem i danymi | Pomiar z 25 października: **2 239,85 MB**, bez środowiska Pythona, zapisów użytkownika, treningów i kopii |
 
-Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie ustawiono jako głównego generatora panelu ani portable. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Dokładny wcześniejszy pomiar katalogu](docs/POMIAR_TSI_2026-10-23.json).
+Rozmiar modelu nie jest rozmiarem kompletnego portable. Dużego modelu badawczego nie ustawiono jako głównego generatora panelu ani portable. Swobodna rozmowa **nie osiągnęła wymaganego poziomu**. Internetowa pętla uczenia wag pozostaje wyłączona. [Aktualny pomiar katalogu](docs/POMIAR_APLIKACJI_2026-10-25.json).
 
 **Rozmowę i nową pamięć podłączono również do lokalnych MUZ i walidatora.** Każda aplikacja ma własne zapisy. Kontrole połączeń: **10/10**; działające aplikacje przez HTTP: **12/12**. Osobne portable nie zostały w tym etapie przebudowane. W walidatorze rozwijana będzie rola nauczyciela: wskazówki, kontrola kroków i ćwiczenia dobierane do błędów.
 
@@ -62,6 +68,8 @@ Uruchom **URUCHOM_TSI.bat** i otwórz `http://127.0.0.1:8791/`. Aplikację zatrz
 | `Przeczytaj: Anna daje książkę Markowi.` | Dodanie źródła |
 | `Komu Anna daje książkę?` | Pytanie do źródła |
 | `słownik: państwo` | Znaczenia offline |
+| `Co oznacza zamek?` → `2` | Wybór znaczenia w rozmowie |
+| `Co oznacza glipnovar?` → `Glipnovar to lokalna nazwa przycisku startowego.` | Wyjaśnienie nowego słowa |
 | `Wyznacz pochodną i całkę: x^2` | Matematyka |
 | `logika: NOT (T AND U) OR F` | Logika z krokami |
 | `Ola ma niebieski plecak.` → nowa rozmowa → `Jaki kolor ma plecak Oli?` | Przywołanie zachowanego źródła |
