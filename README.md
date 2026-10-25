@@ -15,11 +15,11 @@
 | Sygnały | Serie liczbowe JSON, wykresy i uczona ocena wybranych trendów, anomalii i okresowości |
 | Obsługa | PL/EN, Enter wysyła, Shift+Enter dodaje wiersz, nowa rozmowa, pomoc i przykłady |
 
-## Podłączone lokalnie — odczyt F/U
+## Aktualna decyzja — odmowa przed zgadywaniem
 
-**Nowy odczyt działa w panelu AI-SI-TSI** przy pytaniach o odrzuconą albo niepotwierdzoną informację w wybranym temacie inkubatora. Kontrole zgodności: **11/11**, uruchomiony panel przez HTTP: **6/6**. PL/EN; w szczegółach odpowiedzi pojawia się `truth_readout`. Wyłączenie: **COFNIJ_ODCZYT_FU.bat**; ponowne włączenie: **WLACZ_ODCZYT_FU.bat**. [Zakres, pomiary i cofnięcie](docs/WDROZENIE_ODCZYTU_FU_2026-10-25.md).
+**Zatrzymano trening gotowych odpowiedzi i wyłączono nowy odczyt F/U w panelu.** Przywrócono wcześniejsze komunikaty o brakujących danych. Wagi i kopie zachowano. Problem dotyczy powiązania znaczeń słów, tematu i szukanej właściwości; samo rozpoznanie rodzaju pytania oraz poprawne tablice T/F/U tego nie rozwiązują.
 
-Główny rdzeń, pełna rozmowa, MUZ, walidator i portable zachowują dotychczasową konfigurację. Podłączono tylko sprawdzoną obsługę F/U.
+Dalsza praca: odczyt słownika i znaczeń, przypisanie osoby i tematu, sprawdzenie danych oraz konkretne doprecyzowanie, gdy czegoś brakuje. Nowego treningu samych docelowych odpowiedzi nie wznowiono. [Wyniki audytu i cofnięcia](docs/AUDYT_ODMOW_I_ZNACZEN_TSI_2026-10-25.md).
 
 ## Trwała pamięć
 
@@ -37,7 +37,7 @@ W rozwijanym generatorze dobór kontekstu uwzględnia dostępne miejsce zamiast 
 
 ## Ostatni trening — 25 października
 
-Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcześniejsze kontrole bez treści źródła: **15/15 → 15/15**. Trenowano warstwę odczytu na 148 przykładach z powtórkami. Wytrenowane wagi wykorzystuje teraz ograniczony odczyt F/U w lokalnym panelu; pełnej rozmowy i portable nie podmieniono. [Pełne wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md).
+Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcześniejsze kontrole bez treści źródła: **15/15 → 15/15**. Trenowano warstwę odczytu na 148 przykładach z powtórkami. Wytrenowane wagi zachowano; odczyt F/U podłączony po tym treningu został następnie wyłączony podczas audytu znaczeń. [Pełne wyniki i odpowiedzi](docs/TRENING_ODCZYTU_TSI_2026-10-25.md).
 
 ## Model i rozmiar
 
@@ -45,7 +45,7 @@ Odczyt F/U przy podanym źródle: **1/4 → 4/4**; nowe źródła: **8/8**. Wcze
 |---|---|
 | Wagi działającej aplikacji | Zachowane przy podłączeniu pamięci; inkubator nie zastępuje modelu |
 | Rozwijany wspólny model językowy | Dwa enkodery z H512 oraz dekoder transformera; **23 542 811 parametrów**, około **94,67 MB** zapisu wag |
-| Model odczytu F/U i badań nad rozmową | **23 843 739 parametrów**, **95,874 MB** zapisu wag; w panelu używany tylko do obsługiwanych F/U |
+| Model odczytu F/U i badań nad rozmową | **23 843 739 parametrów**, **95,874 MB** zapisu wag; zachowany lokalnie; nowy odczyt w panelu wyłączony |
 | Kontrola nowego połączenia | Pamięć **24/24**; pełne odpowiedzi po treningu odczytu **4/8** |
 | Katalog aplikacji z kodem i danymi | Ostatni pomiar z 23 października: **1 989,89 MB**, bez środowiska Pythona, treningów i kopii |
 

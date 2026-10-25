@@ -390,3 +390,8 @@ Trening odczytu F/U na 148 przykładach. Starszy interfejs: 1/4 → 4/4, nowe ź
 Wdrożono ocenione wagi jako osobny, ograniczony moduł dla wybranego tematu inkubatora. Zgodność 11/11, uruchomiony panel 6/6 przez HTTP. Dodano wyłączenie i ponowne włączenie plikami BAT, zachowano poprzednie pliki. Głównego rdzenia, pełnej rozmowy ani portable nie podmieniono. [Zakres i wyniki](docs/WDROZENIE_ODCZYTU_FU_2026-10-25.md).
 
 [README sprzed podłączenia odczytu F/U](docs/archiwum/README_before_scoped_readout_2026-10-25.md).
+
+
+## 25 października — zatrzymanie wymuszania odpowiedzi i audyt
+
+Przerwano wspólny trening po cofnięciu aktualizacji z wynikiem chronionym 80/83. Nowych wag nie wdrożono. Wyłączono podłączony wcześniej odczyt F/U i potwierdzono wcześniejszą odmowę w panelu. Zbadano rozbiór pytania, wybór tematu, słownik i rzeczywiste wywołanie logiki. [Ustalenia i stan](docs/AUDYT_ODMOW_I_ZNACZEN_TSI_2026-10-25.md).
