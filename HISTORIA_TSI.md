@@ -410,3 +410,24 @@ Podłączono matrycę obiekt–właściwość–liczba, istniejący odczyt ról 
 ## 25 października — pytania do znaczeń słownikowych
 
 Podłączono wyszukiwanie fragmentów przypisanych do znaczeń przez formy podstawowe słów, bez wklejania osobnej lekcji. Przykład o sumie kątów pochodzi z istniejącego hasła „trójkąt”; nie dopisano osobnej odpowiedzi z liczbą 180. Zachowano kwalifikator trójkąta płaskiego i źródło. Odczyt 12/12, aplikacja 10/10. Bez treningu wag i bez zmian w walidatorze.
+
+## 26 października 2026 — wspólny model, logika i ciągły trening
+
+Poprzedni główny opis zachowano w [archiwum README](docs/archiwum/README_przed_integracja_2026-10-26.md). Główny README opisuje bieżące możliwości, wyniki, uruchomienie oraz rozmiary.
+
+Przebudowano połączenie odczytu z odpowiedzią. Nowy dekoder otrzymuje miękkie wskazanie źródła, uwagę nad jego reprezentacjami i uczoną bramkę kopiowania. Następnie do tego samego dekodera podłączono oba oryginalne enkodery wraz z H512. Zachowano wcześniejsze nauczone parametry; przeniesiono 89 istniejących stanów parametrów optymalizatora oraz kolejkę danych i losowość. Nowe połączenie otrzymało własne stany optymalizatora.
+
+Sprawdzono rzeczywisty przepływ gradientów i aktualizację wag obu enkoderów, obu H512, czytnika i dekodera. W każdym H512 zmieniło się osiem sprawdzanych tensorów. Próbę aktualizacji cofnięto przed zapisaniem punktu startowego. Chronione sześć macierzy pozostało bez zmian, a ponowne odtworzenie modelu dało identyczne logity. Zintegrowana wersja odniesienia zachowała wszystkie 23 wcześniej poprawne odpowiedzi nowego dekodera.
+
+Pierwszy generator po przebudowie osiągał 11/72 na zestawie rozwojowym, wyłącznie w części relacyjnej; na rzeczywistych tekstach nie dawał wtedy poprawnych odpowiedzi. Wspólny trening czytnika i dekodera dał 22/72 z regresją dawnych odczytów. Po przywróceniu czytnika i zachowaniu nowego dekodera sprawdzono 23/72: 15/24 relacje i 8/48 teksty, przy czym te osiem dotyczyło rozpoznania braku danych. Nie uzyskano wtedy poprawnych pozytywnych odpowiedzi do tych tekstów.
+
+Po połączeniu pełnego układu ostatnia zakończona kontrola wag roboczych dała 55/312 w logice, 143/145 dawnych odczytów i 39/39 odpowiedzi. Wynik ten nie zastąpił automatycznie wersji odniesienia. Przykładowa zakończona runda pełnego układu wykonała 49 aktualizacji w limicie 30 minut nauki; razem z oceną końcową zajęła około 45 minut. Kolejne wznowienia zachowują optymalizator. Oceny niezmienionego modelu odniesienia mogą być użyte ponownie wyłącznie po sprawdzeniu dokładnej równości wag i materiału.
+
+Dodano lekcje bramek T/F/U, negacji, zakresu otwarć „tak”, „nie”, „nie wiem”, wyrażeń złożonych i niewiadomych argumentów. Materiał krzyżuje otwarcia zdań ze wszystkimi wartościami logicznymi. Tryby dwustanowy i trójstanowy mają jawnie różne dziedziny. Sprawdzony moduł operatorów osiągnął 78/78 działań i 132/132 zadań odwrotnych trójstanowych oraz 36/36 i 60/60 dwustanowych. Odmówiono zamiany U na F w dwustanowej. Wyniki te dotyczą tego modułu, nie surowych wypowiedzi nowego generatora.
+
+Czujnik zapisuje zakres formalnego obliczenia, tryb, liczbę wywołań i ślad operatorów. Odróżnia potwierdzenie, sprzeczność i brak rozstrzygnięcia. Dla treningu całego modelu dodatkowo kontroluje gradienty obu enkoderów i H512 oraz niezmienność reguł. Roboczego modułu weryfikacji dowolnych zdań nie włączono; jego interpretacja nie została sprawdzona.
+
+Na prośbę właściciela uruchomiono sterowanie ciągłymi rundami z zachowaniem najlepszej sprawdzonej wersji. Kontynuacje: krótkie pauzy co 10 aktualizacji oraz dwie powtórki z czterokrotnie niższym krokiem. STOP zatrzymuje kolejne rundy; poważna regresja, błąd lub brak potrzebnego zapisu kończy pętlę. Model nie uczy się na własnych niezweryfikowanych odpowiedziach i w tej pętli nie pobiera nowych treści z internetu.
+
+Samodzielna swobodna rozmowa nie osiągnęła wymaganego poziomu. Panel, MUZ, walidator i istniejące portable nie otrzymały tych nowych wag. Historyczne pomiary pozostały w swoich dokumentach. Dane rzeczywistych zadań pochodzą z [CLARIN-PL/PoQuAD](https://huggingface.co/datasets/clarin-pl/poquad), CC BY 4.0.
+

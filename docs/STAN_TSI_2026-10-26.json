@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-26",
+  "parameters": 15981366,
+  "FP32_parameter_bytes": 63925464,
+  "verified_checkpoint_bytes": 124725379,
+  "working_checkpoint_bytes": 236889120,
+  "working_logic": {
+    "correct": 55,
+    "total": 312,
+    "by_kind": {
+      "double-negation": {
+        "correct": 0,
+        "total": 1
+      },
+      "gate": {
+        "correct": 17,
+        "total": 101
+      },
+      "inverse": {
+        "correct": 31,
+        "total": 192
+      },
+      "mode_error": {
+        "correct": 0,
+        "total": 3
+      },
+      "negation-scope": {
+        "correct": 1,
+        "total": 1
+      },
+      "no-confirmation": {
+        "correct": 0,
+        "total": 1
+      },
+      "opening-0": {
+        "correct": 2,
+        "total": 3
+      },
+      "opening-1": {
+        "correct": 1,
+        "total": 3
+      },
+      "opening-2": {
+        "correct": 1,
+        "total": 3
+      },
+      "separate-uncertainty": {
+        "correct": 1,
+        "total": 2
+      },
+      "uncertainty": {
+        "correct": 0,
+        "total": 1
+      },
+      "yes-negation": {
+        "correct": 1,
+        "total": 1
+      }
+    }
+  },
+  "old_reader_retained": 143,
+  "old_reader_total": 145,
+  "old_language_retained": 39,
+  "old_language_total": 39,
+  "frozen_rule_matrices_unchanged": 6,
+  "formal_logic_checks": {
+    "formal_correct": 78,
+    "formal_total": 78,
+    "inverse_correct": 132,
+    "inverse_total": 132,
+    "inverse_routes_correct": 132,
+    "malformed_requests_rejected": 5,
+    "logic_weights_unchanged": true,
+    "generator_cannot_override_formal_result": true,
+    "raw_generator_performance_claimed": false,
+    "binary_formal_correct": 36,
+    "binary_inverse_correct": 60,
+    "binary_inverse_routes_correct": 60,
+    "mode_conflicts_or_U_in_binary_rejected": 4,
+    "unknown_not_coerced_to_false": true
+  },
+  "production_changed": false,
+  "code_or_weights_published": false
+}
