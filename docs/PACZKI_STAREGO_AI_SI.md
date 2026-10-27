@@ -26,6 +26,8 @@ Archiwum dotyczy historycznych źródeł i bazowych modeli z instalacji AI-SI z 
 
 Pliki .zip.001 i .zip.002 nie są osobnymi archiwami; są kolejnymi częściami jednego ZIP-a. Nie zmieniaj ich nazw ani kolejności. Narzędzie RESTORE obsługuje podział bez instalowania dodatkowych bibliotek. Odtworzenie wymaga całego zestawu.
 
+Automatyczne pozycje GitHuba **Source code (zip)** i **Source code (tar.gz)** zawierają migawkę repozytorium dokumentacji. Historyczny kod AI-SI jest w paczce **AI-SI-legacy-code-2026-10-18**, a modele — w osobnych paczkach AI-SI-base.
+
 ## Zakres
 
 - Wybrane historyczne źródła AI-SI oraz bazowe modele zewnętrzne.
