@@ -29,7 +29,7 @@ Uruchomienie istniejącej instalacji: **URUCHOM_TSI.bat**, panel `http://127.0.0
 Przygotowano **8 zestawów ZIP, łącznie około 8,3 GB**: historyczne źródła AI-SI oraz bazowe modele Bielik, Qwen, Whisper i OPUS. Są to dawne zależności AI-SI, a nie wagi obecnego TSI.
 
 <!-- AI_SI_ARCHIVE_STATUS -->
-**Paczki są przygotowane; ich wysyłanie do Releases trwa.** Status i pliki: [Releases AI-SI-TSI](https://github.com/jbackk-lang/AI-SI-TSI/releases).
+**Paczki są opublikowane.** Pobieranie: [archiwum starego AI-SI](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18).
 <!-- /AI_SI_ARCHIVE_STATUS -->
 
 - Każda paczka ma części do **900 MiB** (około 944 MB): `.zip.001`, `.zip.002` itd.
