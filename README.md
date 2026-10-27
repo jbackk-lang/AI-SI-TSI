@@ -1,73 +1,61 @@
-# AI-SI-TSI — lokalny asystent TSI
+# AI-SI-TSI — własny model TSI i lokalny asystent
 
-**Stan: 26 października 2026.** Własny model TSI, słownik, pamięć i narzędzia do pracy z tekstem, dokumentami oraz obliczeniami. Repozytorium publikuje dokumentację. Kod, wagi i dokumenty użytkownika pozostają lokalnie.
+**Stan: 27 października 2026.** Rozwijamy własny rdzeń TSI oraz jego współpracę z aplikacjami. Kod, wagi i prywatna pamięć **obecnego TSI pozostają lokalnie**. Publiczne paczki dotyczą wyłącznie **starego AI-SI i używanych w nim modeli zewnętrznych**.
 
-## Co działa w aplikacji
+## Aktualny stan TSI
 
-| Obszar | Możliwości |
+| Obszar | Potwierdzony stan |
 |---|---|
-| Tekst | Pytania do podanej treści, skróty, listy, wiadomości i obsługiwane korekty |
-| Dokumenty | Wklejanie treści, TXT, MD, CSV, PDF, DOCX i DOC; do 10 plików, 8 MB na plik i 32 MB łącznie; DOC wymaga Worda, skany OCR |
-| Słownik offline | 114 215 haseł i 172 772 znaczenia, formy odmiany, źródła, pytania do definicji i wyjaśnianie nowych słów |
-| Pamięć | Notatki i źródła między rozmowami, tematy, konflikty, cofanie decyzji oraz eksport |
-| Matematyka | Działania, równania, pochodne, całki, macierze i wykresy przez narzędzia obliczeniowe |
-| Sygnały | Serie liczbowe, wykresy oraz uczona ocena wybranych trendów, anomalii i okresowości |
-| Obsługa | PL/EN, Enter wysyła, Shift+Enter dodaje wiersz, nowa rozmowa, pomoc i przykłady |
+| Nowy rdzeń | **17 982 624 parametry**; enkoder inspirowany TIMDR i dekoder Transformer |
+| Odczyt i podstawy logiki | **120/120** zadań oraz **45/45** oddzielnych zapisów: odczyt T/F/U i dwustanowe BUF, NOT, AND, OR |
+| Sposób pomiaru | Odpowiedzi samej sieci, przed korektą przez tablicę reguł |
+| Rozmowa | Trwa nauka krótkich polskich zdań i dopytywania o brakujące dane; **swobodna rozmowa nie osiągnęła wymaganego poziomu** |
+| Trening | Cała część neuronowa uczy się wspólnie; kolejne bloki kontynuują najnowsze wagi i stan losowania |
+| Zachowanie wiedzy | Zweryfikowane wcześniejsze lekcje, kontrolowane zmiany wag i zachowane kopie do odtworzenia |
+| Reguły i rachunki | Osobna, stała kontrola formalnej logiki, zbiorów i dokładnej arytmetyki |
 
-Uruchomienie lokalnej instalacji: **URUCHOM_TSI.bat**, panel `http://127.0.0.1:8791/`; zatrzymanie: **ZATRZYMAJ_TSI.bat**. Przykłady: `Przeczytaj: …`, `Streść: …`, `słownik: państwo`, `logika: NOT (T AND U) OR F`.
+Czytnik ujednolica nieistotne odstępy w jawnych poleceniach logicznych, zachowując operator, argumenty i ich kolejność. Zmiana liczby spacji lub zapis w kilku wierszach nie tworzy już innego wejścia do tej części sieci.
 
-## Aktualny model i nauka
+**Zaliczony zakres dotyczy nowego rdzenia, nie całej matematyki ani dowolnej rozmowy.** Wagi rozwijane w treningu nie zostały jeszcze wdrożone do MUZ, walidatora ani wcześniejszych paczek portable. Bieżący trening i kopie do odtworzenia są kolejnymi zapisami jednej linii rozwoju modelu.
 
-**Połączono oba oryginalne enkodery, obie pamięci H512, czytnik i nowy dekoder z kopiowaniem informacji ze źródła.** Uczą się wspólnie i są zapisywane w jednym pliku modelu. Zachowano słownik odmiany i chronione macierze reguł. Rozmowa jest rozwijana na własnych wagach TSI.
+## Aplikacja lokalna
 
-| Ostatnia zakończona kontrola wag roboczych | Wynik |
-|---|---:|
-| Logika: bramki, negacja, zakres zdania i niewiadome | **55/312**, początkowo 0/312 |
-| Zachowane wcześniejsze odczyty | **143/145** |
-| Zachowane sprawdzane odpowiedzi językowe | **39/39** |
-| Niezmienione chronione macierze reguł | **6/6** |
+Dotychczasowy panel zawiera pracę z tekstem i dokumentami, słownik offline, pamięć notatek i źródeł, narzędzia matematyczne oraz analizę wybranych sygnałów. Dostępne są PL/EN, wysyłanie Enterem i nowa rozmowa. To działająca aplikacja z wcześniejszą integracją; trening nowego rdzenia jest prowadzony osobno od jej wdrożenia.
 
-**Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Wynik wag roboczych nie oznacza ich przyjęcia: najlepsza sprawdzona wersja jest zachowywana osobno. Nowego modelu nie podmieniono w głównym panelu, MUZ, walidatorze ani istniejących portable.
+Uruchomienie istniejącej instalacji: **URUCHOM_TSI.bat**, panel `http://127.0.0.1:8791/`. Zatrzymanie: **ZATRZYMAJ_TSI.bat**. Przykładowe polecenia panelu: `Przeczytaj: …`, `Streść: …`, `słownik: państwo`.
 
-Nauka pracuje lokalnie w kolejnych rundach, ze wznowieniem wag, optymalizatora i kolejki danych. Kontynuacje dodają **3-sekundową pauzę co 10 aktualizacji i dwie powtórki z czterokrotnie mniejszym krokiem**. Poważna regresja lub błąd przerywa ciągłą pracę. Podgląd: **PODGLAD_TRENINGU_TSI.bat**; zatrzymanie całej pętli: **ZATRZYMAJ_CIAGLY_TRENING_TSI.bat**. Zwykła rozmowa nie uruchamia samoczynnie treningu.
+## Paczki starego AI-SI
 
-Materiał: 25 505 przygotowanych zadań do odczytu tekstów oraz 328 lekcji logiki; osobno 312 kontroli innych sformułowań i 125 odłożonych przypadków logicznych. Pracujemy na CPU. Ostatnie tempo wynosiło około 39–42 s na aktualizację, z dodatkowym czasem ocen i zapisu.
+Przygotowano **8 zestawów ZIP, łącznie około 8,3 GB**: historyczne źródła AI-SI oraz bazowe modele Bielik, Qwen, Whisper i OPUS. Są to dawne zależności AI-SI, a nie wagi obecnego TSI.
 
-## Logika i zakres czujnika
+<!-- AI_SI_ARCHIVE_STATUS -->
+**Paczki są przygotowane; ich wysyłanie do Releases trwa.** Status i pliki: [Releases AI-SI-TSI](https://github.com/jbackk-lang/AI-SI-TSI/releases).
+<!-- /AI_SI_ARCHIVE_STATUS -->
 
-W lokalnej wersji testowej formalne obliczenia obowiązkowo korzystają z zamrożonego uczonego modułu operatorów TSI. **Tryb dwustanowy: T/F. Tryb trójstanowy: T/F/U, silna logika Kleene’a.** U nie jest automatycznie zamieniane na F.
+- Każda paczka ma części do **900 MiB** (około 944 MB): `.zip.001`, `.zip.002` itd.
+- Do odtworzenia całego archiwum pobierz wszystkie części wszystkich paczek oraz `MANIFEST.json`, `RESTORE.py`, `RESTORE.bat` i `archive_split_io.py` do jednego katalogu. Uruchom **RESTORE.bat**; wymagany jest Python 3.
+- `SHA256SUMS.txt` zawiera sumy części, a `MODEL-NOTICES.md` i `LICENSES.zip` — pochodzenie i licencje modeli.
+- Publikacja nie obejmuje obecnego TSI, prywatnych baz, dokumentów ani historii rozmów. To **archiwum historyczne**, nie gotowy portable i nie aktualna wersja aplikacji.
 
-| Kontrola modułu operatorów | Wynik |
-|---|---:|
-| Działania trójstanowe | **78/78** |
-| Niewiadomy argument — trójstanowo | **132/132** |
-| Działania dwustanowe | **36/36** |
-| Niewiadomy argument — dwustanowo | **60/60** |
+[Dokładny spis paczek i instrukcja](docs/PACZKI_STAREGO_AI_SI.md).
 
-Zadania odwrotne rozróżniają jedną możliwość, kilka możliwości i brak rozwiązania. Przykład: `X AND F = F` dopuszcza {T,F} w dwustanowej oraz {T,F,U} w trójstanowej.
+## Rozmiar obecnego rdzenia
 
-Czujnik podaje **zakres, tryb, wywołane operatory i zgodność wyniku**. Potwierdza formalne obliczenie; sprzeczna zgłoszona wartość jest błędem, a nierozpoznane znaczenie pozostaje niepotwierdzone. Te wyniki modułu operatorów są odrębne od wyników generatora. Kontrola dowolnej swobodnej wypowiedzi nie jest ukończona.
-
-## Wielkość na dysku
-
-MB = 1 000 000 B. Poniższe zakresy częściowo się zawierają.
+MB = 1 000 000 bajtów.
 
 | Składnik | Rozmiar |
 |---|---:|
-| Aktualny zintegrowany model | **15 981 366 parametrów** |
-| Same parametry przy zapisie FP32 | około **63.93 MB** |
-| Sprawdzony wspólny plik modelu, z metadanymi odtworzenia | **124.73 MB** |
-| Zapis roboczy z optymalizatorem, ostatni pomiar | **236.89 MB** |
-| Aplikacja z kodem i danymi — pomiar z 25 października | **2 239,85 MB**, bez środowiska Pythona, treningów i kopii |
+| Parametry nowego rdzenia w FP32 | około **71,93 MB** |
+| Plik wag z konfiguracją i metadanymi | około **72 MB** |
 
-Rozmiar pliku modelu nie jest rozmiarem kompletnego portable. Portable z nową integracją nie zostało w tej rundzie przygotowane. [Zakres pomiaru aplikacji](docs/POMIAR_APLIKACJI_2026-10-25.json).
+Pełna instalacja zajmuje więcej: obejmuje również kod, Pythona, biblioteki, słowniki i dane. Nie przygotowano jeszcze nowego kompletnego portable z tym rdzeniem. Historyczne ZIP-y AI-SI są odrębnym zestawem i nie wyznaczają rozmiaru TSI.
 
-## Podgląd panelu
+## Podgląd aplikacji
 
-Zrzuty z 20 października pokazują panel aplikacji; nie przedstawiają nowego treningu.
+Zrzuty z 20 października przedstawiają istniejący panel, nie nowy rdzeń podczas treningu.
 
 ![Rozmowa TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-panel-2026-10-20.png)
 
 ![Dokumenty TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-documents-2026-10-20.png)
 
-[Historia i archiwum](HISTORIA_TSI.md) · [Uczestnicy projektu](CONTRIBUTORS.md) · [Walidator](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)
+[Historia prac](HISTORIA_TSI.md) · [Poprzedni README](docs/archiwum/README_przed_aktualizacja_2026-10-27.md) · [Uczestnicy](CONTRIBUTORS.md) · [Walidator](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)

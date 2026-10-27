@@ -2,6 +2,27 @@
 
 Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwości oraz ograniczenia są opisane w [README](https://github.com/jbackk-lang/AI-SI-TSI/blob/main/README.md). Wyników odmiennych zestawów i modeli nie należy dodawać ani porównywać jak jednego sprawdzianu.
 
+## 27 października — naprawa odczytu, zachowania wiedzy i archiwum AI-SI
+
+Nowy rdzeń ma 17 982 624 parametry. Rozdzielono wpływ zapisu wejścia od utraty wcześniejszych umiejętności podczas treningu. Po nauce OR wcześniejsza negacja odpowiadała stale T, a AND zmieniało odpowiedź po zmianie odstępów. Poprzednie zatwierdzone wagi poprawnie rozpoznawały odczyt, negację i AND w pięciu zapisach.
+
+Dodano ujednolicanie nieistotnych odstępów dla formalnych poleceń LOGIC. Zachowuje ono tryb, operator, argumenty i ich kolejność; nie wylicza odpowiedzi. Trening całej części neuronowej obejmuje wcześniejsze zweryfikowane zależności oraz kontrolę rzeczywistych zmian wag. Odpowiedzi mierzone są przed korektą przez formalne reguły.
+
+| Sprawdzenie | Wynik |
+|---|---:|
+| Naprawiony rdzeń: główny sprawdzian | **120/120** |
+| Oddzielne zapisy | **45/45** |
+| Te same naprawione wagi, bez ujednolicania zapisu | **71/75** |
+| Z ujednolicaniem | **75/75** |
+| 32 kroki z gradientem wcześniejszych lekcji | **75/75** |
+| Te same 32 kroki wyłącznie nowego działania | **60/75** |
+
+Krótka kontrola bez projekcji gradientu także osiągnęła 75/75, dlatego nie przypisano poprawy samej projekcji. W dłuższym przebiegu z powtórkami wcześniejsze lekcje po przejściowym 10/11 wróciły do 11/11. Sam retest niezmienionych wag po przerwie nie zmienił odpowiedzi.
+
+Rozpoczęto uczenie krótkich polskich zdań na własnych wagach, z ochroną zaliczonych zależności logicznych. Kolejne bloki kontynuują najnowszy zapis modelu i stan losowania. Naprawiono błąd aktualizacji sumy zapisanego checkpointu; zachowany postęp wznowiono bez cofania wag. Swobodna rozmowa nie osiągnęła wymaganego poziomu. Tego etapu nie wdrożono jeszcze do aplikacji ani portable.
+
+Dla starego AI-SI przygotowano osiem publicznych zestawów o rozmiarze około 8,3 GB: historyczne źródła i modele bazowe Bielik, Qwen, Whisper oraz OPUS. Obecny TSI, prywatne bazy i rozmowy pozostają lokalnie. Szczegóły są w [opisie paczek](docs/PACZKI_STAREGO_AI_SI.md). Poprzedni główny opis zachowano w [archiwum README](docs/archiwum/README_przed_aktualizacja_2026-10-27.md).
+
 ## Stan sprzed uporządkowania dokumentacji
 
 - [Poprzedni lokalny README — 21 października 2026](https://github.com/jbackk-lang/AI-SI-TSI/blob/main/docs/archiwum/README_before_current_state_2026-10-21.md).
