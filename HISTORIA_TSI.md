@@ -457,3 +457,7 @@ Samodzielna swobodna rozmowa nie osiągnęła wymaganego poziomu. Panel, MUZ, wa
 ### 2026-10-28 — grupy wyrazów, czasy i tryb
 
 Dodano grupy rzeczownikowe, liczebniki 0–10 i zbiorowe, uzgodnienie podmiotu liczebnikowego, czas przeszły i przyszły oraz tryb przypuszczający. Odpowiedzi dekodera: 20/20 grup i 18/18 czasów, 5/5 kontroli braków lub sprzeczności. Jedna linia wag, krok 2850, bez dodatkowego treningu. Poprzedni README zachowano w docs/archiwum/README_przed_czasami_2026-10-28.md.
+
+### 2026-10-28 — odniesienia między zdaniami
+
+Dołączono do lokalnego API wiązanie podmiotowych zaimków, kontrolę niejednoznaczności i izolowany kontekst zapytania. 7/7 odpowiedzi dekodera, 4/4 kontroli, 79/79 testów technicznych. Naprawiono utratę rodzaju przy odmianie zaimka i przekazywanie wybranego leksemu. Bez zmian wag i bez podmiany dawnych aplikacji.

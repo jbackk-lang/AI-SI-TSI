@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **71 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **79 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -75,6 +75,17 @@ Tryb przypuszczający jest rozróżniany od czasu. Przy „ja” i czasie przesz
 
 Odmiany pochodzą z własnej bazy form; reguły są chronione. Rozszerzenie nie zmienia wag sieci i nadal wymaga podania lematów oraz ról.
 
+## Odniesienia między zdaniami
+
+Moduł łączy przygotowane zdania i rozstrzyga podmiotowe „on/ona” na podstawie wcześniej wymienionych obiektów oraz ich cech słownikowych. Zachowuje wskazanie osoby między zdaniami, a przy kilku pasujących osobach zwraca pytanie o doprecyzowanie. Kontekst jest oddzielny dla każdego zapytania.
+
+- **Ola śpi. Ona czyta.**
+- **Ola widzi kota. On śpi.**
+- **Ola śpi, ponieważ ona czytała.**
+- **Ola widzi Ewę. Ona…** → wymagany wybór, o którą osobę chodzi.
+
+Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **79/79**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
+
 ## Wielkość
 
 | Składnik | Wielkość |
@@ -91,7 +102,7 @@ Odmiany pochodzą z własnej bazy form; reguły są chronione. Rozszerzenie nie 
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: odniesienia między zdaniami i zdania złożone, następnie przygotowywanie planu z polecenia oraz rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: odczyt ról i przygotowywanie planu ze zwykłego polecenia, następnie rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 
