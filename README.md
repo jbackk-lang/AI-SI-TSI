@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **82 testy techniczne** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **86 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -84,7 +84,7 @@ Moduł łączy przygotowane zdania i rozstrzyga podmiotowe „on/ona” na podst
 - **Ola śpi, ponieważ ona czytała.**
 - **Ola widzi Ewę. Ona…** → wymagany wybór, o którą osobę chodzi.
 
-Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **82/82**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
+Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **86/86**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
 
 ## Odczyt prostego zdania bez podawania ról
 
@@ -102,6 +102,16 @@ Domyślna lokalna ścieżka: **20/20 zdań** i **8/8 kontroli braków, niezgodno
 
 Zakres: jednozdaniowe oznajmienia z jednym osobowym czasownikiem, podmiotem, opcjonalnym dopełnieniem i prostymi grupami przymiotnikowymi; zaprzeczenie bezpośrednio przy czasowniku. Dodatkowe nieobsługiwane słowa, symbole, pytania i zdania złożone są zgłaszane. Ten etap porządkuje odczyt i odtworzenie treści, nie stanowi jeszcze swobodnej odpowiedzi na pytanie. Wagi pozostały bez zmian.
 
+## Odczyt kontekstu kilku zdań
+
+Dołączono `compose_context`: zwykły tekst jest odczytywany zdanie po zdaniu, a wykryte osoby i obiekty trafiają do lokalnego rejestru odniesień. Użytkownik nie musi oznaczać ról ani sam tworzyć rejestru.
+
+- **Książkę czyta uczeń. On śpi.** → **Uczeń czyta książkę. On śpi.**
+- **Ola śpi. Ona czytała.** → poprawne powiązanie zaimka i rodzaju czasu przeszłego.
+- **Ewa widzi Olę. Ona…** → prośba o wskazanie osoby.
+
+Sprawdzian odpowiedzi dekodera: **6/6**, kontrole: **4/4**, w tym brak przenoszenia odniesień między zapytaniami. Zakres obejmuje proste zdania z pojedynczymi rzeczownikami i podmiotowymi zaimkami trzeciej osoby. Niejednoznaczności znaczeń i nieobsługiwane konstrukcje są zgłaszane. Wagi pozostają bez zmian; odpowiadanie na pytania o tak odczytaną treść jest następnym etapem.
+
 ## Wielkość
 
 | Składnik | Wielkość |
@@ -118,7 +128,7 @@ Zakres: jednozdaniowe oznajmienia z jednym osobowym czasownikiem, podmiotem, opc
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: połączenie odczytu tekstu z odniesieniami między zdaniami, następnie pytania i polecenia oraz rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: odpowiadanie na pytania o odczytany kontekst, następnie polecenia i rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 

@@ -465,3 +465,7 @@ Dołączono do lokalnego API wiązanie podmiotowych zaimków, kontrolę niejedno
 ### 2026-10-28 — odczyt ról z tekstu
 
 Wprowadzono słownikowo-gramatyczny odczyt całych prostych zdań: przypadki, rekcja, zgodność i pełne pokrycie słów, niezależnie od ich kolejności. Połączono go z rzeczywistym dekoderem planów: 20/20 odpowiedzi, 8/8 kontroli, 82/82 testy techniczne. Baza i wagi bez zmian. Poprzedni README zachowano w docs/archiwum/README_przed_odczytem_zdan_2026-10-28.md.
+
+### 2026-10-28 — tekst połączony z kontekstem
+
+Automatyczny most od zwykłych prostych zdań przez role i rejestr obiektów do odniesień podmiotowych oraz dekodera. 6/6 odpowiedzi, 4/4 kontroli. Zachowano jedną linię wag bez nowego treningu.
