@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **44 testy techniczne** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **59 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -37,6 +37,24 @@ Początkowa baza zawiera **44 459 rozpoznanych lematów i 1 873 987 rekordów fo
 Sprawdzono pełną drogę: **Ola + czytać + książka**, wraz z wymaganymi cechami → **Ola czyta książkę.** Podczas tego sprawdzianu import natywnego analizatora był zablokowany.
 
 Dane fleksyjne SGJP pochodzą z jednorazowego lokalnego eksportu; zachowano autorstwo i licencję BSD-2-Clause. [Oficjalne warunki danych](https://morfeusz.sgjp.pl/doc/license/en). Baza obejmuje częściowy eksport 49 663 haseł wejściowych, a nie cały SGJP. Rozszerzanie pokrycia oraz automatyczne ustalanie cech są kolejnymi etapami.
+
+## Automatyczne uzgadnianie form
+
+TSI dobiera już osobę i liczbę czasownika na podstawie podmiotu oraz przypadek dopełnienia z chronionej macierzy gramatycznej. Obsługiwany zakres: czas teraźniejszy, podmioty pojedyncze i złożone, 58 wybranych schematów rekcji oraz zmiana biernika dopełnienia na dopełniacz przy zaprzeczeniu.
+
+Rzeczywiste odpowiedzi dekodera, utworzone z lematów i ról bez ręcznego podawania wszystkich cech:
+
+- **Ola czyta książkę.**
+- **Ja czytam książkę.**
+- **My czytamy książkę.**
+- **Ola i Jan czytają książkę.**
+- **Ola nie czyta książki.**
+- **Ola szuka książki.**
+- **Ola pomaga dziecku.**
+
+Kontrola domyślnego wejścia: **20/20 wykonań** i **4/4 poprawnych zgłoszeń braków lub niejednoznaczności**. Import Morfeusza był zablokowany. Przy rzeczywistej homonimii, nieznanej rekcji, nieobsługiwanym czasie albo sprzecznych cechach system prosi o potrzebne dane. Reguły, ich kolejność i macierze są chronione przed zmianą.
+
+To rozszerzenie działa regułowo przez własną bazę i istniejący dekoder. Wagi sieci nie zostały przy tym zmienione. Role nadal są przekazywane jawnie.
 
 ## Wielkość
 
@@ -54,7 +72,7 @@ Dane fleksyjne SGJP pochodzą z jednorazowego lokalnego eksportu; zachowano auto
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: odmiana i uzgadnianie wyrazów według ról, następnie samodzielne przygotowywanie planu z polecenia. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: liczebniki i przymiotniki, kolejne czasy, następnie samodzielne przygotowywanie planu z polecenia. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 
