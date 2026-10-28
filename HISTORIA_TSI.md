@@ -469,3 +469,9 @@ Wprowadzono słownikowo-gramatyczny odczyt całych prostych zdań: przypadki, re
 ### 2026-10-28 — tekst połączony z kontekstem
 
 Automatyczny most od zwykłych prostych zdań przez role i rejestr obiektów do odniesień podmiotowych oraz dekodera. 6/6 odpowiedzi, 4/4 kontroli. Zachowano jedną linię wag bez nowego treningu.
+
+### 2026-10-28 — pytania o kontekst
+
+Dodano pytania przypadkowe o podmiot i dopełnienie, źródła odpowiedzi, rozróżnienie negacji i czasu, listy wyników bez powtórzeń i wykrywanie sprzecznych faktów. Rzeczywisty dekoder: 18/18 odpowiedzi, 13/13 kontroli; 90/90 testów technicznych. Bez treningu wag i bez podmiany dawnych aplikacji. Poprzedni README: docs/archiwum/README_przed_pytaniami_2026-10-28.md.
+
+Przy sprawdzaniu pytań kim/czym domknięto obsługę „się” w nowym czytniku i pytaniach. Sprawdzian zdań rozszerzono do 22/22 i 10/10 kontroli.

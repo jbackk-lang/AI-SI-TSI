@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **86 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **90 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -84,7 +84,7 @@ Moduł łączy przygotowane zdania i rozstrzyga podmiotowe „on/ona” na podst
 - **Ola śpi, ponieważ ona czytała.**
 - **Ola widzi Ewę. Ona…** → wymagany wybór, o którą osobę chodzi.
 
-Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **86/86**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
+Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **90/90**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
 
 ## Odczyt prostego zdania bez podawania ról
 
@@ -98,9 +98,9 @@ W lokalnym API dodano `read_statement` i `compose_text`. Czytnik korzysta z form
 | Książki nie czyta Ola. | **Ola nie czyta książki.** |
 | Olę widzi Ewa. | **Ewa widzi Olę.** |
 
-Domyślna lokalna ścieżka: **20/20 zdań** i **8/8 kontroli braków, niezgodności lub niejednoznaczności**; bez importu Morfeusza. „Dziecko widzi zwierzę” zwraca dwie możliwe interpretacje, zamiast przypisywać role wyłącznie według kolejności słów.
+Domyślna lokalna ścieżka: **22/22 zdań** i **10/10 kontroli braków, niezgodności lub niejednoznaczności**; bez importu Morfeusza. „Dziecko widzi zwierzę” zwraca dwie możliwe interpretacje, zamiast przypisywać role wyłącznie według kolejności słów.
 
-Zakres: jednozdaniowe oznajmienia z jednym osobowym czasownikiem, podmiotem, opcjonalnym dopełnieniem i prostymi grupami przymiotnikowymi; zaprzeczenie bezpośrednio przy czasowniku. Dodatkowe nieobsługiwane słowa, symbole, pytania i zdania złożone są zgłaszane. Ten etap porządkuje odczyt i odtworzenie treści, nie stanowi jeszcze swobodnej odpowiedzi na pytanie. Wagi pozostały bez zmian.
+Zakres: jednozdaniowe oznajmienia z jednym osobowym czasownikiem, podmiotem, opcjonalnym dopełnieniem i prostymi grupami przymiotnikowymi; zaprzeczenie bezpośrednio przy czasowniku. Dodatkowe nieobsługiwane słowa, symbole, pytania i zdania złożone są zgłaszane. Ten odczyt jest podstawą pytań o kontekst opisanych poniżej. Wagi pozostały bez zmian.
 
 ## Odczyt kontekstu kilku zdań
 
@@ -110,7 +110,24 @@ Dołączono `compose_context`: zwykły tekst jest odczytywany zdanie po zdaniu, 
 - **Ola śpi. Ona czytała.** → poprawne powiązanie zaimka i rodzaju czasu przeszłego.
 - **Ewa widzi Olę. Ona…** → prośba o wskazanie osoby.
 
-Sprawdzian odpowiedzi dekodera: **6/6**, kontrole: **4/4**, w tym brak przenoszenia odniesień między zapytaniami. Zakres obejmuje proste zdania z pojedynczymi rzeczownikami i podmiotowymi zaimkami trzeciej osoby. Niejednoznaczności znaczeń i nieobsługiwane konstrukcje są zgłaszane. Wagi pozostają bez zmian; odpowiadanie na pytania o tak odczytaną treść jest następnym etapem.
+Sprawdzian odpowiedzi dekodera: **6/6**, kontrole: **4/4**, w tym brak przenoszenia odniesień między zapytaniami. Zakres obejmuje proste zdania z pojedynczymi rzeczownikami i podmiotowymi zaimkami trzeciej osoby. Niejednoznaczności znaczeń i nieobsługiwane konstrukcje są zgłaszane. Wagi pozostają bez zmian. Dodano opisane poniżej pytania o tak odczytaną treść.
+
+## Pytania o podany kontekst
+
+W lokalnym API dodano `answer_from_context(kontekst, pytanie)` oraz zadanie CLI `ask_context`. Pytanie jest rozkładane według czasownika, pytanej roli, przypadku i zaprzeczenia. Wyszukiwane są zgodne fakty z bieżącego kontekstu; dekoder emituje wybraną odpowiedź. Wynik zawiera również numery zdań i identyfikatory obiektów będących źródłem informacji.
+
+| Kontekst | Pytanie | Odpowiedź dekodera |
+|---|---|---|
+| Ola czyta książkę. | Kto czyta książkę? | **Ola.** |
+| Ola czyta książkę. | Co czyta Ola? | **książkę.** |
+| Ewa pomaga dziecku. | Komu pomaga Ewa? | **dziecku.** |
+| Ola interesuje się książką. | Czym interesuje się Ola? | **książką.** |
+| Ola nie czyta książki. | Czego nie czyta Ola? | **książki.** |
+| Ola śpi. Ona czyta książkę. | Kto czyta książkę? | **Ola.** |
+
+Pełna ścieżka: **18/18 odpowiedzi**, **13/13 kontroli**, wszystkie **90 testów technicznych**. Zachowane są zaprzeczenie i czas; brak informacji nie jest uzupełniany wymyślonym faktem. Sprzeczność tego samego faktu wymaga doprecyzowania. Przy kilku potwierdzonych odpowiedziach zwracana jest lista bez powtórzeń.
+
+Zakres obejmuje pytania o podmiot i dopełnienie, m.in. **kto, co, kogo, komu, czego, kim, czym**, z jednym czasownikiem oraz opcjonalnym rzeczownikowym warunkiem. Obsługiwane są również wybrane konstrukcje zwrotne z „się”; brak albo nadmiarowy znacznik jest zgłaszany. Nieznane słowa, dodatkowe nieobsługiwane warunki i niejednoznaczne odniesienia są zgłaszane. Wybór odpowiedzi działa przez chronione reguły i słownik; wagi nie zostały zmienione. Dawnego panelu i aplikacji nie podmieniono.
 
 ## Wielkość
 
@@ -128,7 +145,7 @@ Sprawdzian odpowiedzi dekodera: **6/6**, kontrole: **4/4**, w tym brak przenosze
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: odpowiadanie na pytania o odczytany kontekst, następnie polecenia i rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: rozszerzenie pytań i warunków, odczyt poleceń oraz rozmowa oparta na kontekście. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 
