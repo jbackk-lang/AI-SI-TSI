@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **59 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **71 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -36,11 +36,11 @@ Początkowa baza zawiera **44 459 rozpoznanych lematów i 1 873 987 rekordów fo
 
 Sprawdzono pełną drogę: **Ola + czytać + książka**, wraz z wymaganymi cechami → **Ola czyta książkę.** Podczas tego sprawdzianu import natywnego analizatora był zablokowany.
 
-Dane fleksyjne SGJP pochodzą z jednorazowego lokalnego eksportu; zachowano autorstwo i licencję BSD-2-Clause. [Oficjalne warunki danych](https://morfeusz.sgjp.pl/doc/license/en). Baza obejmuje częściowy eksport 49 663 haseł wejściowych, a nie cały SGJP. Rozszerzanie pokrycia oraz automatyczne ustalanie cech są kolejnymi etapami.
+Dane fleksyjne SGJP pochodzą z jednorazowego lokalnego eksportu; zachowano autorstwo i licencję BSD-2-Clause. [Oficjalne warunki danych](https://morfeusz.sgjp.pl/doc/license/en). Baza obejmuje częściowy eksport 49 663 haseł wejściowych, a nie cały SGJP. Dalsza praca obejmuje rozszerzanie pokrycia i samodzielny odczyt ról z polecenia.
 
 ## Automatyczne uzgadnianie form
 
-TSI dobiera już osobę i liczbę czasownika na podstawie podmiotu oraz przypadek dopełnienia z chronionej macierzy gramatycznej. Obsługiwany zakres: czas teraźniejszy, podmioty pojedyncze i złożone, 58 wybranych schematów rekcji oraz zmiana biernika dopełnienia na dopełniacz przy zaprzeczeniu.
+TSI dobiera już osobę i liczbę czasownika na podstawie podmiotu oraz przypadek dopełnienia z chronionej macierzy gramatycznej. Obsługiwany zakres: czas teraźniejszy, przeszły i przyszły, tryb przypuszczający, podmioty pojedyncze i złożone, 58 wybranych schematów rekcji oraz zmiana biernika dopełnienia na dopełniacz przy zaprzeczeniu.
 
 Rzeczywiste odpowiedzi dekodera, utworzone z lematów i ról bez ręcznego podawania wszystkich cech:
 
@@ -52,9 +52,28 @@ Rzeczywiste odpowiedzi dekodera, utworzone z lematów i ról bez ręcznego podaw
 - **Ola szuka książki.**
 - **Ola pomaga dziecku.**
 
-Kontrola domyślnego wejścia: **20/20 wykonań** i **4/4 poprawnych zgłoszeń braków lub niejednoznaczności**. Import Morfeusza był zablokowany. Przy rzeczywistej homonimii, nieznanej rekcji, nieobsługiwanym czasie albo sprzecznych cechach system prosi o potrzebne dane. Reguły, ich kolejność i macierze są chronione przed zmianą.
+Kontrola domyślnego wejścia: **20/20 wykonań** i **4/4 poprawnych zgłoszeń braków lub niejednoznaczności**. Import Morfeusza był zablokowany. Przy rzeczywistej homonimii, nieznanej rekcji, nieobsługiwanym trybie albo sprzecznych cechach system prosi o potrzebne dane. Reguły, ich kolejność i macierze są chronione przed zmianą.
 
 To rozszerzenie działa regułowo przez własną bazę i istniejący dekoder. Wagi sieci nie zostały przy tym zmienione. Role nadal są przekazywane jawnie.
+
+## Grupy wyrazów, czasy i tryby
+
+Przymiotniki uzgadniają przypadek, liczbę i rodzaj z rzeczownikiem. Liczebniki **0–10**, w tym formy zbiorowe, zmieniają postać rzeczownika i zgodę z czasownikiem. Sprawdzian odpowiedzi dekodera: **20/20**.
+
+- **Dwie nowe książki leżą.**
+- **Pięć nowych książek leży.**
+- **Dwoje małych dzieci czyta.**
+
+Kolejny sprawdzian: **18/18 odpowiedzi** dla czasów i trybu przypuszczającego oraz **5/5 zgłoszeń niejednoznaczności lub sprzeczności**.
+
+- **Ola czytała. / Ola będzie czytać. / Ola przeczyta.**
+- **Ja mogłem. / Ja mógłbym.** — po wskazaniu rodzaju.
+- **My czytałyśmy. / My czytalibyśmy.** — dla odpowiednich rodzajów.
+- **Dwie książki leżały. / Pięć książek leżało.**
+
+Tryb przypuszczający jest rozróżniany od czasu. Przy „ja” i czasie przeszłym system prosi o rodzaj, jeśli możliwe formy są różne. Czasownik dokonany nie otrzymuje fikcyjnej formy czasu teraźniejszego. [Zasady aspektu i trybu — ZPE](https://zpe.gov.pl/a/aspekt-i-tryb-czasownika/DPyWEtI3p), [składnia liczebników — RJP](https://rjp.pan.pl/skladnia-liczebnikow-2/).
+
+Odmiany pochodzą z własnej bazy form; reguły są chronione. Rozszerzenie nie zmienia wag sieci i nadal wymaga podania lematów oraz ról.
 
 ## Wielkość
 
@@ -72,7 +91,7 @@ To rozszerzenie działa regułowo przez własną bazę i istniejący dekoder. Wa
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: liczebniki i przymiotniki, kolejne czasy, następnie samodzielne przygotowywanie planu z polecenia. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: odniesienia między zdaniami i zdania złożone, następnie przygotowywanie planu z polecenia oraz rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 

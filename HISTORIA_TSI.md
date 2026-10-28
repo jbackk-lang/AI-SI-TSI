@@ -452,3 +452,8 @@ Na prośbę właściciela uruchomiono sterowanie ciągłymi rundami z zachowanie
 
 Samodzielna swobodna rozmowa nie osiągnęła wymaganego poziomu. Panel, MUZ, walidator i istniejące portable nie otrzymały tych nowych wag. Historyczne pomiary pozostały w swoich dokumentach. Dane rzeczywistych zadań pochodzą z [CLARIN-PL/PoQuAD](https://huggingface.co/datasets/clarin-pl/poquad), CC BY 4.0.
 
+
+
+### 2026-10-28 — grupy wyrazów, czasy i tryb
+
+Dodano grupy rzeczownikowe, liczebniki 0–10 i zbiorowe, uzgodnienie podmiotu liczebnikowego, czas przeszły i przyszły oraz tryb przypuszczający. Odpowiedzi dekodera: 20/20 grup i 18/18 czasów, 5/5 kontroli braków lub sprzeczności. Jedna linia wag, krok 2850, bez dodatkowego treningu. Poprzedni README zachowano w docs/archiwum/README_przed_czasami_2026-10-28.md.
