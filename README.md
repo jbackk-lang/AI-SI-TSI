@@ -1,6 +1,6 @@
 # AI-SI-TSI — własny model TSI
 
-**Stan: 28 października 2026.** Lokalny model **plan-decoder-8m-3** ma **8 081 032 parametry**. Repozytorium udostępnia dokumentację; bieżący kod, wagi, słowniki i prywatna pamięć pozostają lokalnie.
+**Stan: 29 października 2026.** Lokalny model **plan-decoder-8m-3** ma **8 081 032 parametry**. Repozytorium udostępnia dokumentację; bieżący kod, wagi, słowniki i prywatna pamięć pozostają lokalnie.
 
 ## Co działa obecnie
 
@@ -10,6 +10,8 @@
 - **Pytania o treść**: kto, co, kogo, komu, czego, kim, czym. Odpowiedź uwzględnia czas i zaprzeczenie oraz wskazuje zdania źródłowe.
 - **Polecenia na kontekście**: wypisywanie potwierdzonych osób i czynności, porównanie dwóch zdań oraz wskazanie sprzecznych faktów. Osoby są rozpoznawane z cech słownikowych i lokalnej bazy znaczeń; nierozstrzygnięta klasyfikacja wymaga doprecyzowania.
 - **Chroniona logika dwu- i trójstanowa** oraz wykonanie dynamicznego planu przez dekoder sieciowy, również dla dłuższych odpowiedzi i znaków UTF-8.
+- **Nauczyciel AI i źródła** w istniejącym panelu: wybór Gemini, OpenAI, Claude lub pracy bez AI; przy braku klucza konsultacja jest pomijana. Następnie Wikipedia, wyszukiwarka i podpowiedź z własnej bazy.
+- **Jedna rozmowa i jedno pole pytań**, rozwijane ustawienia AI oraz wskaźniki etapów pracy narzędzi.
 - **Kalendarz świąt w istniejącym panelu**: przywrócone połączenie z modułem dat, lista polskich świąt oraz wybrane pytania o daty; obsługa PL/EN.
 - **Reguły grzecznościowe PL/EN**: powitania, podziękowania, pożegnania oraz spokojna reakcja na obrażanie. Cytat albo zadanie zawierające przekleństwo nie jest automatycznie blokowane.
 
@@ -47,7 +49,9 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Wykonanie nowych planów odpowiedzi / braki i sprzeczne zalecenia | **24/24 / 4/4** |
 | Wpisy słownika / próby brzegowe | **32/32 / 20/20** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
-| Testy techniczne | **99/99** |
+| Testy techniczne nowego modułu | **99/99** |
+| Nauczyciel AI: protokoły, zapis klucza, awarie, przegląd wiedzy | **18/18** |
+| Integracja nauczyciela i zachowanie funkcji panelu | **9/9** |
 
 Wyniki dotyczą wymienionych zakresów. Ostatnie rozszerzenia dodają reguły, połączenia i pełne paradygmaty dwóch haseł; wagi sieci pozostały na zatwierdzonym kroku **2850**.
 
@@ -66,14 +70,28 @@ Klasyfikacja znaczeń korzysta również z istniejącej lokalnej sieci słowniko
 | Wagi sieci tekstowej FP32 | **30,83 MiB** |
 | Checkpoint z optymalizatorem i stanem losowania | **92,71 MiB** |
 | Aktywna własna baza odmiany | **353,25 MiB** |
+| Katalog nowego modułu wraz z przebiegami i kopiami | **około 2,66 GiB** |
+| Istniejąca instalacja aplikacji z danymi i historią | **około 3,59 GiB** |
+
+Pomiary katalogów wykonano 28 października 2026; obejmują dane robocze i kopie, a instalacja miała dwa pliki niedostępne do odczytu. Nie są to rozmiary paczki portable.
 
 1 MiB = 1 048 576 bajtów. Python, PyTorch, kod, pozostałe słowniki, dane i kopie bezpieczeństwa są dodatkowymi składnikami instalacji; tabela nie podaje wielkości kompletnego portable.
+
+## Nauczyciel AI — konfiguracja
+
+W panelu rozwiń **Ustawienia AI i źródeł**, wybierz dostawcę, wpisz lokalnie klucz, wybierz model i kliknij **Zapisz i zwiń**. Dostępne są Google Gemini, OpenAI, Anthropic Claude i **Bez AI**. Przycisk **Pobierz modele** działa po zapisaniu klucza. Klucz zapisany przez panel jest szyfrowany mechanizmem Windows DPAPI; można go usunąć osobnym przyciskiem. Nie wpisuj kluczy do rozmowy ani repozytorium.
+
+Pytania wpisuje się w głównym polu pod rozmową. Narzędzia lokalne mają pierwszeństwo. Bez skonfigurowanego AI aplikacja pomija konsultację i próbuje Wikipedii, następnie krótkiej odpowiedzi wyszukiwarki DuckDuckGo Instant Answer. Nie jest to pełne przeglądanie wyników wyszukiwarki. Pobierane są najwyżej trzy kandydatury hasła i treść jednej strony źródłowej, bez przechodzenia na kolejne strony wyników. Błąd połączenia prowadzi do lokalnej podpowiedzi; wyłączenie internetu w ustawieniach wyłącza również konsultacje AI.
+
+Odpowiedzi zewnętrzne trafiają do **Wiedzy do sprawdzenia**. Zatwierdzenie wymaga notatki, jak sprawdzono treść. Eksport JSONL obejmuje tylko zatwierdzone odpowiedzi. Nie zmienia on automatycznie wag TSI. Domyślny lokalny limit to 20 prób konsultacji dziennie; opłaty i limity zależą od dostawcy API. Prywatny materiał załączony do rozmowy nie jest automatycznie przekazywany nauczycielowi.
+
+Migający kwadracik oznacza bieżący etap pracy zgłoszony przez serwer. Stały kolor pokazuje narzędzia użyte przy ostatnim zapytaniu. „On-line” opisuje dostępność połączenia sieciowego; nie gwarantuje działania każdej witryny. Można korzystać z panelu offline.
 
 ## Uruchomienie i dalsza praca
 
 Istniejący panel uruchamia **URUCHOM_TSI.bat** w głównym katalogu lokalnej instalacji. Adres: `http://127.0.0.1:8791/`. BAT został odtworzony. Dla nowych funkcji lokalnego modułu dostępne są m.in. zadania CLI `compose_text`, `compose_context`, `ask_context`, `context_command` i `courtesy`.
 
-Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Zaplanowano również nauczyciela AI: odpowiedź ze źródłem → weryfikacja → zatwierdzona wiedza → trening. Dostawca AI nie jest jeszcze podłączony. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Podłączono również nauczyciela AI: odpowiedź ze źródłem → weryfikacja → zatwierdzona wiedza → trening. Obsługa dostawców jest podłączona do panelu; rzeczywista konsultacja wymaga lokalnego zapisania klucza API i wyboru modelu. Nie wykonano jeszcze rzeczywistego zapytania do płatnego API. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-29.md).
 
 ## Istniejący panel
 

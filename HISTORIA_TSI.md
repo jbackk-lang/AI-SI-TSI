@@ -483,3 +483,12 @@ Polecenia na kontekście: 9/9 odpowiedzi dekodera i 7/7 kontroli. Źródła znac
 ### 2026-10-28 — kalendarz panelu i plan nauczyciela AI
 
 Usunięto dwie blokady routingu pytań o święta i poprawiono rozpoznanie krótkiego zapytania rzeczownikowego. Kalendarz panelu 4/4 PL/EN, ponowione grzeczności 8/8. Obliczenia panelu 4/4, z zachowanym dokładnym 2/7. Przypisano podstawę urzędową. Zapisano plan konsultacji z nauczycielem AI; usługa pozostaje niepodłączona. Bez zmian wag nowego modelu.
+
+
+## 29 października — nauczyciel AI, źródła i wspólna rozmowa
+
+Dokończono lokalne podłączenie trzech dostawców, wyboru modelu i szyfrowania klucza Windows DPAPI. Brak klucza nie inicjuje połączenia AI. Kolejność po narzędziach lokalnych: konsultacja, Wikipedia, DuckDuckGo Instant Answer, podpowiedź offline. Odpowiedzi i źródła zapisuje się do sprawdzenia; zatwierdzenie wymaga notatki weryfikacyjnej. Eksport nie aktualizuje automatycznie wag. Testy protokołów korzystają z atrap odpowiedzi dostawców, a rzeczywiste połączenie AI wymaga klucza użytkownika. 18/18 testów nauczyciela, 9/9 kontroli panelu, 8/8 reguł grzecznościowych. Rzeczywisty odczyt publicznej Wikipedii potwierdzono na haśle Fotosynteza.
+
+Wykryto brak osadzenia skryptu formularza w HTML oraz pętlę obserwatorów tłumaczenia: ponowne ustawianie niezmienionego lang powodowało aktualizację etykiet i następne odświeżenie. Podłączono skrypt i ograniczono zmianę lang do rzeczywistej zmiany języka. Opisy źródeł kończą się na granicy zdania lub jawnym wielokropku.
+
+Na życzenie użytkownika przebudowano panel: centralna rozmowa około 3/4 szerokości na szerokim ekranie, jedno wspólne pole pytań, pomoc po lewej i narzędzia po prawej. Ustawienia w poziomym menu automatycznie zwijają się po zapisaniu, kliknięciu poza menu lub Escape. Wskaźniki opierają się na oddzielnym endpointcie stanu etapów serwera; po zakończeniu przestają migać. Zachowano obsługę Enter i nowej rozmowy. Wagi pozostają na kroku 2850.
