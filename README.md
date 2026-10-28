@@ -1,61 +1,73 @@
-# AI-SI-TSI — własny model TSI i lokalny asystent
+# AI-SI-TSI — własny model TSI
 
-**Stan: 27 października 2026.** Rozwijamy własny rdzeń TSI oraz jego współpracę z aplikacjami. Kod, wagi i prywatna pamięć **obecnego TSI pozostają lokalnie**. Publiczne paczki dotyczą wyłącznie **starego AI-SI i używanych w nim modeli zewnętrznych**.
+**Stan: 28 października 2026.** Lokalnie wdrożony moduł **plan-decoder-8m-3** łączy enkoder, dekoder i TIMDR z dynamiczną macierzą odpowiedzi. Repozytorium publikuje dokumentację; bieżący kod, wagi, słowniki i prywatna pamięć TSI pozostają lokalnie.
 
-## Aktualny stan TSI
+## Co obecnie działa
 
-| Obszar | Potwierdzony stan |
-|---|---|
-| Nowy rdzeń | **17 982 624 parametry**; enkoder inspirowany TIMDR i dekoder Transformer |
-| Odczyt i podstawy logiki | **120/120** zadań oraz **45/45** oddzielnych zapisów: odczyt T/F/U i dwustanowe BUF, NOT, AND, OR |
-| Sposób pomiaru | Odpowiedzi samej sieci, przed korektą przez tablicę reguł |
-| Rozmowa | Trwa nauka krótkich polskich zdań i dopytywania o brakujące dane; **swobodna rozmowa nie osiągnęła wymaganego poziomu** |
-| Trening | Cała część neuronowa uczy się wspólnie; kolejne bloki kontynuują najnowsze wagi i stan losowania |
-| Zachowanie wiedzy | Zweryfikowane wcześniejsze lekcje, kontrolowane zmiany wag i zachowane kopie do odtworzenia |
-| Reguły i rachunki | Osobna, stała kontrola formalnej logiki, zbiorów i dokładnej arytmetyki |
+- Sieć układa odpowiedź z przekazanych danych, ról i zaleceń, również po zmianie kolejności danych wejściowych.
+- Obsługuje zdania składowe z podanym łącznikiem, etykiety, liczby, znaki matematyczne oraz nowe wiersze.
+- Wykonuje dłuższy plan w ograniczonych oknach dekodera i zachowuje pełny ciąg znaków UTF-8.
+- Wskazuje brakujący element lub sprzeczne zalecenia.
+- Odczytuje pola słownika i korzysta z chronionej logiki dwu- oraz trójstanowej.
+- Korzysta z własnej bazy odmiany SQLite: lemat i cechy → forma oraz forma → możliwe interpretacje. Jej odczyt nie wymaga Morfeusza.
 
-Czytnik ujednolica nieistotne odstępy w jawnych poleceniach logicznych, zachowując operator, argumenty i ich kolejność. Zmiana liczby spacji lub zapis w kilku wierszach nie tworzy już innego wejścia do tej części sieci.
+Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i nie zastępuje błędnego tekstu odpowiedzią wykonawcy reguł.
 
-**Zaliczony zakres dotyczy nowego rdzenia, nie całej matematyki ani dowolnej rozmowy.** Wagi rozwijane w treningu nie zostały jeszcze wdrożone do MUZ, walidatora ani wcześniejszych paczek portable. Bieżący trening i kopie do odtworzenia są kolejnymi zapisami jednej linii rozwoju modelu.
+**Zakres obejmuje wykonywanie planów na danych z oznaczonymi rolami. Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowego modułu nie podstawiono jeszcze do wcześniejszego panelu, MUZ, walidatora ani istniejących portable.
 
-## Aplikacja lokalna
+## Potwierdzone działanie po wdrożeniu
 
-Dotychczasowy panel zawiera pracę z tekstem i dokumentami, słownik offline, pamięć notatek i źródeł, narzędzia matematyczne oraz analizę wybranych sygnałów. Dostępne są PL/EN, wysyłanie Enterem i nowa rozmowa. To działająca aplikacja z wcześniejszą integracją; trening nowego rdzenia jest prowadzony osobno od jej wdrożenia.
-
-Uruchomienie istniejącej instalacji: **URUCHOM_TSI.bat**, panel `http://127.0.0.1:8791/`. Zatrzymanie: **ZATRZYMAJ_TSI.bat**. Przykładowe polecenia panelu: `Przeczytaj: …`, `Streść: …`, `słownik: państwo`.
-
-## Paczki starego AI-SI
-
-Przygotowano **8 zestawów ZIP, łącznie około 8,3 GB**: historyczne źródła AI-SI oraz bazowe modele Bielik, Qwen, Whisper i OPUS. Są to dawne zależności AI-SI, a nie wagi obecnego TSI.
-
-<!-- AI_SI_ARCHIVE_STATUS -->
-**Paczki są opublikowane.** Pobieranie: [archiwum starego AI-SI](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18).
-<!-- /AI_SI_ARCHIVE_STATUS -->
-
-- Każda paczka ma części do **900 MiB** (około 944 MB): `.zip.001`, `.zip.002` itd.
-- Do odtworzenia całego archiwum pobierz wszystkie części wszystkich paczek oraz `MANIFEST.json`, `RESTORE.py`, `RESTORE.bat` i `archive_split_io.py` do jednego katalogu. Uruchom **RESTORE.bat**; wymagany jest Python 3.
-- `SHA256SUMS.txt` zawiera sumy części, a `MODEL-NOTICES.md` i `LICENSES.zip` — pochodzenie i licencje modeli.
-- Publikacja nie obejmuje obecnego TSI, prywatnych baz, dokumentów ani historii rozmów. To **archiwum historyczne**, nie gotowy portable i nie aktualna wersja aplikacji.
-
-[Dokładny spis paczek i instrukcja](docs/PACZKI_STAREGO_AI_SI.md).
-
-## Rozmiar obecnego rdzenia
-
-MB = 1 000 000 bajtów.
-
-| Składnik | Rozmiar |
+| Kontrola | Wynik |
 |---|---:|
-| Parametry nowego rdzenia w FP32 | około **71,93 MB** |
-| Plik wag z konfiguracją i metadanymi | około **72 MB** |
+| Nowe polecenia przez domyślne wejście: kolejność, zdania złożone, symbole i długie odpowiedzi | **24/24** |
+| Braki danych i sprzeczne zalecenia | **4/4** |
+| Odłożone plany: pełne, osłabione i wyłączone dodatkowe wzmocnienie adresu; macierz nadal podana | **12/12 w każdym wariancie** |
+| Wpisy słownika | **32/32** |
+| Próby brzegowe, w tym odwrócone pola liczbowe | **20/20** |
+| Krótkie kopiowanie / wybór pola | **24/24 / 24/24** |
+| Zachowany starszy format kopiowania | **8/8** |
+| Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Pełna instalacja zajmuje więcej: obejmuje również kod, Pythona, biblioteki, słowniki i dane. Nie przygotowano jeszcze nowego kompletnego portable z tym rdzeniem. Historyczne ZIP-y AI-SI są odrębnym zestawem i nie wyznaczają rozmiaru TSI.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **44 testy techniczne** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
-## Podgląd aplikacji
+## Własny słownik odmiany
 
-Zrzuty z 20 października przedstawiają istniejący panel, nie nowy rdzeń podczas treningu.
+Początkowa baza zawiera **44 459 rozpoznanych lematów i 1 873 987 rekordów form z cechami**. Zachowuje identyfikatory leksemów, homonimię i źródła. Przy niejednoznaczności zwraca kandydatów, zamiast zgadywać.
+
+Sprawdzono pełną drogę: **Ola + czytać + książka**, wraz z wymaganymi cechami → **Ola czyta książkę.** Podczas tego sprawdzianu import natywnego analizatora był zablokowany.
+
+Dane fleksyjne SGJP pochodzą z jednorazowego lokalnego eksportu; zachowano autorstwo i licencję BSD-2-Clause. [Oficjalne warunki danych](https://morfeusz.sgjp.pl/doc/license/en). Baza obejmuje częściowy eksport 49 663 haseł wejściowych, a nie cały SGJP. Rozszerzanie pokrycia oraz automatyczne ustalanie cech są kolejnymi etapami.
+
+## Wielkość
+
+| Składnik | Wielkość |
+|---|---:|
+| Sieć tekstowa: enkoder, dekoder, TIMDR i kanały planu | **8 081 032 parametry** |
+| Chroniony moduł operatorów logicznych | **483 parametry** |
+| Tensory wag sieci tekstowej FP32 | **30,83 MiB** |
+| Checkpoint z optymalizatorem i stanem losowania | **92,71 MiB** |
+| Własna baza odmiany | **353,18 MiB** |
+
+1 MiB = 1 048 576 bajtów. Kod, Python, PyTorch, pozostałe słowniki i dane są dodatkowymi składnikami pełnej instalacji. Podane wielkości nie oznaczają rozmiaru kompletnego portable.
+
+## Dalsza praca i zachowanie stanu
+
+Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
+
+Następny krok: odmiana i uzgadnianie wyrazów według ról, następnie samodzielne przygotowywanie planu z polecenia. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+
+## Istniejąca aplikacja
+
+Dotychczasowy panel ma pracę z tekstem, dokumentami, pamięcią, słownikiem i narzędziami. Uruchomienie istniejącej instalacji: **URUCHOM_TSI.bat**, panel `http://127.0.0.1:8791/`; zatrzymanie: **ZATRZYMAJ_TSI.bat**.
+
+Zrzuty z 20 października przedstawiają istniejący panel, nie nowy moduł wykonywania planów.
 
 ![Rozmowa TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-panel-2026-10-20.png)
 
 ![Dokumenty TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-documents-2026-10-20.png)
 
-[Historia prac](HISTORIA_TSI.md) · [Poprzedni README](docs/archiwum/README_przed_aktualizacja_2026-10-27.md) · [Uczestnicy](CONTRIBUTORS.md) · [Walidator](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)
+## Archiwum
+
+[Historyczne paczki starego AI-SI — 8 zestawów ZIP, około 8,3 GB](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18). [Spis i instrukcja odtworzenia](docs/PACZKI_STAREGO_AI_SI.md).
+
+[Historia prac](HISTORIA_TSI.md) · [Poprzedni README](docs/archiwum/README_przed_aktualizacja_2026-10-28.md) · [Uczestnicy](CONTRIBUTORS.md) · [Walidator](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)
