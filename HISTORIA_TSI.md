@@ -461,3 +461,7 @@ Dodano grupy rzeczownikowe, liczebniki 0–10 i zbiorowe, uzgodnienie podmiotu l
 ### 2026-10-28 — odniesienia między zdaniami
 
 Dołączono do lokalnego API wiązanie podmiotowych zaimków, kontrolę niejednoznaczności i izolowany kontekst zapytania. 7/7 odpowiedzi dekodera, 4/4 kontroli, 79/79 testów technicznych. Naprawiono utratę rodzaju przy odmianie zaimka i przekazywanie wybranego leksemu. Bez zmian wag i bez podmiany dawnych aplikacji.
+
+### 2026-10-28 — odczyt ról z tekstu
+
+Wprowadzono słownikowo-gramatyczny odczyt całych prostych zdań: przypadki, rekcja, zgodność i pełne pokrycie słów, niezależnie od ich kolejności. Połączono go z rzeczywistym dekoderem planów: 20/20 odpowiedzi, 8/8 kontroli, 82/82 testy techniczne. Baza i wagi bez zmian. Poprzedni README zachowano w docs/archiwum/README_przed_odczytem_zdan_2026-10-28.md.

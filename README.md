@@ -4,7 +4,7 @@
 
 ## Co obecnie działa
 
-- Sieć układa odpowiedź z przekazanych danych, ról i zaleceń, również po zmianie kolejności danych wejściowych.
+- Sieć układa odpowiedź z planu. Dla prostych zdań oznajmujących moduł słownikowo-gramatyczny sam ustala role; pozostałe plany nadal wymagają podania ról i zaleceń.
 - Obsługuje zdania składowe z podanym łącznikiem, etykiety, liczby, znaki matematyczne oraz nowe wiersze.
 - Wykonuje dłuższy plan w ograniczonych oknach dekodera i zachowuje pełny ciąg znaków UTF-8.
 - Wskazuje brakujący element lub sprzeczne zalecenia.
@@ -13,7 +13,7 @@
 
 Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i nie zastępuje błędnego tekstu odpowiedzią wykonawcy reguł.
 
-**Zakres obejmuje wykonywanie planów na danych z oznaczonymi rolami. Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowego modułu nie podstawiono jeszcze do wcześniejszego panelu, MUZ, walidatora ani istniejących portable.
+**Działa wykonywanie planów oraz odczyt ról w ograniczonym zakresie prostych zdań. Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowego modułu nie podstawiono jeszcze do wcześniejszego panelu, MUZ, walidatora ani istniejących portable.
 
 ## Potwierdzone działanie po wdrożeniu
 
@@ -28,7 +28,7 @@ Odpowiedź emituje dekoder sieciowy. Kontrola weryfikuje wynik względem planu i
 | Zachowany starszy format kopiowania | **8/8** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 
-Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **79 testów technicznych** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
+Sprawdzono model ponownie wczytany po zmianie domyślnej wersji oraz brak przenikania danych między odpowiedziami. Zaliczone **82 testy techniczne** obejmują połączenia, gradienty, macierze, pamięć dekodera i ochronę zapisu. Wyniki dotyczą podanego zakresu wykonania zaleceń.
 
 ## Własny słownik odmiany
 
@@ -84,7 +84,23 @@ Moduł łączy przygotowane zdania i rozstrzyga podmiotowe „on/ona” na podst
 - **Ola śpi, ponieważ ona czytała.**
 - **Ola widzi Ewę. Ona…** → wymagany wybór, o którą osobę chodzi.
 
-Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **79/79**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
+Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejednoznacznego odniesienia**. Pełne testy techniczne: **82/82**. Na tym etapie role zdań i rejestr osób są przekazywane jawnie; swobodny odczyt tekstu jest kolejnym krokiem.
+
+## Odczyt prostego zdania bez podawania ról
+
+W lokalnym API dodano `read_statement` i `compose_text`. Czytnik korzysta z form słownika, rekcji czasownika oraz zgodności osoby, liczby i rodzaju. Sprawdza pełne przypisanie słów, a przy kilku możliwych interpretacjach prosi o doprecyzowanie.
+
+| Tekst wejściowy | Odpowiedź dekodera |
+|---|---|
+| Książkę czyta Ola. | **Ola czyta książkę.** |
+| Dziecku pomaga Ewa. | **Ewa pomaga dziecku.** |
+| Nową książkę czyta Ola. | **Ola czyta nową książkę.** |
+| Książki nie czyta Ola. | **Ola nie czyta książki.** |
+| Olę widzi Ewa. | **Ewa widzi Olę.** |
+
+Domyślna lokalna ścieżka: **20/20 zdań** i **8/8 kontroli braków, niezgodności lub niejednoznaczności**; bez importu Morfeusza. „Dziecko widzi zwierzę” zwraca dwie możliwe interpretacje, zamiast przypisywać role wyłącznie według kolejności słów.
+
+Zakres: jednozdaniowe oznajmienia z jednym osobowym czasownikiem, podmiotem, opcjonalnym dopełnieniem i prostymi grupami przymiotnikowymi; zaprzeczenie bezpośrednio przy czasowniku. Dodatkowe nieobsługiwane słowa, symbole, pytania i zdania złożone są zgłaszane. Ten etap porządkuje odczyt i odtworzenie treści, nie stanowi jeszcze swobodnej odpowiedzi na pytanie. Wagi pozostały bez zmian.
 
 ## Wielkość
 
@@ -102,7 +118,7 @@ Rzeczywisty dekoder: **7/7 odpowiedzi**, **4/4 kontroli brakującego lub niejedn
 
 Kolejne bloki kontynuują jedną linię najnowszych wag, optymalizatora i losowania. Zatwierdzone punkty są chronione przed zwykłym czyszczeniem kopii. Plan powstaje dla konkretnego zapytania i pozostaje niezmienny do końca odpowiedzi.
 
-Następny krok: odczyt ról i przygotowywanie planu ze zwykłego polecenia, następnie rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: połączenie odczytu tekstu z odniesieniami między zdaniami, następnie pytania i polecenia oraz rozmowa. [Szczegóły stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejąca aplikacja
 
