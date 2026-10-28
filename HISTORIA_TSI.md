@@ -475,3 +475,7 @@ Automatyczny most od zwykłych prostych zdań przez role i rejestr obiektów do 
 Dodano pytania przypadkowe o podmiot i dopełnienie, źródła odpowiedzi, rozróżnienie negacji i czasu, listy wyników bez powtórzeń i wykrywanie sprzecznych faktów. Rzeczywisty dekoder: 18/18 odpowiedzi, 13/13 kontroli; 90/90 testów technicznych. Bez treningu wag i bez podmiany dawnych aplikacji. Poprzedni README: docs/archiwum/README_przed_pytaniami_2026-10-28.md.
 
 Przy sprawdzaniu pytań kim/czym domknięto obsługę „się” w nowym czytniku i pytaniach. Sprawdzian zdań rozszerzono do 22/22 i 10/10 kontroli.
+
+### 2026-10-28 — polecenia, grzeczności i launcher
+
+Polecenia na kontekście: 9/9 odpowiedzi dekodera i 7/7 kontroli. Źródła znaczeń podłączono do klasyfikacji osób, a nie do zastępowania wyników dekodera. Powitania i grzeczne reakcje PL/EN wdrożono do panelu 8791: 8/8. Przywrócono URUCHOM_TSI.bat. Dodano pełne paradygmaty wskazać i sprzeczność; zmieniono opis liczności na rzeczywistą liczbę unikalnych kluczy lematów. 99/99 testów technicznych, bez treningu wag. Poprzedni README: docs/archiwum/README_przed_poleceniami_2026-10-28.md.
