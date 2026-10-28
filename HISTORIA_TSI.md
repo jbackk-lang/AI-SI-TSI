@@ -479,3 +479,7 @@ Przy sprawdzaniu pytań kim/czym domknięto obsługę „się” w nowym czytnik
 ### 2026-10-28 — polecenia, grzeczności i launcher
 
 Polecenia na kontekście: 9/9 odpowiedzi dekodera i 7/7 kontroli. Źródła znaczeń podłączono do klasyfikacji osób, a nie do zastępowania wyników dekodera. Powitania i grzeczne reakcje PL/EN wdrożono do panelu 8791: 8/8. Przywrócono URUCHOM_TSI.bat. Dodano pełne paradygmaty wskazać i sprzeczność; zmieniono opis liczności na rzeczywistą liczbę unikalnych kluczy lematów. 99/99 testów technicznych, bez treningu wag. Poprzedni README: docs/archiwum/README_przed_poleceniami_2026-10-28.md.
+
+### 2026-10-28 — kalendarz panelu i plan nauczyciela AI
+
+Usunięto dwie blokady routingu pytań o święta i poprawiono rozpoznanie krótkiego zapytania rzeczownikowego. Kalendarz panelu 4/4 PL/EN, ponowione grzeczności 8/8. Obliczenia panelu 4/4, z zachowanym dokładnym 2/7. Przypisano podstawę urzędową. Zapisano plan konsultacji z nauczycielem AI; usługa pozostaje niepodłączona. Bez zmian wag nowego modelu.

@@ -10,11 +10,12 @@
 - **Pytania o treść**: kto, co, kogo, komu, czego, kim, czym. Odpowiedź uwzględnia czas i zaprzeczenie oraz wskazuje zdania źródłowe.
 - **Polecenia na kontekście**: wypisywanie potwierdzonych osób i czynności, porównanie dwóch zdań oraz wskazanie sprzecznych faktów. Osoby są rozpoznawane z cech słownikowych i lokalnej bazy znaczeń; nierozstrzygnięta klasyfikacja wymaga doprecyzowania.
 - **Chroniona logika dwu- i trójstanowa** oraz wykonanie dynamicznego planu przez dekoder sieciowy, również dla dłuższych odpowiedzi i znaków UTF-8.
+- **Kalendarz świąt w istniejącym panelu**: przywrócone połączenie z modułem dat, lista polskich świąt oraz wybrane pytania o daty; obsługa PL/EN.
 - **Reguły grzecznościowe PL/EN**: powitania, podziękowania, pożegnania oraz spokojna reakcja na obrażanie. Cytat albo zadanie zawierające przekleństwo nie jest automatycznie blokowane.
 
 Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. Treść przygotowanego planu emituje dekoder sieciowy; jego błędny wynik nie jest zastępowany poprawnym gotowcem. Powitania i pozostałe akty grzecznościowe mają osobną, jawną ścieżkę regułową, zgodnie z ich przeznaczeniem.
 
-**Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowe odczyty, pytania i polecenia działają w lokalnym API i CLI. Panel na porcie 8791 otrzymał reguły grzecznościowe; jego dotychczasowy rdzeń pozostaje bez podmiany. MUZ, walidator i istniejące portable wymagają osobnej aktualizacji.
+**Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowe odczyty, pytania i polecenia działają w lokalnym API i CLI. Panel na porcie 8791 otrzymał reguły grzecznościowe i naprawione kierowanie pytań o święta; jego dotychczasowy rdzeń pozostaje bez podmiany. MUZ, walidator i istniejące portable wymagają osobnej aktualizacji.
 
 ## Przykłady rzeczywistych wyników
 
@@ -40,6 +41,8 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Pytania o kontekst / kontrole | **18/18 / 13/13** |
 | Polecenia na kontekście / kontrole | **9/9 / 7/7** |
 | Reguły grzecznościowe w działającym panelu PL/EN | **8/8** |
+| Kalendarz świąt w działającym panelu PL/EN | **4/4** |
+| Sprawdzone obliczenia panelu: dodawanie, odejmowanie, 2/7 | **4/4** |
 | Grupy wyrazów / czasy i tryb | **20/20 / 18/18** |
 | Wykonanie nowych planów odpowiedzi / braki i sprzeczne zalecenia | **24/24 / 4/4** |
 | Wpisy słownika / próby brzegowe | **32/32 / 20/20** |
@@ -47,6 +50,8 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Testy techniczne | **99/99** |
 
 Wyniki dotyczą wymienionych zakresów. Ostatnie rozszerzenia dodają reguły, połączenia i pełne paradygmaty dwóch haseł; wagi sieci pozostały na zatwierdzonym kroku **2850**.
+
+Kalendarz opiera się na [oficjalnym tekście ustawy o dniach wolnych od pracy](https://api.sejm.gov.pl/eli/acts/DU/2025/296/text.pdf), sprawdzonym 28 października 2026. Matematyka panelu kieruje obliczenia do solvera, z niezależną kontrolą numeryczną. Ułamek 2/7 jest zachowany wraz z przybliżeniem dziesiętnym.
 
 ## Słowniki i wielkość
 
@@ -68,7 +73,7 @@ Klasyfikacja znaczeń korzysta również z istniejącej lokalnej sieci słowniko
 
 Istniejący panel uruchamia **URUCHOM_TSI.bat** w głównym katalogu lokalnej instalacji. Adres: `http://127.0.0.1:8791/`. BAT został odtworzony. Dla nowych funkcji lokalnego modułu dostępne są m.in. zadania CLI `compose_text`, `compose_context`, `ask_context`, `context_command` i `courtesy`.
 
-Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-28.md).
+Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Zaplanowano również nauczyciela AI: odpowiedź ze źródłem → weryfikacja → zatwierdzona wiedza → trening. Dostawca AI nie jest jeszcze podłączony. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-28.md).
 
 ## Istniejący panel
 
