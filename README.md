@@ -128,15 +128,14 @@ Istniejący panel uruchamia **URUCHOM_TSI.bat** w głównym katalogu lokalnej in
 
 Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Podłączono również nauczyciela AI: odpowiedź ze źródłem → weryfikacja → zatwierdzona wiedza → trening. Obsługa dostawców jest podłączona do panelu; rzeczywista konsultacja wymaga lokalnego zapisania klucza API i wyboru modelu. Nie wykonano jeszcze rzeczywistego zapytania do płatnego API. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-29.md).
 
-## Aktualny panel
+## Aktualny panel — zrzut z 29 października 2026
 
-Zrzuty z 29 października 2026: jedna rozmowa, wspólne pole pytań, poziome ustawienia i wskaźniki użycia narzędzi.
+Działający lokalny panel: rozmowa, pole poleceń bezpośrednio pod odpowiedzią, zwijane szczegóły i pasek aktywności. Przykład dotyczy **całki nieoznaczonej**, obliczanej przez narzędzie matematyczne.
 
-![Rozmowa TSI i obliczenie całki](docs/tsi-panel-2026-10-29.jpg)
+![Aktualna rozmowa TSI — całka nieoznaczona](docs/tsi-chat-current.png)
 
-![Ustawienia nauczyciela AI i źródeł](docs/tsi-settings-2026-10-29.jpg)
+Wykryte ograniczenie: zapis granic całki w swobodnym zdaniu może zostać pominięty podczas doprecyzowania wzoru. Ten przypadek wymaga korekty; powyższy obraz nie przedstawia całki oznaczonej.
 
-![Lokalne podpowiedzi poleceń w języku angielskim](docs/tsi-autocomplete-en-2026-10-29.jpg)
 
 ## Historia i archiwum
 
