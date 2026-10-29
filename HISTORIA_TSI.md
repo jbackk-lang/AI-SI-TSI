@@ -503,3 +503,8 @@ Wykryto równoczesne instancje serwera na tym samym porcie Windows, przez co pr�
 Pasek narzędzi jest przyklejony u góry. Podpis pola przeniesiono pod wspólne pole pytań. Lokalne autouzupełnianie PL/EN: Tab / kliknięcie wstawia, strzałki wybierają, Escape chowa, Enter wysyła. Sprawdzono rzeczywisty interfejs i zapisano trzy nowe zrzuty do README.
 
 Wyniki kolejnych zestawów: 15/27 przed naprawą kontekstu, 25/29 po pierwszych korektach, 31/32 po rozszerzeniu, końcowa powtórka 32/32. Raporty zachowują pełne odpowiedzi lokalnie. Testy techniczne oczekujących zadań: 9/9; gramatyka cech: 5/5. Rzeczywiste angielskie doprecyzowanie całki i wynik potwierdzono. Wagi modelu pozostają na kroku 2850. Są to poprawki obsługi aplikacji, a nie ponowne wytrenowanie swobodnej rozmowy.
+
+
+### Kontrola warunku wymiany rdzenia
+
+Po sprawdzianie 32/32 panelu sprawdzono oddzielnie bezpośrednie API nowego modelu plan-decoder-8m-3. Formalna logika T AND U dała U. Dwie naturalne prośby aplikacyjne o całkę i plan oszczędzania zwróciły tylko początek wejścia („Oblicz”, „Przygotuj”), bez wykonania zadania. Nie uznano sprawnego programu otaczającego model za dowód gotowości samodzielnego rdzenia; pełnej wymiany wag / modelu w MUZ i walidatorze nie wykonano. Konfiguracje obu aplikacji wskazują tę samą instalację TSI; poprawione doprecyzowanie całki sprawdzono przez ich rzeczywiste połączenia, przy oddzielnych profilach testowych pamięci.
