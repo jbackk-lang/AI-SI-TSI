@@ -134,7 +134,7 @@ Działający lokalny panel: rozmowa, pole poleceń bezpośrednio pod odpowiedzi�
 
 ![Aktualna rozmowa TSI — całka nieoznaczona](docs/tsi-chat-current.png)
 
-Wykryte ograniczenie: zapis granic całki w swobodnym zdaniu może zostać pominięty podczas doprecyzowania wzoru. Ten przypadek wymaga korekty; powyższy obraz nie przedstawia całki oznaczonej.
+Czytnik zachowuje teraz wzór i granice całki także podczas doprecyzowania w kolejnych wiadomościach, w obsługiwanych zapisach PL/EN. Przykład: `Oblicz całkę od 0 do 3` → `x^2` daje **9**. Sprzeczne lub nierozpoznane warunki wymagają wyjaśnienia. [Zakres poprawki i rzeczywiste odpowiedzi](docs/WARUNKI_I_DOPRECYZOWANIE_2026-10-29.md).
 
 
 ## Historia i archiwum
