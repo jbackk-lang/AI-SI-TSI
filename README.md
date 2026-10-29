@@ -4,6 +4,7 @@
 
 ## Co działa obecnie
 
+- **Nowe API rdzenia — obsługa zadań**: całki, pochodne, równania i macierze przez lokalny solver; projekt budżetu przez narzędzie MUZ. Jeden moduł koordynuje zadanie, wynik jest sprawdzany, a dekoder TSI składa odpowiedź według planu. Tryb `auto` nie przechodzi już do kopiowania słowa dla nieznanego polecenia.
 - **Odczyt prostych zdań** ze słownika i reguł: podmiot, czynność, dopełnienie, przypadki i zaprzeczenie. Zmieniona kolejność słów nie wyznacza automatycznie ich ról.
 - **Odmiana i uzgadnianie form**: osoba, liczba, rodzaj, przypadek, przymiotniki, liczebniki 0–10 i zbiorowe, czas teraźniejszy, przeszły i przyszły oraz tryb przypuszczający. Obsługiwane są wybrane konstrukcje z „się”.
 - **Kontekst kilku prostych zdań** i odniesienia podmiotowych zaimków „on/ona”. Niejednoznaczność powoduje doprecyzowanie. Konteksty zapytań są oddzielone.
@@ -17,7 +18,7 @@
 
 Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. Treść przygotowanego planu emituje dekoder sieciowy; jego błędny wynik nie jest zastępowany poprawnym gotowcem. Powitania i pozostałe akty grzecznościowe mają osobną, jawną ścieżkę regułową, zgodnie z ich przeznaczeniem.
 
-**Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowe odczyty, pytania i polecenia działają w lokalnym API i CLI. Panel na porcie 8791 otrzymał reguły grzecznościowe i naprawione kierowanie pytań o święta; jego dotychczasowy rdzeń pozostaje bez podmiany. MUZ, walidator i istniejące portable wymagają osobnej aktualizacji. Bezpośrednia obsługa poleceń aplikacyjnych przez nowy rdzeń nie przeszła próby przyjęcia; pełna wymiana modelu jest wstrzymana. Obie aplikacje korzystają już ze wspólnej instalacji dotychczasowej obsługi TSI.
+**Swobodna rozmowa nie osiągnęła wymaganego poziomu.** Nowe odczyty, pytania i polecenia działają w lokalnym API i CLI. Panel na porcie 8791 otrzymał reguły grzecznościowe i naprawione kierowanie pytań o święta; jego dotychczasowy rdzeń pozostaje bez podmiany. MUZ, walidator i istniejące portable wymagają osobnej aktualizacji. Naprawiono wybór trybu w nowym API: polecenia matematyczne trafiają do planera i solvera, a brak danych powoduje pytanie o uzupełnienie. Pełna wymiana modelu w aplikacjach pozostaje osobnym etapem. Obie aplikacje korzystają już ze wspólnej instalacji dotychczasowej obsługi TSI.
 
 ## Przykłady rzeczywistych wyników
 
@@ -49,17 +50,26 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Wykonanie nowych planów odpowiedzi / braki i sprzeczne zalecenia | **24/24 / 4/4** |
 | Wpisy słownika / próby brzegowe | **32/32 / 20/20** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
-| Testy techniczne nowego modułu | **99/99** |
+| Testy techniczne nowego modułu | **117/117** |
 | Nauczyciel AI: protokoły, zapis klucza, awarie, przegląd wiedzy | **18/18** |
 | Integracja nauczyciela i zachowanie funkcji panelu | **9/9** |
 | Naturalne prośby i wieloetapowe rozmowy panelu — końcowa seria | **32/32** |
 | Utrzymanie brakujących danych zadania — testy techniczne | **9/9** |
+| Nowe API rdzenia: zadania, doprecyzowania, PL/EN, logika i budżet syntetyczny | **14/14** |
 | Zdania z opisem cechy i kontrola przeczenia / niezgodności | **5/5** |
 | Ostatnia karta, odświeżenie, druga karta i blokada drugiego serwera | **4/4** |
 
 Wyniki dotyczą wymienionych zakresów. Ostatnie rozszerzenia dodają reguły, połączenia i pełne paradygmaty dwóch haseł; wagi sieci pozostały na zatwierdzonym kroku **2850**.
 
 Kalendarz opiera się na [oficjalnym tekście ustawy o dniach wolnych od pracy](https://api.sejm.gov.pl/eli/acts/DU/2025/296/text.pdf), sprawdzonym 28 października 2026. Matematyka panelu kieruje obliczenia do solvera, z niezależną kontrolą numeryczną. Ułamek 2/7 jest zachowany wraz z przybliżeniem dziesiętnym.
+
+## Jedna obsługa polecenia w nowym API
+
+`load_runtime().answer("Oblicz całkę pi")` zwraca **Funkcja pierwotna: pi*x + C**. Prośba o plan oszczędzania bez danych powoduje pytanie o historię wpływów i wydatków, saldo, datę oraz założenia. Po podaniu danych syntetycznych sprawdzono wykonanie projektu budżetu z zachowaniem całkowitych groszy, dat i oznaczenia projektu do oceny użytkownika.
+
+API przyjmuje też zadanie już odczytane przez aplikację: `task="application"` oraz JSON z `operation` i `params`. Ten tryb omija ponowne parsowanie polecenia. Ślad `task_trace` rozdziela koordynację, planowanie, wykonanie solvera i sprawdzenie wyniku. Przy jednej operacji matematycznej sprawdzono **jedno wykonanie i jedno sprawdzenie**. Błąd dekodera albo weryfikacji pozostaje błędem; nie jest zastępowany poprawną odpowiedzią z gotowego wzorca.
+
+To rozszerzenie sterowania zadaniami oraz korzystania z narzędzi. Checkpoint sieci pozostaje na kroku **2850**, bez zmiany wag. Wymiana modelu w MUZ i walidatorze nie została w tym etapie wykonana.
 
 ## Słowniki i wielkość
 

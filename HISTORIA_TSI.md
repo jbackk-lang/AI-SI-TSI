@@ -508,3 +508,14 @@ Wyniki kolejnych zestawów: 15/27 przed naprawą kontekstu, 25/29 po pierwszych 
 ### Kontrola warunku wymiany rdzenia
 
 Po sprawdzianie 32/32 panelu sprawdzono oddzielnie bezpośrednie API nowego modelu plan-decoder-8m-3. Formalna logika T AND U dała U. Dwie naturalne prośby aplikacyjne o całkę i plan oszczędzania zwróciły tylko początek wejścia („Oblicz”, „Przygotuj”), bez wykonania zadania. Nie uznano sprawnego programu otaczającego model za dowód gotowości samodzielnego rdzenia; pełnej wymiany wag / modelu w MUZ i walidatorze nie wykonano. Konfiguracje obu aplikacji wskazują tę samą instalację TSI; poprawione doprecyzowanie całki sprawdzono przez ich rzeczywiste połączenia, przy oddzielnych profilach testowych pamięci.
+
+
+### Naprawa bezpośredniego API rdzenia — wybór zadania i pojedynczy koordynator
+
+Przyczyną odpowiedzi „Oblicz” i „Przygotuj” był wybór trybu: nierozpoznane wejście auto kierowano do ćwiczenia kopiowania słowa. Próba uruchamiała sam rdzeń, więc nie wynikała z dwukrotnego przekazania przez walidator. Dodano do wspólnego API macierzowy planer zadania, wykonanie lokalnego solvera, niezależne sprawdzenie i emisję przez istniejący dekoder planu. Nie trenowano ponownie ani nie zamieniano wag. Jawne zadanie application z operation / params pomija odczyt polecenia; liczba wykonań i sprawdzeń jest raportowana oddzielnie. Oczekujące dane są zachowywane według identyfikatora rozmowy.
+
+Ponowione obie pierwotne prośby: całka pi daje pi*x + C, plan oszczędzania bez danych powoduje pytanie o nie. W większej próbie sprawdzono rzeczywisty projekt budżetu na danych syntetycznych. Wykryty błąd JSON na granicy solvera dotyczył dat; dodano zapis ISO oraz zachowanie dokładnych wartości Decimal. Opis budżetu jest czytelny w PL/EN, a dane strukturalne pozostają dostępne do sprawdzenia. Kontrola dekodera nie zastępuje jego niepoprawnej emisji poprawnym tekstem referencyjnym.
+
+Sprawdzian nowego API: 14/14 (próby obejmujące inne wzory, uzupełnienie danych, PL/EN, przeczenie, nieznane żądanie, formalną logikę, zadanie już przygotowane oraz budżet). Pełny zestaw techniczny rozszerzono o kontrolę pojedynczego wykonania, sesji, weryfikacji, dat i widoku budżetu. Publikacja runtime zachowuje ten sam checkpoint 2850 i jego SHA. Pełna wymiana modelu w aplikacjach nadal wymaga osobnego potwierdzenia ich obsługiwanych działów.
+
+Końcowy zestaw techniczny po dodaniu kontroli prezentacji budżetu: **117/117**. Ponowiony sprawdzian rzeczywistych odpowiedzi: **14/14**. Checkpoint 2850 i jego suma pozostają takie same; zmienił się opublikowany lokalnie zestaw plików runtime i jego chroniony manifest.
