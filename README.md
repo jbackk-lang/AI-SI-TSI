@@ -2,6 +2,15 @@
 
 **Stan: 29 października 2026.** Lokalny model **plan-decoder-8m-3** ma **8 081 032 parametry**. Repozytorium udostępnia dokumentację; bieżący kod, wagi, słowniki i prywatna pamięć pozostają lokalnie.
 
+## Sprawdzian sygnałów — 29 października 2026
+
+Osobny moduł sygnałowy ma **44 357 parametrów** i **181 681 bajtów wag**; nie jest całym modelem TSI. Rozpoznaje trend, skok, impuls, okresowość i minimum/maksimum przebiegu. W nowym sprawdzianie wskazał pełny zestaw cech w **253/270 prób (93,7%)**, wobec **119/270** dla prostych reguł. 54 próby były wariantami jednostek; 19 odczytów TSI było niepewnych.
+
+Na realnych pomiarach temperatury maszyny NAB zaakceptowane alarmy TSI objęły **3/4 oznaczonych przedziałów**, przy **38 fałszywych alarmach w 155 oknach poza nimi**; prosta metoda: **4/4** i **25/155**. **Diagnostyka awarii nie osiągnęła wymaganego poziomu.** Mediana odczytu realnego okna: **43,43 ms**, szczyt pamięci całego procesu testowego: **258,54 MiB**. Nie jest to pomiar całej aplikacji ani całego rdzenia.
+
+[Zakres, metoda, ograniczenia i dalszy plan](docs/RAPORT_SYGNALY_2026-10-29.md). Wagi zachowano. Portal zastosowań i nowe dziedziny wejścia pozostają kierunkiem rozwoju, nie wdrożoną usługą. ZIP-ów w tym etapie nie przebudowano.
+
+
 ## Co działa obecnie
 
 - **Nowe API rdzenia — obsługa zadań**: całki, pochodne, równania i macierze przez lokalny solver; projekt budżetu przez narzędzie MUZ. Jeden moduł koordynuje zadanie, wynik jest sprawdzany, a dekoder TSI składa odpowiedź według planu. Tryb `auto` nie przechodzi już do kopiowania słowa dla nieznanego polecenia.

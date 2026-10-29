@@ -1,0 +1,224 @@
+{
+  "baseline": {
+    "synthetic": {
+      "micro": {
+        "tp": 192,
+        "fp": 173,
+        "fn": 78,
+        "tn": 907,
+        "precision": 0.5260273972602739,
+        "recall": 0.7111111111111111,
+        "f1": 0.6047244094488189,
+        "false_positive_rate": 0.16018518518518518
+      },
+      "groups": {
+        "constant": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "impulse": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "noise": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "sine": {
+          "correct": 5,
+          "total": 24,
+          "exact_accuracy": 0.20833333333333334
+        },
+        "step": {
+          "correct": 0,
+          "total": 24,
+          "exact_accuracy": 0.0
+        },
+        "step_sine": {
+          "correct": 0,
+          "total": 24,
+          "exact_accuracy": 0.0
+        },
+        "trend": {
+          "correct": 18,
+          "total": 24,
+          "exact_accuracy": 0.75
+        },
+        "trend_sine": {
+          "correct": 0,
+          "total": 24,
+          "exact_accuracy": 0.0
+        },
+        "turning": {
+          "correct": 0,
+          "total": 24,
+          "exact_accuracy": 0.0
+        },
+        "units": {
+          "correct": 24,
+          "total": 54,
+          "exact_accuracy": 0.4444444444444444
+        }
+      },
+      "exact_correct": 119,
+      "total": 270,
+      "unresolved": 0,
+      "unit_pattern_invariance": 54,
+      "unit_pairs": 54,
+      "latency_ms": {
+        "median": 3.2948500011116266,
+        "p95": 12.829970009624958,
+        "max": 114.09909999929368
+      }
+    },
+    "real": {
+      "windows": 177,
+      "positive_windows": 22,
+      "all_candidate_alarms": {
+        "tp": 5,
+        "fp": 25,
+        "fn": 17,
+        "tn": 130,
+        "precision": 0.16666666666666666,
+        "recall": 0.22727272727272727,
+        "f1": 0.19230769230769232,
+        "false_positive_rate": 0.16129032258064516
+      },
+      "accepted_alarms": {
+        "tp": 5,
+        "fp": 25,
+        "fn": 17,
+        "tn": 130,
+        "precision": 0.16666666666666666,
+        "recall": 0.22727272727272727,
+        "f1": 0.19230769230769232,
+        "false_positive_rate": 0.16129032258064516
+      },
+      "unresolved": 0,
+      "events_detected_all_candidates": 4,
+      "events_detected_accepted": 4,
+      "annotated_events": 4,
+      "latency_ms": {
+        "median": 0.3519000019878149,
+        "p95": 4.268619930371637,
+        "max": 21.173299988731742
+      }
+    },
+    "startup_seconds": 1.800013706088066e-06,
+    "peak_process_rss_mib": 34.28515625
+  },
+  "tsi": {
+    "synthetic": {
+      "micro": {
+        "tp": 255,
+        "fp": 10,
+        "fn": 15,
+        "tn": 1070,
+        "precision": 0.9622641509433962,
+        "recall": 0.9444444444444444,
+        "f1": 0.9532710280373832,
+        "false_positive_rate": 0.009259259259259259
+      },
+      "groups": {
+        "constant": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "impulse": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "noise": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "sine": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "step": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "step_sine": {
+          "correct": 19,
+          "total": 24,
+          "exact_accuracy": 0.7916666666666666
+        },
+        "trend": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "trend_sine": {
+          "correct": 17,
+          "total": 24,
+          "exact_accuracy": 0.7083333333333334
+        },
+        "turning": {
+          "correct": 24,
+          "total": 24,
+          "exact_accuracy": 1.0
+        },
+        "units": {
+          "correct": 49,
+          "total": 54,
+          "exact_accuracy": 0.9074074074074074
+        }
+      },
+      "exact_correct": 253,
+      "total": 270,
+      "unresolved": 19,
+      "unit_pattern_invariance": 52,
+      "unit_pairs": 54,
+      "latency_ms": {
+        "median": 66.75490003544837,
+        "p95": 279.49594005476666,
+        "max": 758.816699963063
+      }
+    },
+    "real": {
+      "windows": 177,
+      "positive_windows": 22,
+      "all_candidate_alarms": {
+        "tp": 6,
+        "fp": 56,
+        "fn": 16,
+        "tn": 99,
+        "precision": 0.0967741935483871,
+        "recall": 0.2727272727272727,
+        "f1": 0.14285714285714285,
+        "false_positive_rate": 0.36129032258064514
+      },
+      "accepted_alarms": {
+        "tp": 3,
+        "fp": 38,
+        "fn": 19,
+        "tn": 117,
+        "precision": 0.07317073170731707,
+        "recall": 0.13636363636363635,
+        "f1": 0.09523809523809523,
+        "false_positive_rate": 0.24516129032258063
+      },
+      "unresolved": 56,
+      "events_detected_all_candidates": 3,
+      "events_detected_accepted": 3,
+      "annotated_events": 4,
+      "latency_ms": {
+        "median": 43.429199839010835,
+        "p95": 159.3594799283889,
+        "max": 327.18770019710064
+      }
+    },
+    "startup_seconds": 29.86491569993086,
+    "peak_process_rss_mib": 258.5390625
+  }
+}
