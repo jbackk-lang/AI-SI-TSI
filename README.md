@@ -52,6 +52,10 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Testy techniczne nowego modułu | **99/99** |
 | Nauczyciel AI: protokoły, zapis klucza, awarie, przegląd wiedzy | **18/18** |
 | Integracja nauczyciela i zachowanie funkcji panelu | **9/9** |
+| Naturalne prośby i wieloetapowe rozmowy panelu — końcowa seria | **32/32** |
+| Utrzymanie brakujących danych zadania — testy techniczne | **9/9** |
+| Zdania z opisem cechy i kontrola przeczenia / niezgodności | **5/5** |
+| Ostatnia karta, odświeżenie, druga karta i blokada drugiego serwera | **4/4** |
 
 Wyniki dotyczą wymienionych zakresów. Ostatnie rozszerzenia dodają reguły, połączenia i pełne paradygmaty dwóch haseł; wagi sieci pozostały na zatwierdzonym kroku **2850**.
 
@@ -85,7 +89,13 @@ Pytania wpisuje się w głównym polu pod rozmową. Narzędzia lokalne mają pie
 
 Odpowiedzi zewnętrzne trafiają do **Wiedzy do sprawdzenia**. Zatwierdzenie wymaga notatki, jak sprawdzono treść. Eksport JSONL obejmuje tylko zatwierdzone odpowiedzi. Nie zmienia on automatycznie wag TSI. Domyślny lokalny limit to 20 prób konsultacji dziennie; opłaty i limity zależą od dostawcy API. Prywatny materiał załączony do rozmowy nie jest automatycznie przekazywany nauczycielowi.
 
-Migający kwadracik oznacza bieżący etap pracy zgłoszony przez serwer. Stały kolor pokazuje narzędzia użyte przy ostatnim zapytaniu. „On-line” opisuje dostępność połączenia sieciowego; nie gwarantuje działania każdej witryny. Można korzystać z panelu offline.
+Panel utrzymuje oczekujące zadanie: po „Oblicz całkę” wiadomość „X^2” uzupełnia wzór i daje `x**3/3 + C`; po prośbie o granice można podać „od 0 do 2”. Wzór nie jest wtedy wyszukiwany jako hasło encyklopedii. Polecenie „Anuluj zadanie” usuwa oczekujące dane. Jawne obliczenie ma pierwszeństwo również przy włączonej pracy z dokumentem.
+
+Podczas pisania pojawiają się **lokalne podpowiedzi PL/EN** z przykładów i krótkich poleceń widocznych w bieżącej rozmowie. **Tab** lub kliknięcie wstawia propozycję, strzałki zmieniają wybór, **Escape** chowa listę, a **Enter** wysyła pytanie. Podpowiedzi nie inicjują konsultacji AI.
+
+Zamknięcie ostatniej karty panelu uruchamia wyłączenie serwera po **10 sekundach**; otwarcie lub odświeżenie panelu w tym czasie anuluje wyłączenie. Serwer ma wyłączne zajęcie portu Windows. Kontrola uruchomienia korzysta z lekkiego endpointu stanu, bez ładowania pełnych danych modelu.
+
+Migający kwadracik oznacza bieżący etap pracy zgłoszony przez serwer. Stały kolor pokazuje narzędzia użyte przy ostatnim zapytaniu. Pasek pozostaje u góry podczas przewijania. „On-line” opisuje dostępność połączenia sieciowego; nie gwarantuje działania każdej witryny. Można korzystać z panelu offline.
 
 ## Uruchomienie i dalsza praca
 
@@ -93,13 +103,15 @@ Istniejący panel uruchamia **URUCHOM_TSI.bat** w głównym katalogu lokalnej in
 
 Następny krok: rozmowa z utrzymaniem tematu, krótkie pytania uzupełniające i doprecyzowanie odniesień. Podłączono również nauczyciela AI: odpowiedź ze źródłem → weryfikacja → zatwierdzona wiedza → trening. Obsługa dostawców jest podłączona do panelu; rzeczywista konsultacja wymaga lokalnego zapisania klucza API i wyboru modelu. Nie wykonano jeszcze rzeczywistego zapytania do płatnego API. Zachowywana jest jedna linia wag, optymalizatora i losowania. [Szczegóły aktualnego stanu](docs/STAN_TSI_2026-10-29.md).
 
-## Istniejący panel
+## Aktualny panel
 
-Poniższe zrzuty z 20 października przedstawiają wcześniejszy panel, a nie podgląd nowego modułu API.
+Zrzuty z 29 października 2026: jedna rozmowa, wspólne pole pytań, poziome ustawienia i wskaźniki użycia narzędzi.
 
-![Rozmowa TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-panel-2026-10-20.png)
+![Rozmowa TSI i obliczenie całki](docs/tsi-panel-2026-10-29.jpg)
 
-![Dokumenty TSI](https://raw.githubusercontent.com/jbackk-lang/AI-SI-TSI/main/docs/tsi-documents-2026-10-20.png)
+![Ustawienia nauczyciela AI i źródeł](docs/tsi-settings-2026-10-29.jpg)
+
+![Lokalne podpowiedzi poleceń w języku angielskim](docs/tsi-autocomplete-en-2026-10-29.jpg)
 
 ## Historia i archiwum
 

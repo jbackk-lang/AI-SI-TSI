@@ -492,3 +492,14 @@ Dokończono lokalne podłączenie trzech dostawców, wyboru modelu i szyfrowania
 Wykryto brak osadzenia skryptu formularza w HTML oraz pętlę obserwatorów tłumaczenia: ponowne ustawianie niezmienionego lang powodowało aktualizację etykiet i następne odświeżenie. Podłączono skrypt i ograniczono zmianę lang do rzeczywistej zmiany języka. Opisy źródeł kończą się na granicy zdania lub jawnym wielokropku.
 
 Na życzenie użytkownika przebudowano panel: centralna rozmowa około 3/4 szerokości na szerokim ekranie, jedno wspólne pole pytań, pomoc po lewej i narzędzia po prawej. Ustawienia w poziomym menu automatycznie zwijają się po zapisaniu, kliknięciu poza menu lub Escape. Wskaźniki opierają się na oddzielnym endpointcie stanu etapów serwera; po zakończeniu przestają migać. Zachowano obsługę Enter i nowej rozmowy. Wagi pozostają na kroku 2850.
+
+
+### Utrzymanie kontekstu i naturalne polecenia — korekty 29 października
+
+W rzeczywistej rozmowie polecenie całki i doprecyzowanie X^2 trafiły do Wikipedii jako film X-Men 2. Planer nie zachowywał oczekujących ról; dodano zapis celu, już podanych danych i braków osobno dla sesji oraz bezpieczne uzupełnianie wzoru, granic, próbek i macierzy. Anulowanie usuwa zadanie. Znormalizowano wybrane matematyczne zapisy słowne i wielką literę X. Jawny kontrakt arytmetyczny oraz pytanie o aktywny tekst mają pierwszeństwo przed selektorami słownika / wyszukiwania. Rozszerzono gramatykę opisu cech przez być + przymiotnik z kontrolą przypadku, liczby i rodzaju; nie wyłączano kontroli nieodczytanych fragmentów.
+
+Wykryto równoczesne instancje serwera na tym samym porcie Windows, przez co próby trafiały także do starego kodu. Zatrzymano rozpoznane instancje, wprowadzono SO_EXCLUSIVEADDRUSE i identyfikator wersji aplikacji w odpowiedziach. Launcher korzysta z lekkiego health check. Zamknięcie ostatniej karty panelu daje 10 sekund na odświeżenie lub ponowne otwarcie, potem serwer kończy pracę; testy ostatniej karty, drugiej karty, odświeżenia i konfliktu portu: 4/4.
+
+Pasek narzędzi jest przyklejony u góry. Podpis pola przeniesiono pod wspólne pole pytań. Lokalne autouzupełnianie PL/EN: Tab / kliknięcie wstawia, strzałki wybierają, Escape chowa, Enter wysyła. Sprawdzono rzeczywisty interfejs i zapisano trzy nowe zrzuty do README.
+
+Wyniki kolejnych zestawów: 15/27 przed naprawą kontekstu, 25/29 po pierwszych korektach, 31/32 po rozszerzeniu, końcowa powtórka 32/32. Raporty zachowują pełne odpowiedzi lokalnie. Testy techniczne oczekujących zadań: 9/9; gramatyka cech: 5/5. Rzeczywiste angielskie doprecyzowanie całki i wynik potwierdzono. Wagi modelu pozostają na kroku 2850. Są to poprawki obsługi aplikacji, a nie ponowne wytrenowanie swobodnej rozmowy.
