@@ -13,6 +13,8 @@
 - **Chroniona logika dwu- i trójstanowa** oraz wykonanie dynamicznego planu przez dekoder sieciowy, również dla dłuższych odpowiedzi i znaków UTF-8.
 - **Nauczyciel AI i źródła** w istniejącym panelu: wybór Gemini, OpenAI, Claude lub pracy bez AI; przy braku klucza konsultacja jest pomijana. Następnie Wikipedia, wyszukiwarka i podpowiedź z własnej bazy.
 - **Jedna rozmowa i jedno pole pytań**, rozwijane ustawienia AI oraz wskaźniki etapów pracy narzędzi.
+- **Rozmowy wieloetapowe w panelu**: korekta godziny, powrót do wcześniejszego tekstu, doprecyzowanie zadania i reset kontekstu. Pytania o osoby działają w PL/EN; imię pozostaje imieniem także po zmianie języka interfejsu.
+- **Wspólna kontrola trafności źródeł**: odmiana, synonimy, temat i wymagany rodzaj odpowiedzi. Brak daty, miejsca lub liczby powoduje doprecyzowanie. Przykład ze słownika nie zastępuje informacji o konkretnej rozmowie.
 - **Kalendarz świąt w istniejącym panelu**: przywrócone połączenie z modułem dat, lista polskich świąt oraz wybrane pytania o daty; obsługa PL/EN.
 - **Reguły grzecznościowe PL/EN**: powitania, podziękowania, pożegnania oraz spokojna reakcja na obrażanie. Cytat albo zadanie zawierające przekleństwo nie jest automatycznie blokowane.
 
@@ -51,10 +53,12 @@ Odczyt ról i wybór faktów korzystają z chronionych reguł oraz słowników. 
 | Wpisy słownika / próby brzegowe | **32/32 / 20/20** |
 | Chroniona logika: dawne polecenia / pełne tablice | **15/15 / 57/57** |
 | Testy techniczne nowego modułu | **117/117** |
-| Nauczyciel AI: protokoły, zapis klucza, awarie, przegląd wiedzy | **18/18** |
+| Nauczyciel AI, wyszukiwanie i wspólna kontrola źródeł | **43/43** |
 | Integracja nauczyciela i zachowanie funkcji panelu | **9/9** |
-| Naturalne prośby i wieloetapowe rozmowy panelu — końcowa seria | **32/32** |
-| Utrzymanie brakujących danych zadania — testy techniczne | **9/9** |
+| Rozmowy wieloetapowe panelu — 12 rozmów, liczba wypowiedzi | **40/40** |
+| Dodatkowe warianty — 8 rozmów, liczba wypowiedzi | **18/18** |
+| Utrzymanie brakujących danych zadania — testy techniczne | **11/11** |
+| Korekty, powroty do tematu i rozdzielenie imion od odpowiedzi tak/nie | **9/9** |
 | Nowe API rdzenia: zadania, doprecyzowania, PL/EN, logika i budżet syntetyczny | **14/14** |
 | Zdania z opisem cechy i kontrola przeczenia / niezgodności | **5/5** |
 | Ostatnia karta, odświeżenie, druga karta i blokada drugiego serwera | **4/4** |
@@ -95,7 +99,9 @@ Pomiary katalogów wykonano 28 października 2026; obejmują dane robocze i kopi
 
 W panelu rozwiń **Ustawienia AI i źródeł**, wybierz dostawcę, wpisz lokalnie klucz, wybierz model i kliknij **Zapisz i zwiń**. Dostępne są Google Gemini, OpenAI, Anthropic Claude i **Bez AI**. Przycisk **Pobierz modele** działa po zapisaniu klucza. Klucz zapisany przez panel jest szyfrowany mechanizmem Windows DPAPI; można go usunąć osobnym przyciskiem. Nie wpisuj kluczy do rozmowy ani repozytorium.
 
-Pytania wpisuje się w głównym polu pod rozmową. Narzędzia lokalne mają pierwszeństwo. Bez skonfigurowanego AI aplikacja pomija konsultację i próbuje Wikipedii, następnie krótkiej odpowiedzi wyszukiwarki DuckDuckGo Instant Answer. Nie jest to pełne przeglądanie wyników wyszukiwarki. Pobierane są najwyżej trzy kandydatury hasła i treść jednej strony źródłowej, bez przechodzenia na kolejne strony wyników. Błąd połączenia prowadzi do lokalnej podpowiedzi; wyłączenie internetu w ustawieniach wyłącza również konsultacje AI.
+Pytania wpisuje się w głównym polu pod rozmową. Narzędzia lokalne mają pierwszeństwo. Bez skonfigurowanego AI aplikacja pomija konsultację i próbuje Wikipedii oraz wyszukiwarki. Dla identyfikatorów projektów może przeszukać publiczne repozytoria GitHub i odczytać README; dla pozostałych zapytań korzysta z krótkich odpowiedzi i wyników RSS. Pobierane są najwyżej trzy kandydatury i treść jednej strony źródłowej, bez stronicowania. Nietrafny wynik jest odrzucany. Kontrola wykorzystuje lokalny słownik i strukturę pytania; nie jest automatycznym potwierdzeniem prawdziwości źródła. Błąd połączenia prowadzi do lokalnej podpowiedzi; wyłączenie internetu w ustawieniach wyłącza również konsultacje AI.
+
+Przykładowy ciąg rozmowy: „Przeczytaj: Spotkanie odbędzie się o 09:30.” → „Nie, spotkanie będzie o 11:15.” → „Kiedy odbędzie się spotkanie?”. Odpowiedź wskazuje **11:15**. „Wróć do tekstu o kocie” przywraca pasujący wcześniejszy materiał; przy kilku pasujących tekstach aplikacja dopytuje. „Skąd wiesz o GIA-TIMDR?” wskazuje zapisane źródło. „Nowy temat” usuwa bieżący kontekst i oczekujące odwołania, zachowując trwałe notatki.
 
 Odpowiedzi zewnętrzne trafiają do **Wiedzy do sprawdzenia**. Zatwierdzenie wymaga notatki, jak sprawdzono treść. Eksport JSONL obejmuje tylko zatwierdzone odpowiedzi. Nie zmienia on automatycznie wag TSI. Domyślny lokalny limit to 20 prób konsultacji dziennie; opłaty i limity zależą od dostawcy API. Prywatny materiał załączony do rozmowy nie jest automatycznie przekazywany nauczycielowi.
 

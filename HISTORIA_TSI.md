@@ -519,3 +519,17 @@ Ponowione obie pierwotne prośby: całka pi daje pi*x + C, plan oszczędzania be
 Sprawdzian nowego API: 14/14 (próby obejmujące inne wzory, uzupełnienie danych, PL/EN, przeczenie, nieznane żądanie, formalną logikę, zadanie już przygotowane oraz budżet). Pełny zestaw techniczny rozszerzono o kontrolę pojedynczego wykonania, sesji, weryfikacji, dat i widoku budżetu. Publikacja runtime zachowuje ten sam checkpoint 2850 i jego SHA. Pełna wymiana modelu w aplikacjach nadal wymaga osobnego potwierdzenia ich obsługiwanych działów.
 
 Końcowy zestaw techniczny po dodaniu kontroli prezentacji budżetu: **117/117**. Ponowiony sprawdzian rzeczywistych odpowiedzi: **14/14**. Checkpoint 2850 i jego suma pozostają takie same; zmienił się opublikowany lokalnie zestaw plików runtime i jego chroniony manifest.
+
+### 29 października — źródła i rozmowy wieloetapowe panelu
+
+Interfejs DuckDuckGo Instant Answer zwracał pustą odpowiedź dla TIMDR. Wikipedia przyjmowała częściowe dopasowania, np. Gia Carangi, a polecenie „znajdź to słowo” traciło temat. Dodano normalizację zapytań, zachowanie pełnych identyfikatorów, publiczne wyszukiwanie GitHub z odczytem jednego README oraz kontrolę wyników ogólnej wyszukiwarki. Aktywne wskaźniki w panelu mają większe czerwone kwadraty.
+
+Wspólna bramka źródeł rozdziela zgodność tematu od obecności wymaganej informacji. Wykorzystuje formy i relacje lokalnego słownika oraz typ pytania. Odrzucenie odpowiedzi AI uruchamia dalszą ścieżkę źródeł; brak daty, miejsca lub liczby może wymagać doprecyzowania. Materiał pozostaje wskazanym fragmentem źródła, a jego prawdziwość nie wynika z samej zgodności tematu. Nie testowano prawdziwego dostawcy AI bez klucza użytkownika.
+
+Pierwszy przebieg 12 rozmów obejmował 40 wypowiedzi. Po zaostrzeniu oceny — błąd HTTP zawsze jest niezaliczeniem, a imię musi być rzeczywistą odpowiedzią, nie tylko wystąpić w cytacie — wynik początkowy wynosił **25/40**. Wykryto ignorowanie naturalnej korekty czasu, zwracanie cytatu zamiast brakującej informacji, przechwytywanie pytań przez słownik, gubienie poprzedniego tematu i wysyłanie doprecyzowanego wzoru do wyszukiwarki.
+
+Naprawiono obsługę ról i kolejność kierowania poleceń. Jawna korekta godziny zmienia jedynie jednoznacznie wskazane zdarzenie; przy dwóch pasujących zdarzeniach wymagane jest doprecyzowanie. Wcześniejsze teksty można przywracać według tematu. Rejestr źródeł zachowuje pochodzenie informacji. Nowy temat czyści oczekujące odwołania internetowe i lokalny kontekst, nie usuwa trwałych notatek. Doprecyzowanie „Chodzi o x^2” uzupełnia oczekujący wzór; po anulowaniu sam wzór wymaga wskazania działania.
+
+Dodatkowe warianty ujawniły błąd lokalizacji: odpowiedź osobowa „Anna” była zamieniana na odpowiedź logiczną „Tak”. Rozdzielono odpowiedzi wskazujące osobę od odpowiedzi tak/nie. Wykryto także uznawanie przykładu słownikowego za informację o konkretnych osobach po resecie. Kontrola zakresu źródła blokuje takie podstawienie.
+
+Końcowa kwalifikacja: **40/40 wypowiedzi w 12 rozmowach**, dodatkowo **18/18 w 8 innych rozmowach**. Oba zestawy zapisują pełne odpowiedzi lokalnie. Testy techniczne: źródła i nauczyciel 43/43, oczekujące dane 11/11, korekty / powroty / lokalizacja 9/9; razem **63/63**. Są to poprawki obsługi rozmowy w aplikacji. Wagi nie uległy zmianie; modelów w MUZ, walidatorze i portable nie wymieniano w tym etapie.
