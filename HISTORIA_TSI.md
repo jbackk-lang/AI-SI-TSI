@@ -548,3 +548,8 @@ Dodano treningowe powiązanie odpowiedzi ze źródłem i uczony kanał kopiowani
 ### Diagnoza przepływu i kontroli — zapis 4677
 
 Zapis 4497: 6/8, późniejszy 4677: 4/8. Na tych samych wagach wybór wielu przebiegów odtworzył 6/8, bez treningu. Próba zatrzymania analizy nie wykazała przedwczesnego startu dekodera. Stan K nie otrzymuje wygenerowanej odpowiedzi. Dodano kontrolę utraty odpowiedzi dialogowych i synchronizację podglądu. [Szczegóły i metody](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md).
+
+
+### Proporcja powtórek 3:1 — zapis 4827
+
+Ustawiono trzy powtórki na jeden nowy przykład. Blok: 5/8 kontroli podstaw, jedna utracona odpowiedź wykryta przez kontrolę dialogu. Kolejna próba dobiera powtórki według rodzajów zadań i utraconej odpowiedzi. [Zasady i wyniki](docs/POWTORKI_3_DO_1_20261101.md).

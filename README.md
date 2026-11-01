@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Obecny etap: diagnoza przepływu i kontroli odpowiedzi po zakończonym bloku treningu.**
+**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Obecny etap: nauka w proporcji trzech powtórek na jeden nowy przykład, z kontrolą utraty wcześniejszych odpowiedzi.**
 
 Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne.
 
@@ -42,7 +42,9 @@ Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użyty
 
 ## Aktualny stan uczenia i kontroli
 
-Ostatni blok zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
+Obowiązuje proporcja **3 powtórki : 1 nowy przykład** w lekcjach językowych. Pierwszy blok dał **5/8** kontroli podstaw; utrata jednej wcześniejszej odpowiedzi uruchomiła zatrzymanie i korektę powtórek. Kontynuowana jest ta sama linia wag. [Zasady i wynik](docs/POWTORKI_3_DO_1_20261101.md).
+
+Wcześniejszy blok diagnostyczny zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
 
 Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie startował przed zakończeniem analizy. Znaleziono inną lukę: stan K pochodzi z wejścia, a gotowa odpowiedź nie wraca do niego do weryfikacji. Poprawiono zewnętrzną kontrolę zapominania i synchronizację próbek w podglądzie. Kolejny identyczny długi blok nie został uruchomiony.
 
