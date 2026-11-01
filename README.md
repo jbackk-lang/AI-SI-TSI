@@ -67,6 +67,8 @@ Wyniki dotyczą osobnych prób i opisanego zakresu; nie są jedną oceną całej
 
 Gałąź K otrzymuje ponownie źródło, pytanie i gotową propozycję. Zmiana jej składowych jest obserwacją, a nie skalibrowaną oceną prawdziwości. Weryfikacja znaczenia działa w granicach odczytanych ról i jawnych relacji. Złożone warunki, nieobsługiwane konstrukcje i brakujące dane wymagają doprecyzowania. [Historia wcześniejszych generatorów](docs/archiwum/README_przed_generator_v3_20261101.md).
 
+**Generator 3 podłączono także do MUZ i walidatora.** Próby podłączenia: MUZ **10/10**, walidator **11/11**; działające panele wspólnie **13/13 prób HTTP**. Rozmowa o materiale i aktywny panel mają oddzielny zakres. Aktualizacja wspólnego modułu przeładowuje proces rozmowy przy kolejnym żądaniu, zachowując pamięć aplikacji. [MUZ](https://github.com/jbackk-lang/TSI-MUZ) · [Walidator](https://github.com/jbackk-lang/TSI-math-validator-5).
+
 ## Wielkość
 
 | Składnik | Aktualny pomiar |

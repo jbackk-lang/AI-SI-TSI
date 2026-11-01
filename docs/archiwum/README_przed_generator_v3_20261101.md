@@ -43,11 +43,11 @@ To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest
 | Celowo uszkodzone wyjście dekodera | **odrzucone** |
 | Wagi podczas powyższych prób | **niezmienione** |
 
-Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użytym komputerze; start procesu jest dłuższy. Wyniki dotyczą tych prób i opisanego zakresu. [Szczegóły wdrożenia](docs/ODCZYT_ODPOWIEDZI_20261101.md).
+Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użytym komputerze; start procesu jest dłuższy. Wyniki dotyczą tych prób i opisanego zakresu. [Szczegóły wdrożenia](../../docs/ODCZYT_ODPOWIEDZI_20261101.md).
 
 ## Aktualny stan uczenia i kontroli
 
-**Trening zatrzymano na czas zmiany generatora.** Próba zdań złożonych zakończyła się na zapisie **5051** wynikiem **7/16** surowego generatora: 6/8 podstaw i 1/8 zdań złożonych. Wdrożony generator odpowiedzi z treści zastępuje swobodny wybór słów planem wynikającym z odczytanych ról. Jego wyników nie utożsamiamy z poprawą surowego generatora ani z opanowaniem swobodnej rozmowy. Wagi treningowe, optymalizator i stan losowania są zachowane. Normalny trening pozostaje domyślnym trybem; proporcja 3:1 służy korekcie potwierdzonego pogorszenia. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
+**Trening zatrzymano na czas zmiany generatora.** Próba zdań złożonych zakończyła się na zapisie **5051** wynikiem **7/16** surowego generatora: 6/8 podstaw i 1/8 zdań złożonych. Wdrożony generator odpowiedzi z treści zastępuje swobodny wybór słów planem wynikającym z odczytanych ról. Jego wyników nie utożsamiamy z poprawą surowego generatora ani z opanowaniem swobodnej rozmowy. Wagi treningowe, optymalizator i stan losowania są zachowane. Normalny trening pozostaje domyślnym trybem; proporcja 3:1 służy korekcie potwierdzonego pogorszenia. [Historia powtórek](../../docs/POWTORKI_3_DO_1_20261101.md).
 
 Wynik **16/16** dotyczy wdrożonych operacji odczytu źródłowego, a **6/8** — surowego generatora w trakcie uczenia. To oddzielne próby. Odczyt czynności cytuje potwierdzone zdanie; nie tworzy nowej swobodnej wypowiedzi. Moduł źródłowy aplikacji pozostaje na zapisie 3944.
 
@@ -55,7 +55,7 @@ Wcześniejszy blok diagnostyczny zakończył się na zapisie **4677**. Mała kon
 
 Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie startował przed zakończeniem analizy. Znaleziono inną lukę: stan K pochodzi z wejścia, a gotowa odpowiedź nie wraca do niego do weryfikacji. Poprawiono zewnętrzną kontrolę zapominania i synchronizację próbek w podglądzie. Kolejny identyczny długi blok nie został uruchomiony.
 
-[Przepływ, rzeczywiste odpowiedzi i dobór metod uczenia](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md) · [Wcześniejsze przebiegi treningu](docs/TRENING_TSI_20261101.md).
+[Przepływ, rzeczywiste odpowiedzi i dobór metod uczenia](../../docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md) · [Wcześniejsze przebiegi treningu](../../docs/TRENING_TSI_20261101.md).
 
 ## Wielkość
 
@@ -65,26 +65,26 @@ Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie 
 | Jej parametry FP32 | **34.49 MiB** |
 | Zapis kroku 3944 z optymalizatorem i stanem treningu | **103.71 MiB** |
 
-To rozmiar nowej sieci, nie kompletnej instalacji ani portable. Główna dotychczasowa aplikacja zachowuje swój rdzeń i narzędzia; nowy moduł `TSI-grounded-step-3944` jest wykazywany oddzielnie. Słowniki, PyTorch, Python, dokumenty i kopie zajmują dodatkowe miejsce. [Wcześniejsze pomiary i wyniki](docs/archiwum/README_przed_2026-11-01.md).
+To rozmiar nowej sieci, nie kompletnej instalacji ani portable. Główna dotychczasowa aplikacja zachowuje swój rdzeń i narzędzia; nowy moduł `TSI-grounded-step-3944` jest wykazywany oddzielnie. Słowniki, PyTorch, Python, dokumenty i kopie zajmują dodatkowe miejsce. [Wcześniejsze pomiary i wyniki](../../docs/archiwum/README_przed_2026-11-01.md).
 
 ## Uruchomienie lokalne
 
 Uruchom **URUCHOM_TSI.bat** w katalogu instalacji i otwórz `http://127.0.0.1:8791/`. Repozytorium dokumentacyjne nie zawiera obecnego kodu ani gotowej nowej instalacji. Portable nie przebudowano w tym etapie.
 
-W **Ustawienia AI i źródeł** można wybrać Gemini, OpenAI, Claude lub **Bez AI**. Klucze zapisuje się wyłącznie lokalnie. Bez klucza aplikacja pomija konsultację. Wyłączenie internetu pozostawia narzędzia i źródła lokalne. [Opis ustawień i źródeł](docs/archiwum/README_przed_2026-11-01.md#nauczyciel-ai--konfiguracja).
+W **Ustawienia AI i źródeł** można wybrać Gemini, OpenAI, Claude lub **Bez AI**. Klucze zapisuje się wyłącznie lokalnie. Bez klucza aplikacja pomija konsultację. Wyłączenie internetu pozostawia narzędzia i źródła lokalne. [Opis ustawień i źródeł](../../docs/archiwum/README_przed_2026-11-01.md#nauczyciel-ai--konfiguracja).
 
 ## Panel
 
 Zrzut z **29 października 2026**, zachowany jako podgląd układu; nie przedstawia nowego sprawdzianu z 1 listopada.
 
-![Panel TSI — przykład całki](docs/tsi-chat-current.png)
+![Panel TSI — przykład całki](../../docs/tsi-chat-current.png)
 
 ## Historia i pozostałe zastosowania
 
-[Historia prac](HISTORIA_TSI.md) · [Poprzedni README](docs/archiwum/README_przed_2026-11-01.md) · [Uczestnicy](CONTRIBUTORS.md)
+[Historia prac](../../HISTORIA_TSI.md) · [Poprzedni README](../../docs/archiwum/README_przed_2026-11-01.md) · [Uczestnicy](../../CONTRIBUTORS.md)
 
-[Sprawdzian sygnałów z 29 października](docs/RAPORT_SYGNALY_2026-10-29.md) — diagnostyka awarii nie osiągnęła wymaganego poziomu.
+[Sprawdzian sygnałów z 29 października](../../docs/RAPORT_SYGNALY_2026-10-29.md) — diagnostyka awarii nie osiągnęła wymaganego poziomu.
 
 [Walidator matematyczny](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)
 
-[Historyczne paczki starego AI-SI](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18) · [Spis i odtworzenie](docs/PACZKI_STAREGO_AI_SI.md)
+[Historyczne paczki starego AI-SI](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18) · [Spis i odtworzenie](../../docs/PACZKI_STAREGO_AI_SI.md)

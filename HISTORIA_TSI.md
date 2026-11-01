@@ -4,6 +4,10 @@ Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwośc
 
 ## 1 listopada — odczyt ról i przejście do zdań złożonych
 
+### Podłączenie MUZ i walidatora
+
+Połączono oba programy ze wspólnym generatorem 3. Dodano jawne pierwszeństwo rozmowy o podanej treści i kontekstu panelu, raportowanie faktycznie załadowanej wersji oraz kontrolę plików źródła i manifestu modelu. Aktualizacja przeładowuje proces rozmowy, zachowując lokalną bazę i identyfikator rozmowy. Próby podłączenia: MUZ 10/10, walidator 11/11. Działające panele przeszły łącznie 13/13 prób HTTP; dodatkowy warsztat równań zwrócił −8 i 8 dla x²−64. Nie przebudowano starszych ZIP-ów ani demo; do repozytoriów publicznych trafiła dokumentacja.
+
 ### Generator 3 — połączony plan wypowiedzi i kontroli
 
 Wdrożono polskie zaprzeczenia czasownika, kontrast, przyczynę, skutek oraz jawne następstwo czasowe. Odczyt odróżnia przyczynę od kolejności: „więc” nie jest automatycznie traktowane jako „potem”. Rozwiązanie zaimków wymaga jednej pasującej osoby; przy konkurencji użytkownik otrzymuje listę imion. Wybrane imię uzupełnia kontekst i ponawia pierwotne pytanie. Rozstrzygnięcie jest lokalną korektą kontekstu, nie zmianą wag ani dokumentu na dysku.
