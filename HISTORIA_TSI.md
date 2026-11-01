@@ -533,3 +533,8 @@ Naprawiono obsługę ról i kolejność kierowania poleceń. Jawna korekta godzi
 Dodatkowe warianty ujawniły błąd lokalizacji: odpowiedź osobowa „Anna” była zamieniana na odpowiedź logiczną „Tak”. Rozdzielono odpowiedzi wskazujące osobę od odpowiedzi tak/nie. Wykryto także uznawanie przykładu słownikowego za informację o konkretnych osobach po resecie. Kontrola zakresu źródła blokuje takie podstawienie.
 
 Końcowa kwalifikacja: **40/40 wypowiedzi w 12 rozmowach**, dodatkowo **18/18 w 8 innych rozmowach**. Oba zestawy zapisują pełne odpowiedzi lokalnie. Testy techniczne: źródła i nauczyciel 43/43, oczekujące dane 11/11, korekty / powroty / lokalizacja 9/9; razem **63/63**. Są to poprawki obsługi rozmowy w aplikacji. Wagi nie uległy zmianie; modelów w MUZ, walidatorze i portable nie wymieniano w tym etapie.
+
+
+## 2026-11-01 — odczyt i pełne odpowiedzi
+
+Włączono lokalny odczyt nazwanych danych z kontrolą ról, źródła i końcowego zdania. Próby: 23/23 zdań, 10/10 całej aplikacji. Naprawiono pierwszeństwo zaznaczonego materiału przed domyślnym wyszukiwaniem. Kontynuowany jest trening swobodnej rozmowy; nie osiągnął wymaganego poziomu. [Szczegóły](docs/ODCZYT_ODPOWIEDZI_20261101.md). Poprzedni README przeniesiono do archiwum. Kod i wagi pozostają lokalnie.

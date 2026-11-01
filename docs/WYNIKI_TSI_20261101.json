@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "model_id": "TSI-grounded-step-3944",
+  "full_sentences": {
+    "passed": 23,
+    "total": 23
+  },
+  "application": {
+    "passed": 10,
+    "total": 10
+  },
+  "corrupted_output_rejected": true,
+  "free_conversation_qualified": false,
+  "model_size": {
+    "step": 3944,
+    "parameters": 9040623,
+    "parameter_bytes": 36162492,
+    "checkpoint_bytes": 108747029,
+    "scope": "native shared reader, encoders, decoder and dialogue output; excludes other application components, dictionaries and runtime"
+  }
+}
