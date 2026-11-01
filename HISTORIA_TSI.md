@@ -538,3 +538,8 @@ Końcowa kwalifikacja: **40/40 wypowiedzi w 12 rozmowach**, dodatkowo **18/18 w 
 ## 2026-11-01 — odczyt i pełne odpowiedzi
 
 Włączono lokalny odczyt nazwanych danych z kontrolą ról, źródła i końcowego zdania. Próby: 23/23 zdań, 10/10 całej aplikacji. Naprawiono pierwszeństwo zaznaczonego materiału przed domyślnym wyszukiwaniem. Kontynuowany jest trening swobodnej rozmowy; nie osiągnął wymaganego poziomu. [Szczegóły](docs/ODCZYT_ODPOWIEDZI_20261101.md). Poprzedni README przeniesiono do archiwum. Kod i wagi pozostają lokalnie.
+
+
+### Kontynuacja treningu — zapis 4220
+
+Dodano treningowe powiązanie odpowiedzi ze źródłem i uczony kanał kopiowania. Kontrole podstaw: 0/8 → 1/8 → 5/8; odczyt zachowany 48/48 i 17/17. Nowe imię i krótsze pytanie nadal błędne. Trening trwa. [Surowe odpowiedzi i zakres](docs/TRENING_TSI_20261101.md).
