@@ -1,12 +1,13 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Obecny etap: nauka w proporcji trzech powtórek na jeden nowy przykład, z kontrolą utraty wcześniejszych odpowiedzi.**
+**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Trening domyślnie jest normalny; trzy powtórki na jedną nowość stosujemy w razie potwierdzonej utraty wcześniejszych odpowiedzi.**
 
 Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne.
 
 ## Co działa
 
 - **Pytania o krótkie nazwane dane**: sieć wybiera wartość, kontrola sprawdza źródło i rolę, następnie dekoder wykonuje plan pełnego zdania. Obsługiwane są dwa fakty, zmiana materiału i sygnalizowanie sprzecznych wartości.
+- **Powtarzanie tekstu i odczyt prostej czynności**: np. `Powtórz: Iga ogląda mapę.` oraz `Mapę ogląda Iga. Co robi Iga?`. Odczyt uwzględnia przypadki i zgodność liczby, zachowuje całe zdanie źródłowe i działa także po zmianie szyku. Niejednoznaczne przypisanie osoby wymaga doprecyzowania.
 - **Praca z tekstem i dokumentami**: wklejanie materiału, obsługa TXT, MD, CSV, DOCX i PDF; DOC wymaga Microsoft Worda. Odczyt wzorów wymaga kontroli z oryginałem.
 - **Narzędzia matematyczne**: obliczenia, równania, całki, pochodne i macierze przez lokalny solver. Dekoder składa odpowiedź według planu zadania.
 - **Słowniki, odmiana i proste relacje zdań**: części mowy, przypadki, role i wybrane zaprzeczenia; trwałe notatki i kontekst rozmowy.
@@ -35,6 +36,7 @@ To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest
 |---|---:|
 | Pełne zdania: etykiety, jednostki, godziny i brakujące dane | **23/23** |
 | Cała aplikacja: materiał, sprzeczność, zmiana wartości, język, przywitanie i dodawanie | **10/10** |
+| Powtarzanie i odczyt czynności: zmiany szyku, osoby i błędne przypisania ról | **16/16** |
 | Celowo uszkodzone wyjście dekodera | **odrzucone** |
 | Wagi podczas powyższych prób | **niezmienione** |
 
@@ -42,7 +44,9 @@ Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użyty
 
 ## Aktualny stan uczenia i kontroli
 
-Obowiązuje proporcja **3 powtórki : 1 nowy przykład** w lekcjach językowych. Pierwszy blok dał **5/8** kontroli podstaw; utrata jednej wcześniejszej odpowiedzi uruchomiła zatrzymanie i korektę powtórek. Kontynuowana jest ta sama linia wag. [Zasady i wynik](docs/POWTORKI_3_DO_1_20261101.md).
+Domyślnie obowiązuje **normalny trening**. Tryb **3 powtórki : 1 nowy przykład** służy korekcie potwierdzonego pogorszenia. Blok podstaw zatrzymano po jednej aktualizacji na zapisie **5008**, z wynikiem **6/8**. Rozpoczęty następny etap obejmuje **192 przykłady zdań złożonych z „i” oraz „a”**: pytania o obie osoby i zmiany kolejności członów. Osiem osobnych prób sprawdza nowy odczyt; wcześniejsze osiem kontroluje zachowanie podstaw. Kontynuujemy tę samą linię wag z zachowaniem optymalizatora i stanu losowania. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
+
+Wynik **16/16** dotyczy wdrożonych operacji odczytu źródłowego, a **6/8** — surowego generatora w trakcie uczenia. To oddzielne próby. Odczyt czynności cytuje potwierdzone zdanie; nie tworzy nowej swobodnej wypowiedzi. Moduł źródłowy aplikacji pozostaje na zapisie 3944.
 
 Wcześniejszy blok diagnostyczny zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
 

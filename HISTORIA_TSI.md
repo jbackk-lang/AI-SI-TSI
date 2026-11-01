@@ -2,6 +2,12 @@
 
 Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwości oraz ograniczenia są opisane w [README](https://github.com/jbackk-lang/AI-SI-TSI/blob/main/README.md). Wyników odmiennych zestawów i modeli nie należy dodawać ani porównywać jak jednego sprawdzianu.
 
+## 1 listopada — odczyt ról i przejście do zdań złożonych
+
+Wdrożono do zwykłej aplikacji powtarzanie tekstu i odczyt prostej czynności przez istniejący neuronowy wykonawca planu, zapis 3944. Pełna ścieżka aplikacji przeszła 16/16 prób obejmujących szyk zdania, osobę, dokument i kontekst rozmowy. „Iga ogląda Jana” oraz „Igę ogląda Jan” mają odmienny podmiot. Rozróżnianie przypadków porównuje identyfikatory leksemów i liczbę; sama wspólna etykieta imienia nie wystarcza. Wcześniejsze funkcje aplikacji ponownie przeszły 10/10 prób. Odczyt cytuje potwierdzone zdanie źródłowe; wynik nie oznacza opanowania swobodnego generowania.
+
+Zgodnie z decyzją użytkownika normalny trening jest domyślny, a 3:1 pozostaje trybem korekcyjnym. Kontynuację podstaw zatrzymano po jednej aktualizacji, zachowując zapis 5008 i wynik 6/8. Kolejny blok uczy wspólnie enkodery i dekoder na 192 przykładach jawnych członów zdań połączonych przez „i” i „a”. Kontrola nowych zdań jest oddzielona od wcześniejszych podstaw; prób kontrolnych nie dodano do lekcji. Negacje, przyczynowość i pominięte podmioty są kolejnymi etapami, nie zadeklarowanym wynikiem bieżącego bloku.
+
 ## 27 października — naprawa odczytu, zachowania wiedzy i archiwum AI-SI
 
 Nowy rdzeń ma 17 982 624 parametry. Rozdzielono wpływ zapisu wejścia od utraty wcześniejszych umiejętności podczas treningu. Po nauce OR wcześniejsza negacja odpowiadała stale T, a AND zmieniało odpowiedź po zmianie odstępów. Poprzednie zatwierdzone wagi poprawnie rozpoznawały odczyt, negację i AND w pięciu zapisach.
