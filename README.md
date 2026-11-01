@@ -46,7 +46,7 @@ Kontynuowana jest jedna linia wag, od zapisu **3944**, z momentami optymalizator
 
 Podczas treningu zapisywane są surowe wypowiedzi oraz kontrole zachowania odczytu, planowania i reguł. Sam spadek straty nie oznacza zaliczenia rozmowy. Włączony moduł odpowiedzi na nazwane dane korzysta z przypiętego, sprawdzonego zapisu; kolejne zmiany treningowe nie zmieniają go automatycznie.
 
-Ostatni zakończony blok (zapis **4220**) poprawnie wykonał **5/8 małych kontroli podstaw**, w tym pytanie o czynność i poznane pytanie o nazwę TSI. Nowe sformułowanie pytania o nazwę i nowe imię nadal sprawiają trudność. **To etap nauki podstaw, nie zaliczona swobodna rozmowa.** [Przebieg treningu i surowe odpowiedzi](docs/TRENING_TSI_20261101.md).
+Najlepszy dotąd blok (zapis **4220**) poprawnie wykonał **5/8 małych kontroli podstaw**, w tym pytanie o czynność i poznane pytanie o nazwę TSI. Nowe sformułowanie pytania o nazwę i nowe imię nadal sprawiają trudność. **To etap nauki podstaw, nie zaliczona swobodna rozmowa.** Bieżąca nauka obejmuje szerszy materiał i powtórki po pogorszeniu kolejnej próby. [Przebieg treningu i surowe odpowiedzi](docs/TRENING_TSI_20261101.md).
 
 ## Wielkość
 

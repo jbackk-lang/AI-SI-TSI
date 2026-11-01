@@ -4,7 +4,7 @@
 
 Po wykryciu słabego wykorzystania źródła dodano treningowe wskazywanie powiązań między tekstem wejściowym a odpowiedzią oraz uczony kanał kopiowania znaków ze źródła. Podczas swobodnego generowania sieć sama wybiera znaki i kanał wyjścia. Nie otrzymuje oczekiwanej odpowiedzi ani planu emisji.
 
-Ostatni zakończony blok, zapis **4220**, dał **5/8 wiernych odpowiedzi w małej kontroli podstaw**. Próby obejmują powtarzanie, pytania o treść i krótką rozmowę. Są wielokrotnie używanymi kontrolami walidacyjnymi; nie stanowią niezależnego sprawdzianu ogólnej rozmowy.
+Najlepszy dotąd zakończony blok, zapis **4220**, dał **5/8 wiernych odpowiedzi w małej kontroli podstaw**. Próby obejmują powtarzanie, pytania o treść i krótką rozmowę. Są wielokrotnie używanymi kontrolami walidacyjnymi; nie stanowią niezależnego sprawdzianu ogólnej rozmowy.
 
 | Wejście | Surowa odpowiedź sieci | Ocena |
 |---|---|---|
@@ -21,3 +21,10 @@ Piątym poprawnym wynikiem było powtórzenie zdania „Ola czyta list.”. Odpo
 Dalszy trening uczy wyboru między kopiowaniem potwierdzonego tekstu a samodzielnym generowaniem. Enkoder i dekoder są uczone wspólnie; zachowywane są wagi, optymalizator, losowanie i pozycja w kolejce lekcji. Spadek straty nie wystarcza do uznania rozmowy za gotową.
 
 Lokalna linia treningowa z uczonym kanałem źródłowym ma **9 040 880 parametrów**. Sprawdzony moduł aplikacyjny na zapisie 3944 ma **9 040 623 parametry**. Są wykazywane oddzielnie. Kod, bieżące wagi i pamięć pozostają lokalnie.
+
+
+## Kolejna próba i powtórki
+
+Dodatkowy nadzór wyboru kopiowania w kolejnym bloku pogorszył wynik do **3/8** (zapis **4317**). Nie wdrożono go w aplikacji. Lepszy zapis 4220 zachowano; dalsza nauka kontynuuje najnowszą linię wag, bez automatycznego cofania.
+
+Wyłączono dodatkowe wymuszanie wyboru kanału. Nowy blok ma bardziej zróżnicowane przykłady kopiowania poprawnych zdań, 12 imion, 8 czynności i warianty pytań dialogowych. Kategorie są równoważone; każdy krok zawiera też powtórkę dawnej lekcji. Publiczne teksty służą tu do ćwiczenia wiernego powtarzania, a nie automatycznego zatwierdzania zawartych w nich faktów. Nie ma jeszcze wyniku potwierdzającego ukończenie tego etapu.
