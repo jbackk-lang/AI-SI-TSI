@@ -8,6 +8,7 @@ Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć
 
 - **Pytania o krótkie nazwane dane**: sieć wybiera wartość, kontrola sprawdza źródło i rolę, następnie dekoder wykonuje plan pełnego zdania. Obsługiwane są dwa fakty, zmiana materiału i sygnalizowanie sprzecznych wartości.
 - **Powtarzanie tekstu i odczyt prostej czynności**: np. `Powtórz: Iga ogląda mapę.` oraz `Mapę ogląda Iga. Co robi Iga?`. Odczyt uwzględnia przypadki i zgodność liczby, zachowuje całe zdanie źródłowe i działa także po zmianie szyku. Niejednoznaczne przypisanie osoby wymaga doprecyzowania.
+- **Generator odpowiedzi z treści — wersja 2**: najpierw ustala role i człony, następnie wybiera odpowiedni fragment i przekazuje plan do dekodera. Obsługuje jawne osoby w zdaniach połączonych przez „i”, „a” lub „oraz”, np. `Iga ogląda mapę, a Leon zamyka drzwi. Co robi Leon?` → **Leon zamyka drzwi.** Na tej ścieżce nie ma powrotu do swobodnego dobierania słów. Pominięty podmiot, nierozpoznany człon, negacja lub warunek wymagają doprecyzowania.
 - **Praca z tekstem i dokumentami**: wklejanie materiału, obsługa TXT, MD, CSV, DOCX i PDF; DOC wymaga Microsoft Worda. Odczyt wzorów wymaga kontroli z oryginałem.
 - **Narzędzia matematyczne**: obliczenia, równania, całki, pochodne i macierze przez lokalny solver. Dekoder składa odpowiedź według planu zadania.
 - **Słowniki, odmiana i proste relacje zdań**: części mowy, przypadki, role i wybrane zaprzeczenia; trwałe notatki i kontekst rozmowy.
@@ -37,6 +38,8 @@ To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest
 | Pełne zdania: etykiety, jednostki, godziny i brakujące dane | **23/23** |
 | Cała aplikacja: materiał, sprzeczność, zmiana wartości, język, przywitanie i dodawanie | **10/10** |
 | Powtarzanie i odczyt czynności: zmiany szyku, osoby i błędne przypisania ról | **16/16** |
+| Nowy generator: odczyt właściwej osoby ze zdania złożonego | **8/8** |
+| Nowy generator: odmowa niepotwierdzonego odczytu / dokument i kontekst rozmowy | **6/6 / 2/2** |
 | Celowo uszkodzone wyjście dekodera | **odrzucone** |
 | Wagi podczas powyższych prób | **niezmienione** |
 
@@ -44,7 +47,7 @@ Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użyty
 
 ## Aktualny stan uczenia i kontroli
 
-Domyślnie obowiązuje **normalny trening**. Tryb **3 powtórki : 1 nowy przykład** służy korekcie potwierdzonego pogorszenia. Blok podstaw zatrzymano po jednej aktualizacji na zapisie **5008**, z wynikiem **6/8**. Rozpoczęty następny etap obejmuje **192 przykłady zdań złożonych z „i” oraz „a”**: pytania o obie osoby i zmiany kolejności członów. Osiem osobnych prób sprawdza nowy odczyt; wcześniejsze osiem kontroluje zachowanie podstaw. Kontynuujemy tę samą linię wag z zachowaniem optymalizatora i stanu losowania. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
+**Trening zatrzymano na czas zmiany generatora.** Próba zdań złożonych zakończyła się na zapisie **5051** wynikiem **7/16** surowego generatora: 6/8 podstaw i 1/8 zdań złożonych. Wdrożony generator odpowiedzi z treści zastępuje swobodny wybór słów planem wynikającym z odczytanych ról. Jego wyników nie utożsamiamy z poprawą surowego generatora ani z opanowaniem swobodnej rozmowy. Wagi treningowe, optymalizator i stan losowania są zachowane. Normalny trening pozostaje domyślnym trybem; proporcja 3:1 służy korekcie potwierdzonego pogorszenia. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
 
 Wynik **16/16** dotyczy wdrożonych operacji odczytu źródłowego, a **6/8** — surowego generatora w trakcie uczenia. To oddzielne próby. Odczyt czynności cytuje potwierdzone zdanie; nie tworzy nowej swobodnej wypowiedzi. Moduł źródłowy aplikacji pozostaje na zapisie 3944.
 
