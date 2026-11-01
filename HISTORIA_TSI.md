@@ -543,3 +543,8 @@ Włączono lokalny odczyt nazwanych danych z kontrolą ról, źródła i końcow
 ### Kontynuacja treningu — zapis 4220
 
 Dodano treningowe powiązanie odpowiedzi ze źródłem i uczony kanał kopiowania. Kontrole podstaw: 0/8 → 1/8 → 5/8; odczyt zachowany 48/48 i 17/17. Nowe imię i krótsze pytanie nadal błędne. Trening trwa. [Surowe odpowiedzi i zakres](docs/TRENING_TSI_20261101.md).
+
+
+### Diagnoza przepływu i kontroli — zapis 4677
+
+Zapis 4497: 6/8, późniejszy 4677: 4/8. Na tych samych wagach wybór wielu przebiegów odtworzył 6/8, bez treningu. Próba zatrzymania analizy nie wykazała przedwczesnego startu dekodera. Stan K nie otrzymuje wygenerowanej odpowiedzi. Dodano kontrolę utraty odpowiedzi dialogowych i synchronizację podglądu. [Szczegóły i metody](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md).

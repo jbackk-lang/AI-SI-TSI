@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu — trwa jej trening.**
+**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Obecny etap: diagnoza przepływu i kontroli odpowiedzi po zakończonym bloku treningu.**
 
 Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne.
 
@@ -40,13 +40,13 @@ To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest
 
 Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użytym komputerze; start procesu jest dłuższy. Wyniki dotyczą tych prób i opisanego zakresu. [Szczegóły wdrożenia](docs/ODCZYT_ODPOWIEDZI_20261101.md).
 
-## Aktualny trening
+## Aktualny stan uczenia i kontroli
 
-Kontynuowana jest jedna linia wag, od zapisu **3944**, z momentami optymalizatora i stanem losowania. Wspólnie uczą się enkoder, warstwy TIMDR, połączenie słownikowe i dekoder. Obecny etap obejmuje proste pełne zdania, pytania o ich treść i krótkie odpowiedzi dialogowe. Powtarzanie tekstu jest mierzone oddzielnie od odpowiadania na pytania.
+Ostatni blok zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
 
-Podczas treningu zapisywane są surowe wypowiedzi oraz kontrole zachowania odczytu, planowania i reguł. Sam spadek straty nie oznacza zaliczenia rozmowy. Włączony moduł odpowiedzi na nazwane dane korzysta z przypiętego, sprawdzonego zapisu; kolejne zmiany treningowe nie zmieniają go automatycznie.
+Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie startował przed zakończeniem analizy. Znaleziono inną lukę: stan K pochodzi z wejścia, a gotowa odpowiedź nie wraca do niego do weryfikacji. Poprawiono zewnętrzną kontrolę zapominania i synchronizację próbek w podglądzie. Kolejny identyczny długi blok nie został uruchomiony.
 
-Najlepszy dotąd blok (zapis **4220**) poprawnie wykonał **5/8 małych kontroli podstaw**, w tym pytanie o czynność i poznane pytanie o nazwę TSI. Nowe sformułowanie pytania o nazwę i nowe imię nadal sprawiają trudność. **To etap nauki podstaw, nie zaliczona swobodna rozmowa.** Bieżąca nauka obejmuje szerszy materiał i powtórki po pogorszeniu kolejnej próby. [Przebieg treningu i surowe odpowiedzi](docs/TRENING_TSI_20261101.md).
+[Przepływ, rzeczywiste odpowiedzi i dobór metod uczenia](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md) · [Wcześniejsze przebiegi treningu](docs/TRENING_TSI_20261101.md).
 
 ## Wielkość
 
