@@ -1,14 +1,17 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Trening domyślnie jest normalny; trzy powtórki na jedną nowość stosujemy w razie potwierdzonej utraty wcześniejszych odpowiedzi.**
+**Stan: 1 listopada 2026. Generator 3 jest wdrożony w lokalnej aplikacji.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Aktualny zakres obejmuje układanie wypowiedzi z odczytanych ról i rozmowę o podanym materiale. Konsultacje AI i źródła internetowe są opcjonalne.
 
 Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne.
 
 ## Co działa
 
 - **Pytania o krótkie nazwane dane**: sieć wybiera wartość, kontrola sprawdza źródło i rolę, następnie dekoder wykonuje plan pełnego zdania. Obsługiwane są dwa fakty, zmiana materiału i sygnalizowanie sprzecznych wartości.
-- **Powtarzanie tekstu i odczyt prostej czynności**: np. `Powtórz: Iga ogląda mapę.` oraz `Mapę ogląda Iga. Co robi Iga?`. Odczyt uwzględnia przypadki i zgodność liczby, zachowuje całe zdanie źródłowe i działa także po zmianie szyku. Niejednoznaczne przypisanie osoby wymaga doprecyzowania.
-- **Generator odpowiedzi z treści — wersja 2**: najpierw ustala role i człony, następnie wybiera odpowiedni fragment i przekazuje plan do dekodera. Obsługuje jawne osoby w zdaniach połączonych przez „i”, „a” lub „oraz”, np. `Iga ogląda mapę, a Leon zamyka drzwi. Co robi Leon?` → **Leon zamyka drzwi.** Na tej ścieżce nie ma powrotu do swobodnego dobierania słów. Pominięty podmiot, nierozpoznany człon, negacja lub warunek wymagają doprecyzowania.
+- **Układanie wypowiedzi z ról — generator 3**: odczyt osoby, czynności i dopełnień → plan gramatyczny → neuronowy dekoder → kontrola odpowiedzi. `Mapę ogląda Iga` przekształca w **Iga ogląda mapę.** Wierne powtarzanie pozostaje osobną operacją.
+- **Zdania złożone i zaprzeczenia**: zachowanie „nie”, „i”, „a”, „oraz” i „ale”; rozróżnienie przyczyny („bo”, „ponieważ”, „gdyż”), skutku („więc”, „dlatego”) oraz podanej kolejności („potem”, „następnie”). Kolejność nie jest uznawana za dowód przyczyny.
+- **Odwołania i rozmowa o materiale**: zaimki „on/ona/ono”, wspólny podmiot kolejnych czynności, pytania „Dlaczego?”, „A Leon?”, „Co z tego wynika?” i „Co potem?”. Przy konkurujących osobach podaje możliwe imiona; wybór użytkownika uzupełnia kontekst i ponawia pierwotne pytanie. Nowy materiał i reset unieważniają wcześniejszy punkt odniesienia.
+- **Kilka akapitów**: odczyt do 64 KiB tekstu UTF-8 i 128 zdań w bieżącej ścieżce, przekazanie do dekodera wybranych danych. Przekroczenia limitu, niejasne istotne fragmenty i sprzeczne zaprzeczenia wymagają doprecyzowania.
+- **Kontrola gotowej odpowiedzi**: ponowny odczyt ról, obiektów, zaprzeczeń i relacji względem źródła. Odpowiedź wraca również do gałęzi K. Jej stan jest osobno zapisanym kierunkowskazem; o przyjęciu nie decyduje sam sygnał K.
 - **Praca z tekstem i dokumentami**: wklejanie materiału, obsługa TXT, MD, CSV, DOCX i PDF; DOC wymaga Microsoft Worda. Odczyt wzorów wymaga kontroli z oryginałem.
 - **Narzędzia matematyczne**: obliczenia, równania, całki, pochodne i macierze przez lokalny solver. Dekoder składa odpowiedź według planu zadania.
 - **Słowniki, odmiana i proste relacje zdań**: części mowy, przypadki, role i wybrane zaprzeczenia; trwałe notatki i kontekst rozmowy.
@@ -21,6 +24,20 @@ W pytaniach z zaznaczoną pracą na materiale naprawiono pierwszeństwo dokument
 
 W „Dokumenty i tekst źródłowy” wklej `Objętość: 3 l. Gotowanie: 75 min.`, wybierz pracę z materiałem i zadaj pytanie.
 
+Możesz też wpisać `Iga czyta list, bo Leon otwiera okno. Co robi Iga?`, a następnie zadawać pytania:
+
+| Kolejna wiadomość | Odpowiedź generatora 3 |
+|---|---|
+| Co robi Iga? | **Iga czyta list.** |
+| Dlaczego? | **Iga czyta list, ponieważ Leon otwiera okno.** |
+| A Leon? | **Leon otwiera okno.** |
+| Co z tego wynika? | **Leon otwiera okno, więc Iga czyta list.** |
+| Co potem? | **Źródło nie podaje dalszej kolejności zdarzeń.** |
+
+W tym przykładzie źródło podaje zależność, ale nie kolejność zdarzeń. Dla `Iga czyta list, potem Leon zamyka drzwi` pytanie „Co potem?” otrzymuje odpowiedź zachowującą tę podaną kolejność.
+
+Przykłady nazwanych pól z pierwszego materiału:
+
 | Pytanie lub zmiana | Rzeczywista odpowiedź |
 |---|---|
 | Jaka jest objętość? | **Wartość pola „Objętość” wynosi 3 l.** |
@@ -29,33 +46,26 @@ W „Dokumenty i tekst źródłowy” wklej `Objętość: 3 l. Gotowanie: 75 min
 | Podaj jednocześnie objętość 3 l i 6 l | **Podane wartości wymagają uzgodnienia: Objętość: 3 l / 6 l.** |
 | Jaka jest temperatura? | **Odczyt nie potwierdził odpowiedzi na podstawie tych danych.** |
 
-To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest odrzucany. Powyższy zakres dotyczy danych `Nazwa: wartość`, a nie dowolnego dokumentu ani swobodnej rozmowy. Okno nowego odczytu: **512 tokenów bajtowych** łącznie z pytaniem. Dłuższy materiał obsługuje dotychczasowy czytnik, bez cichego obcinania. Sprawdzono pytania po polsku oraz polskie i angielskie brzmienie odpowiedzi.
+Odpowiedzi powstają według planu gramatycznego i przechodzą kontrolę zgodności z materiałem. Odczyt nazwanych pól ma okno **512 tokenów bajtowych**; dłuższa proza jest dzielona na zdania przed wyborem danych dla dekodera. Sprawdzono polskie odczyty oraz angielskie odpowiedzi dla nazwanych pól i komunikaty doprecyzowania. Rozszerzenia gramatyczne generatora 3 dotyczą polskiego tekstu źródłowego.
 
 ## Potwierdzone wyniki
 
 | Kontrola z 1 listopada | Wynik |
 |---|---:|
-| Pełne zdania: etykiety, jednostki, godziny i brakujące dane | **23/23** |
+| Generator 3: role, negacje, relacje i dłuższy materiał — plan | **35/35** |
+| Generator 3: pełna aplikacja, kolejne pytania, wybór osoby, dokumenty, reset i izolacja rozmów | **57/57** |
+| Kontrola gotowej odpowiedzi: poprawne, błędne i nierozstrzygnięte propozycje | **9/9** |
 | Cała aplikacja: materiał, sprzeczność, zmiana wartości, język, przywitanie i dodawanie | **10/10** |
-| Powtarzanie i odczyt czynności: zmiany szyku, osoby i błędne przypisania ról | **16/16** |
-| Nowy generator: odczyt właściwej osoby ze zdania złożonego | **8/8** |
-| Nowy generator: odmowa niepotwierdzonego odczytu / dokument i kontekst rozmowy | **6/6 / 2/2** |
 | Celowo uszkodzone wyjście dekodera | **odrzucone** |
 | Wagi podczas powyższych prób | **niezmienione** |
 
-Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użytym komputerze; start procesu jest dłuższy. Wyniki dotyczą tych prób i opisanego zakresu. [Szczegóły wdrożenia](docs/ODCZYT_ODPOWIEDZI_20261101.md).
+Wyniki dotyczą osobnych prób i opisanego zakresu; nie są jedną oceną całej sprawności językowej. [Przebieg prac i wcześniejsze wyniki](HISTORIA_TSI.md).
 
 ## Aktualny stan uczenia i kontroli
 
-**Trening zatrzymano na czas zmiany generatora.** Próba zdań złożonych zakończyła się na zapisie **5051** wynikiem **7/16** surowego generatora: 6/8 podstaw i 1/8 zdań złożonych. Wdrożony generator odpowiedzi z treści zastępuje swobodny wybór słów planem wynikającym z odczytanych ról. Jego wyników nie utożsamiamy z poprawą surowego generatora ani z opanowaniem swobodnej rozmowy. Wagi treningowe, optymalizator i stan losowania są zachowane. Normalny trening pozostaje domyślnym trybem; proporcja 3:1 służy korekcie potwierdzonego pogorszenia. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
+**Trening pozostaje zatrzymany. Wdrożono generator 3 z planowaniem wypowiedzi i kontrolą gotowej odpowiedzi.** Ostatni stan treningu 5051, optymalizator i stan losowania są zachowane. Moduł neuronowy nowej ścieżki korzysta z zapisu 3944. Dalszy trening domyślnie jest normalny, a 3:1 pozostaje trybem korekcji potwierdzonego pogorszenia.
 
-Wynik **16/16** dotyczy wdrożonych operacji odczytu źródłowego, a **6/8** — surowego generatora w trakcie uczenia. To oddzielne próby. Odczyt czynności cytuje potwierdzone zdanie; nie tworzy nowej swobodnej wypowiedzi. Moduł źródłowy aplikacji pozostaje na zapisie 3944.
-
-Wcześniejszy blok diagnostyczny zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
-
-Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie startował przed zakończeniem analizy. Znaleziono inną lukę: stan K pochodzi z wejścia, a gotowa odpowiedź nie wraca do niego do weryfikacji. Poprawiono zewnętrzną kontrolę zapominania i synchronizację próbek w podglądzie. Kolejny identyczny długi blok nie został uruchomiony.
-
-[Przepływ, rzeczywiste odpowiedzi i dobór metod uczenia](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md) · [Wcześniejsze przebiegi treningu](docs/TRENING_TSI_20261101.md).
+Gałąź K otrzymuje ponownie źródło, pytanie i gotową propozycję. Zmiana jej składowych jest obserwacją, a nie skalibrowaną oceną prawdziwości. Weryfikacja znaczenia działa w granicach odczytanych ról i jawnych relacji. Złożone warunki, nieobsługiwane konstrukcje i brakujące dane wymagają doprecyzowania. [Historia wcześniejszych generatorów](docs/archiwum/README_przed_generator_v3_20261101.md).
 
 ## Wielkość
 

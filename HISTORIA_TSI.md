@@ -4,6 +4,18 @@ Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwośc
 
 ## 1 listopada — odczyt ról i przejście do zdań złożonych
 
+### Generator 3 — połączony plan wypowiedzi i kontroli
+
+Wdrożono polskie zaprzeczenia czasownika, kontrast, przyczynę, skutek oraz jawne następstwo czasowe. Odczyt odróżnia przyczynę od kolejności: „więc” nie jest automatycznie traktowane jako „potem”. Rozwiązanie zaimków wymaga jednej pasującej osoby; przy konkurencji użytkownik otrzymuje listę imion. Wybrane imię uzupełnia kontekst i ponawia pierwotne pytanie. Rozstrzygnięcie jest lokalną korektą kontekstu, nie zmianą wag ani dokumentu na dysku.
+
+Realizator układa kolejność osoba–czynność–dopełnienia z zachowaniem odmiany i „nie”. Na pytanie o przyczynę tworzy pełne zdanie z „ponieważ”, a o skutek — z „więc”. Dłuższy materiał jest segmentowany przed wyborem danych do dekodera, z jawnymi limitami 64 KiB UTF-8 i 128 zdań. Niejasny istotny fragment nie może zostać pominięty.
+
+Gotowa odpowiedź wraca do kontroli ról, obiektów, negacji i relacji. Oddzielnie źródło, pytanie i propozycja trafiają ponownie do enkodera z gałęzią K. Jej składowe i zmiana są zapisywane jako kierunkowskaz, bez traktowania ich jako skalibrowanej oceny prawdy. Decyzja o przyjęciu wynika z kontroli względem materiału. Nie zmieniono wag.
+
+Wyniki: plan 35/35; pełna aplikacja 57/57; celowo poprawne, błędne i nierozstrzygnięte propozycje 9/9; wcześniejsze funkcje aplikacji ponownie 10/10. Dodatkowa próba działającego serwera potwierdziła cztery kolejne tury: pytanie o osobę, „Dlaczego?”, zmianę osoby i pytanie o skutek. Rozmowy i dokumenty pozostały rozdzielone, a nowy materiał i reset unieważniają wcześniejsze odniesienia.
+
+Poprzedni README przeniesiono do [archiwum](docs/archiwum/README_przed_generator_v3_20261101.md). Kolejny etap to podłączenie i kontrola zgodności MUZ oraz walidatora, w tym kontekst paneli, obliczenia i terminy.
+
 Po zgłoszeniu użytkownika zatrzymano blok zdań złożonych na zapisie 5051 (43 aktualizacje), z wynikiem 7/16. Audyt niezmienionych wag 5008 porównał surowy generator z pełną aplikacją. Błędne odpowiedzi występowały już przed załadowaniem aplikacji. Generowanie pojedynczo i w paczce dawało te same teksty; pełny dekoder i jego pamięć podręczna wybierały te same tokeny we wszystkich 75 sprawdzonych pozycjach. Wcześniejsze 16/16 oznaczało odczyt według planu, a nie sprawność surowego generatora.
 
 Wprowadzono generator odpowiedzi z treści `source-state-plan/2`: odczyt ról i jawnych członów → wybór członu → plan → neuronowy dekoder. Sprawdzono 8/8 odpowiedzi ze zdań złożonych, 6/6 koniecznych doprecyzowań oraz 2/2 odczyty przez dokument i kontekst rozmowy. Poprzednie krótkie odczyty ponownie przeszły 16/16. Nie ma swobodnego generatora jako awaryjnego zastępstwa na tej ścieżce. Brakujące podmioty, nierozpoznane człony, negacje, warunki i przyczyny pozostają do rozbudowy. Zmiana jest wdrożeniem sterowanego odczytu, nie wynikiem dalszego treningu ani gotową rozmową ogólną.

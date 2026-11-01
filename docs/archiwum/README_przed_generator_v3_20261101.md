@@ -1,0 +1,90 @@
+# AI-SI-TSI — lokalny system TSI
+
+**Stan: 1 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, jawne reguły oraz narzędzia obliczeniowe. Działa lokalnie; konsultacje AI i źródła internetowe są opcjonalne. **Swobodna rozmowa nie osiągnęła wymaganego poziomu. Trening domyślnie jest normalny; trzy powtórki na jedną nowość stosujemy w razie potwierdzonej utraty wcześniejszych odpowiedzi.**
+
+Repozytorium publikuje dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne.
+
+## Co działa
+
+- **Pytania o krótkie nazwane dane**: sieć wybiera wartość, kontrola sprawdza źródło i rolę, następnie dekoder wykonuje plan pełnego zdania. Obsługiwane są dwa fakty, zmiana materiału i sygnalizowanie sprzecznych wartości.
+- **Powtarzanie tekstu i odczyt prostej czynności**: np. `Powtórz: Iga ogląda mapę.` oraz `Mapę ogląda Iga. Co robi Iga?`. Odczyt uwzględnia przypadki i zgodność liczby, zachowuje całe zdanie źródłowe i działa także po zmianie szyku. Niejednoznaczne przypisanie osoby wymaga doprecyzowania.
+- **Generator odpowiedzi z treści — wersja 2**: najpierw ustala role i człony, następnie wybiera odpowiedni fragment i przekazuje plan do dekodera. Obsługuje jawne osoby w zdaniach połączonych przez „i”, „a” lub „oraz”, np. `Iga ogląda mapę, a Leon zamyka drzwi. Co robi Leon?` → **Leon zamyka drzwi.** Na tej ścieżce nie ma powrotu do swobodnego dobierania słów. Pominięty podmiot, nierozpoznany człon, negacja lub warunek wymagają doprecyzowania.
+- **Praca z tekstem i dokumentami**: wklejanie materiału, obsługa TXT, MD, CSV, DOCX i PDF; DOC wymaga Microsoft Worda. Odczyt wzorów wymaga kontroli z oryginałem.
+- **Narzędzia matematyczne**: obliczenia, równania, całki, pochodne i macierze przez lokalny solver. Dekoder składa odpowiedź według planu zadania.
+- **Słowniki, odmiana i proste relacje zdań**: części mowy, przypadki, role i wybrane zaprzeczenia; trwałe notatki i kontekst rozmowy.
+- **Jawne reguły logiki dwu- i trójstanowej**, niezależne od swobodnego generowania tekstu.
+- **Panel PL/EN**: rozmowa, lokalne podpowiedzi, reguły grzecznościowe, daty i święta, pasek aktywności, ustawienia źródeł i konsultanta AI.
+
+W pytaniach z zaznaczoną pracą na materiale naprawiono pierwszeństwo dokumentu przed domyślnym wyszukiwaniem w Wikipedii. Jawne polecenie wyszukiwania pozostaje dostępne.
+
+## Przykłady aktualnej ścieżki odpowiedzi
+
+W „Dokumenty i tekst źródłowy” wklej `Objętość: 3 l. Gotowanie: 75 min.`, wybierz pracę z materiałem i zadaj pytanie.
+
+| Pytanie lub zmiana | Rzeczywista odpowiedź |
+|---|---|
+| Jaka jest objętość? | **Wartość pola „Objętość” wynosi 3 l.** |
+| Podaj obie wartości | **Wartość pola „Objętość” wynosi 3 l. Wartość pola „Gotowanie” wynosi 75 min.** |
+| Zamień materiał: objętość 8 l | **Wartość pola „Objętość” wynosi 8 l.** |
+| Podaj jednocześnie objętość 3 l i 6 l | **Podane wartości wymagają uzgodnienia: Objętość: 3 l / 6 l.** |
+| Jaka jest temperatura? | **Odczyt nie potwierdził odpowiedzi na podstawie tych danych.** |
+
+To generowanie według jawnego planu gramatycznego. Błędny tekst dekodera jest odrzucany. Powyższy zakres dotyczy danych `Nazwa: wartość`, a nie dowolnego dokumentu ani swobodnej rozmowy. Okno nowego odczytu: **512 tokenów bajtowych** łącznie z pytaniem. Dłuższy materiał obsługuje dotychczasowy czytnik, bez cichego obcinania. Sprawdzono pytania po polsku oraz polskie i angielskie brzmienie odpowiedzi.
+
+## Potwierdzone wyniki
+
+| Kontrola z 1 listopada | Wynik |
+|---|---:|
+| Pełne zdania: etykiety, jednostki, godziny i brakujące dane | **23/23** |
+| Cała aplikacja: materiał, sprzeczność, zmiana wartości, język, przywitanie i dodawanie | **10/10** |
+| Powtarzanie i odczyt czynności: zmiany szyku, osoby i błędne przypisania ról | **16/16** |
+| Nowy generator: odczyt właściwej osoby ze zdania złożonego | **8/8** |
+| Nowy generator: odmowa niepotwierdzonego odczytu / dokument i kontekst rozmowy | **6/6 / 2/2** |
+| Celowo uszkodzone wyjście dekodera | **odrzucone** |
+| Wagi podczas powyższych prób | **niezmienione** |
+
+Po rozgrzaniu podstawowe odpowiedzi na dane trwały około **2–3 s** na użytym komputerze; start procesu jest dłuższy. Wyniki dotyczą tych prób i opisanego zakresu. [Szczegóły wdrożenia](docs/ODCZYT_ODPOWIEDZI_20261101.md).
+
+## Aktualny stan uczenia i kontroli
+
+**Trening zatrzymano na czas zmiany generatora.** Próba zdań złożonych zakończyła się na zapisie **5051** wynikiem **7/16** surowego generatora: 6/8 podstaw i 1/8 zdań złożonych. Wdrożony generator odpowiedzi z treści zastępuje swobodny wybór słów planem wynikającym z odczytanych ról. Jego wyników nie utożsamiamy z poprawą surowego generatora ani z opanowaniem swobodnej rozmowy. Wagi treningowe, optymalizator i stan losowania są zachowane. Normalny trening pozostaje domyślnym trybem; proporcja 3:1 służy korekcie potwierdzonego pogorszenia. [Historia powtórek](docs/POWTORKI_3_DO_1_20261101.md).
+
+Wynik **16/16** dotyczy wdrożonych operacji odczytu źródłowego, a **6/8** — surowego generatora w trakcie uczenia. To oddzielne próby. Odczyt czynności cytuje potwierdzone zdanie; nie tworzy nowej swobodnej wypowiedzi. Moduł źródłowy aplikacji pozostaje na zapisie 3944.
+
+Wcześniejszy blok diagnostyczny zakończył się na zapisie **4677**. Mała kontrola podstaw dała **4/8**, wobec wcześniejszych **6/8** na zapisie 4497. Na niezmienionych wagach 4677 wybór spośród kilku przebiegów odpowiedzi ponownie dał **6/8**. To poprawa sposobu wnioskowania, nie wynik nowego uczenia. Nowe słowa nadal są przekręcane.
+
+Sprawdzono kolejność analizy i dekodowania: w badanej próbie CPU dekoder nie startował przed zakończeniem analizy. Znaleziono inną lukę: stan K pochodzi z wejścia, a gotowa odpowiedź nie wraca do niego do weryfikacji. Poprawiono zewnętrzną kontrolę zapominania i synchronizację próbek w podglądzie. Kolejny identyczny długi blok nie został uruchomiony.
+
+[Przepływ, rzeczywiste odpowiedzi i dobór metod uczenia](docs/PRZEPLYW_I_KONTROLA_TSI_20261101.md) · [Wcześniejsze przebiegi treningu](docs/TRENING_TSI_20261101.md).
+
+## Wielkość
+
+| Składnik | Aktualny pomiar |
+|---|---:|
+| Sieć modułu źródłowego, zapis 3944 | **9 040 623 parametrów** |
+| Jej parametry FP32 | **34.49 MiB** |
+| Zapis kroku 3944 z optymalizatorem i stanem treningu | **103.71 MiB** |
+
+To rozmiar nowej sieci, nie kompletnej instalacji ani portable. Główna dotychczasowa aplikacja zachowuje swój rdzeń i narzędzia; nowy moduł `TSI-grounded-step-3944` jest wykazywany oddzielnie. Słowniki, PyTorch, Python, dokumenty i kopie zajmują dodatkowe miejsce. [Wcześniejsze pomiary i wyniki](docs/archiwum/README_przed_2026-11-01.md).
+
+## Uruchomienie lokalne
+
+Uruchom **URUCHOM_TSI.bat** w katalogu instalacji i otwórz `http://127.0.0.1:8791/`. Repozytorium dokumentacyjne nie zawiera obecnego kodu ani gotowej nowej instalacji. Portable nie przebudowano w tym etapie.
+
+W **Ustawienia AI i źródeł** można wybrać Gemini, OpenAI, Claude lub **Bez AI**. Klucze zapisuje się wyłącznie lokalnie. Bez klucza aplikacja pomija konsultację. Wyłączenie internetu pozostawia narzędzia i źródła lokalne. [Opis ustawień i źródeł](docs/archiwum/README_przed_2026-11-01.md#nauczyciel-ai--konfiguracja).
+
+## Panel
+
+Zrzut z **29 października 2026**, zachowany jako podgląd układu; nie przedstawia nowego sprawdzianu z 1 listopada.
+
+![Panel TSI — przykład całki](docs/tsi-chat-current.png)
+
+## Historia i pozostałe zastosowania
+
+[Historia prac](HISTORIA_TSI.md) · [Poprzedni README](docs/archiwum/README_przed_2026-11-01.md) · [Uczestnicy](CONTRIBUTORS.md)
+
+[Sprawdzian sygnałów z 29 października](docs/RAPORT_SYGNALY_2026-10-29.md) — diagnostyka awarii nie osiągnęła wymaganego poziomu.
+
+[Walidator matematyczny](https://github.com/jbackk-lang/TSI-math-validator-5) · [MUZ](https://github.com/jbackk-lang/TSI-MUZ)
+
+[Historyczne paczki starego AI-SI](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-ai-si-2026-10-18) · [Spis i odtworzenie](docs/PACZKI_STAREGO_AI_SI.md)
