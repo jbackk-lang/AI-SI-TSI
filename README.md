@@ -26,7 +26,8 @@ Repozytorium zawiera dokumentację. Aktualny kod TSI, wagi i prywatna pamięć p
 | Odczyt kontekstu / transfer danych | **48/48 · 17/17** |
 | Rozwijana większa sieć | **krok 5576; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
 | Ostatnia ocena większej sieci | znane pytania **8/8**, wszystkie ćwiczone warianty **45/48**, chronione odpowiedzi **7/7**, odczyt kontekstu **45/48** |
-| Dalszy trening | **wstrzymany przez kontrolę pogorszenia odczytu**; większych wag nie wdrożono |
+| Ostatnia zakończona sesja | **wstrzymana przez kontrolę pogorszenia odczytu**; większych wag nie wdrożono |
+| Korekta odczytu, 3 listopada | Uruchomiono jeden ograniczony blok z kroku 5576: równy udział sześciu dziedzin, pary danych obecnych i brakujących, wszystkie role co trzy aktualizacje. Wynik tej próby wymaga osobnej oceny. |
 
 Stałe reguły logiki dwu- i trójstanowej pozostają osobnym, kontrolowanym elementem. Zwykłe odpowiedzi „tak”, „nie” i „nie wiem” nie są automatycznie zadaniami T/F/U.
 

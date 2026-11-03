@@ -9,6 +9,10 @@ Opublikowano uzupełniające archiwum dawnych modeli i kodu AI-SI, usunięto obj
 
 Moduł odpowiedzi aplikacji pozostaje na kroku 5217 (9 074 672 parametrów). Większa sieć treningowa ma 21 731 408 parametrów; ostatni zachowany stan to krok 5576. Bloki 19–20 zachowały chronione odpowiedzi 7/7; ostatni wynik to znane prośby 8/8, wszystkie ćwiczone warianty 45/48, nowe sformułowania 0/4. Odczyt kontekstu spadł z 47/48 do 45/48, dlatego kontroler wstrzymał dalsze bloki. Zachowano ostatnie wagi, optymalizator i stan losowania; nie wdrożono większej sieci. Swobodna rozmowa nie osiągnęła wymaganego poziomu.
 
+### Korekta powtórek odczytu — blok 21
+
+Rozpoznano dwa rodzaje błędów: nadmiernie długi wybrany fragment (godzina wraz z kolejnym polem) i przypisanie godziny do brakującego czasu postoju. Dotychczasowy trening utrwalał odczyt na dwóch losowych parach na aktualizację. Dodano opcjonalny, równomierny zestaw par obecność/brak we wszystkich sześciu dziedzinach; każda rola występuje w ciągu trzech aktualizacji. Sprawdzono 1440 przykładów, z wykluczeniem odłożonych wartości liczbowych. Z kroku 5576 uruchomiono jeden blok do ośmiu aktualizacji. To zmiana doboru lekcji; nie zmienia generowania ani nie podstawia odpowiedzi. Zachowano kontrolę pogorszenia i rozdzielenie wag aplikacji od bieżącej próby.
+
 ## 1 listopada — odczyt ról i przejście do zdań złożonych
 
 ### Podłączenie MUZ i walidatora
