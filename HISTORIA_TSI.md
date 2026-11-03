@@ -6,11 +6,20 @@ Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwośc
 
 ## 3 listopada — automatyczne ćwiczenia języka i sygnałów
 
-Ostatni oceniony zapis treningu: 5632. Przebieg po 5584: 5600 — dawne prośby 47/48, odczyt 46/48; po korekcie nadzoru kopiowania osiągnięto 48/48 dawnych wariantów na kroku 5616. Nowe sformułowania nadal nie przechodziły pełnej oceny. Dodatkowe 18 pytań miało początkowo 3/18, później 2/18.
+### Wynik automatycznej korekty — krok 5648
+
+Po wyrównaniu udziału przykładów, wzmocnieniu powtórek źródłowych wagą 3 i zmniejszeniu kroku uczenia o połowę wykonano dwa bloki po osiem aktualizacji, zachowując jedną linię wag od 5632 przez 5640 do 5648 oraz stany Adam i RNG. Odzyskano 48/48 dawnych próśb i 7/7 chronionych odpowiedzi. Odłożony zestaw poprawił się z 0/4 do 1/4. Dodatkowy zestaw pozostał na 3/18. Odczyt kontekstu 46/48, transfer 17/17, kopiowanie 24/24, pola 24/24, wykonanie planów 4/4; kontrola stałych reguł logicznych zaliczona. Nadzorca zakończył próbę ze stanem improvement_confirmed.
+
+Nowa poprawna odpowiedź modelu: „Zamierzam napisać opowiadanie. Jak zacząć?” → „Wybierz bohatera, jego cel i przeszkodę.” Pytanie nie zostało dodane do treningu; było wcześniej wykorzystywane w diagnozie, więc jest kontrolą rozwojową. Dodatkowe 18 pytań nie wykazało poprawy. Swobodna rozmowa nie osiągnęła wymaganego poziomu. Nie zmieniono wag działających aplikacji.
+
+### Wcześniejsza diagnoza i przebieg
+
+
+Ocena przed korektą: zapis 5632. Przebieg po 5584: 5600 — dawne prośby 47/48, odczyt 46/48; po korekcie nadzoru kopiowania osiągnięto 48/48 dawnych wariantów na kroku 5616. Nowe sformułowania nadal nie przechodziły pełnej oceny. Dodatkowe 18 pytań miało początkowo 3/18, później 2/18.
 
 Rozpoznano nieprawidłowy nadzór kopiowania fragmentów słów, np. „ierz” z „Zamierzam” do „Wybierz”. W diagnozie wyłączenie tego kanału poprawiło jedną nową odpowiedź. Nadzór treningowy zmieniono na całe słowa Unicode; zachowano kopiowanie zdań przy zmianie interpunkcji. Osiem kontroli poprawności przeszło. Zmiana dotyczyła 32/48 przykładów. Generowanie nadal korzysta z uczonego kanału kopiowania.
 
-Dodano 96 przejrzanych sformułowań z podobnymi początkami i różnymi celami, zachowując oddzielne wyniki dawnych 48 próśb. Po pierwszym rozszerzonym bloku wynik dawnych próśb spadł do 41/48, a chronionych odpowiedzi do 5/7; kontroler przerwał tę próbę. Odczyt zachował 46/48, formalne reguły logiki przeszły kontrolę. Ostatni oceniony stan ma dawne prośby 41/48, chronione 5/7 i nowe sformułowania 0/4.
+Dodano 96 przejrzanych sformułowań z podobnymi początkami i różnymi celami, zachowując oddzielne wyniki dawnych 48 próśb. Po pierwszym rozszerzonym bloku wynik dawnych próśb spadł do 41/48, a chronionych odpowiedzi do 5/7; kontroler przerwał tę próbę. Odczyt zachował 46/48, formalne reguły logiki przeszły kontrolę. Stan 5632 miał dawne prośby 41/48, chronione 5/7 i nowe sformułowania 0/4.
 
 Kolejna korekta wyrównuje udział przykładów niezależnie od długości odpowiedzi, wzmacnia powtórki ze źródłem i zmniejsza krok uczenia o połowę. W teście obliczenia gradientu dwa przykłady długości 2 i 8 miały równy łączny wkład; przy wadze 3:1 otrzymano odpowiadające udziały 0,75 i 0,25. Jest to sprawdzian obliczenia funkcji celu, nie wynik rozmowy. Lokalny nadzór przechodzi między utrwalaniem a rozszerzaniem materiału; sprawdza najnowsze wagi, kontroluje logikę, kopie, pola i plany oraz przerywa przy pogorszeniu lub zastoju. Ma granicę ośmiu bloków i czasu sesji; nie gwarantuje zbieżności. Podgląd w instalacji: **docs/PODGLAD_AUTOMATYCZNEGO_UCZENIA_TSI.md**. Nie przywrócono harmonogramu Codex.
 

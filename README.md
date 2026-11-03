@@ -24,10 +24,10 @@ Repozytorium zawiera dokumentację. Aktualny kod TSI, wagi i prywatna pamięć p
 | Próby rozmowy o źródle | **30/30** |
 | Próby całej aplikacji: dane, dokument, brak, sprzeczność, PL/EN i obliczenie | **10/10** |
 | Odczyt kontekstu / transfer danych | **48/48 · 17/17** |
-| Rozwijana większa sieć — ostatni oceniony zapis | **krok 5632; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
-| Ostatnia ocena tej sieci | dawne prośby **41/48**, chronione odpowiedzi **5/7**, odczyt kontekstu **46/48**, odłożone nowe sformułowania **0/4** |
+| Rozwijana większa sieć — ostatni oceniony zapis | **krok 5648; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
+| Ostatnia ocena tej sieci | dawne prośby **48/48**, chronione odpowiedzi **7/7**, odczyt kontekstu **46/48**, odłożone nowe sformułowania **1/4** |
 | Dodatkowa kontrola nowych pytań | **3/18**; pytania nie są dodawane do treningu |
-| Bieżąca praca | Automatyczna korekta z kontrolą zachowania dawnych umiejętności. Po pogorszeniu najpierw odzyskiwane są wcześniejsze odpowiedzi, następnie wraca nowy materiał. Wagi aplikacji pozostają na kroku 5217. |
+| Bieżąca praca | Próba zakończona po odzyskaniu dawnych odpowiedzi i poprawie odłożonego zestawu **0/4 → 1/4**. Dodatkowy zestaw pozostał na **3/18**. Nowe wagi zachowano lokalnie; aplikacja pozostaje na kroku 5217. |
 | Przebieg i przyczyny zmian | [Historia automatycznych ćwiczeń](HISTORIA_TSI.md#3-listopada--automatyczne-ćwiczenia-języka-i-sygnałów) |
 
 Stałe reguły logiki dwu- i trójstanowej pozostają osobnym, kontrolowanym elementem. Zwykłe odpowiedzi „tak”, „nie” i „nie wiem” nie są automatycznie zadaniami T/F/U.
