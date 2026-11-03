@@ -3,6 +3,21 @@
 Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwości oraz ograniczenia są opisane w [README](https://github.com/jbackk-lang/AI-SI-TSI/blob/main/README.md). Wyników odmiennych zestawów i modeli nie należy dodawać ani porównywać jak jednego sprawdzianu.
 
 
+
+## 3 listopada — automatyczne ćwiczenia języka i sygnałów
+
+Ostatni oceniony zapis treningu: 5632. Przebieg po 5584: 5600 — dawne prośby 47/48, odczyt 46/48; po korekcie nadzoru kopiowania osiągnięto 48/48 dawnych wariantów na kroku 5616. Nowe sformułowania nadal nie przechodziły pełnej oceny. Dodatkowe 18 pytań miało początkowo 3/18, później 2/18.
+
+Rozpoznano nieprawidłowy nadzór kopiowania fragmentów słów, np. „ierz” z „Zamierzam” do „Wybierz”. W diagnozie wyłączenie tego kanału poprawiło jedną nową odpowiedź. Nadzór treningowy zmieniono na całe słowa Unicode; zachowano kopiowanie zdań przy zmianie interpunkcji. Osiem kontroli poprawności przeszło. Zmiana dotyczyła 32/48 przykładów. Generowanie nadal korzysta z uczonego kanału kopiowania.
+
+Dodano 96 przejrzanych sformułowań z podobnymi początkami i różnymi celami, zachowując oddzielne wyniki dawnych 48 próśb. Po pierwszym rozszerzonym bloku wynik dawnych próśb spadł do 41/48, a chronionych odpowiedzi do 5/7; kontroler przerwał tę próbę. Odczyt zachował 46/48, formalne reguły logiki przeszły kontrolę. Ostatni oceniony stan ma dawne prośby 41/48, chronione 5/7 i nowe sformułowania 0/4.
+
+Kolejna korekta wyrównuje udział przykładów niezależnie od długości odpowiedzi, wzmacnia powtórki ze źródłem i zmniejsza krok uczenia o połowę. W teście obliczenia gradientu dwa przykłady długości 2 i 8 miały równy łączny wkład; przy wadze 3:1 otrzymano odpowiadające udziały 0,75 i 0,25. Jest to sprawdzian obliczenia funkcji celu, nie wynik rozmowy. Lokalny nadzór przechodzi między utrwalaniem a rozszerzaniem materiału; sprawdza najnowsze wagi, kontroluje logikę, kopie, pola i plany oraz przerywa przy pogorszeniu lub zastoju. Ma granicę ośmiu bloków i czasu sesji; nie gwarantuje zbieżności. Podgląd w instalacji: **docs/PODGLAD_AUTOMATYCZNEGO_UCZENIA_TSI.md**. Nie przywrócono harmonogramu Codex.
+
+Osobny moduł sygnałowy był ćwiczony równolegle. Przy niezmienionych progach i skalowaniu: nowy zestaw syntetyczny 333→334/368, dawny 1739→1746/2000; łączna liczba fałszywych wskazań 18→16 i 155→144. Liczba fałszywych alarmów na oknach normalnych pozostała 2/92 i 5/160; część pojedynczych etykiet pogorszyła się. Kandydat przeszedł ustalone zagregowane kryteria. To ocena kształtów syntetycznych; nie ponawiano w tym etapie sprawdzianu diagnostyki awarii na realnych urządzeniach. Wagi aplikacji nie zostały zmienione.
+
+Plan wspólnego modelu: wejście liczbowe z jednostkami i czasem próbkowania → reprezentacja zgodna z szerokością 256 → wspólny rdzeń/pamięć i dekoder językowy → kontrola wyniku względem danych. Obecne treningi są oddzielne; takiej integracji jeszcze nie wdrożono. Aktualny kod, wagi i pamięć pozostają lokalne.
+
 ## 3 listopada — porządki i aktualny stan
 
 Opublikowano uzupełniające archiwum dawnych modeli i kodu AI-SI, usunięto objęte nim lokalne pliki oraz zabezpieczono prywatnie dawne kopie TSI z klonu dokumentacji. [Zakres, pomiar miejsca i odtwarzanie](docs/PORZADKI_20261103.md).

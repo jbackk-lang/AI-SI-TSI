@@ -24,10 +24,11 @@ Repozytorium zawiera dokumentację. Aktualny kod TSI, wagi i prywatna pamięć p
 | Próby rozmowy o źródle | **30/30** |
 | Próby całej aplikacji: dane, dokument, brak, sprzeczność, PL/EN i obliczenie | **10/10** |
 | Odczyt kontekstu / transfer danych | **48/48 · 17/17** |
-| Rozwijana większa sieć | **krok 5584; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
-| Ostatnia ocena większej sieci | znane pytania **8/8**, wszystkie ćwiczone warianty **47/48**, chronione odpowiedzi **7/7**, odczyt kontekstu **45/48** |
-| Ostatnia zakończona sesja | **8 aktualizacji korekcyjnych**; ćwiczone warianty **45/48 → 47/48**, odczyt **45/48 → 45/48**; większych wag nie wdrożono |
-| Korekta odczytu, 3 listopada | Zakończono jeden ograniczony blok z kroku 5576 do 5584: równy udział sześciu dziedzin, pary danych obecnych i brakujących, wszystkie role co trzy aktualizacje. Nowe sformułowania: **0/4**; swobodna rozmowa wymaga dalszej pracy. |
+| Rozwijana większa sieć — ostatni oceniony zapis | **krok 5632; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
+| Ostatnia ocena tej sieci | dawne prośby **41/48**, chronione odpowiedzi **5/7**, odczyt kontekstu **46/48**, odłożone nowe sformułowania **0/4** |
+| Dodatkowa kontrola nowych pytań | **3/18**; pytania nie są dodawane do treningu |
+| Bieżąca praca | Automatyczna korekta z kontrolą zachowania dawnych umiejętności. Po pogorszeniu najpierw odzyskiwane są wcześniejsze odpowiedzi, następnie wraca nowy materiał. Wagi aplikacji pozostają na kroku 5217. |
+| Przebieg i przyczyny zmian | [Historia automatycznych ćwiczeń](HISTORIA_TSI.md#3-listopada--automatyczne-ćwiczenia-języka-i-sygnałów) |
 
 Stałe reguły logiki dwu- i trójstanowej pozostają osobnym, kontrolowanym elementem. Zwykłe odpowiedzi „tak”, „nie” i „nie wiem” nie są automatycznie zadaniami T/F/U.
 
