@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1140" viewBox="0 0 1200 1140" role="img" aria-labelledby="title desc">
+<title id="title">TSI — rdzeń i jego moduły</title>
+<desc id="desc">Kwiat modułów TSI: język, pamięć, logika, matematyka, dokumenty, źródła i aplikacje. Analiza sygnałów jest osobno rozwijanym modułem, oznaczonym przerywaną linią.</desc>
+<defs>
+ <radialGradient id="bg"><stop stop-color="#203250"/><stop offset="1" stop-color="#0c1425"/></radialGradient>
+ <radialGradient id="core"><stop stop-color="#edfbff"/><stop offset=".75" stop-color="#bfeafa"/><stop offset="1" stop-color="#7bbbd7"/></radialGradient>
+ <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d9eeff" opacity=".055"/></pattern>
+</defs>
+<rect width="1200" height="1140" rx="28" fill="url(#bg)"/>
+<rect width="1200" height="1140" rx="28" fill="url(#dots)"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+<text x="600" y="66" fill="#f1f7ff" font-size="36" font-weight="700">TSI · jeden rdzeń, wiele możliwości</text>
+<text x="600" y="102" fill="#afbed5" font-size="18">Mapa modułów i narzędzi lokalnego systemu</text>
+<circle cx="600" cy="560" r="285" fill="none" stroke="#b2d0f0" stroke-opacity=".11"/>
+<circle cx="600" cy="560" r="408" fill="none" stroke="#b2d0f0" stroke-opacity=".06"/>
+
+<ellipse cx="600.00" cy="275.00" rx="165" ry="117" transform="rotate(-90 600.00 275.00)" fill="#70dcd2" fill-opacity=".09" stroke="#70dcd2" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="600.00" y2="275.00" stroke="#70dcd2" stroke-opacity=".25" />
+<ellipse cx="801.53" cy="358.47" rx="165" ry="117" transform="rotate(-45 801.53 358.47)" fill="#94b8ff" fill-opacity=".09" stroke="#94b8ff" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="801.53" y2="358.47" stroke="#94b8ff" stroke-opacity=".25" />
+<ellipse cx="885.00" cy="560.00" rx="165" ry="117" transform="rotate(0 885.00 560.00)" fill="#c5a2ff" fill-opacity=".09" stroke="#c5a2ff" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="885.00" y2="560.00" stroke="#c5a2ff" stroke-opacity=".25" />
+<ellipse cx="801.53" cy="761.53" rx="165" ry="117" transform="rotate(45 801.53 761.53)" fill="#f0be6d" fill-opacity=".09" stroke="#f0be6d" stroke-opacity=".65" stroke-width="1.8" stroke-dasharray="8 6"/>
+<line x1="600" y1="560" x2="801.53" y2="761.53" stroke="#f0be6d" stroke-opacity=".25" stroke-dasharray="8 6"/>
+<ellipse cx="600.00" cy="845.00" rx="165" ry="117" transform="rotate(90 600.00 845.00)" fill="#e9a8c4" fill-opacity=".09" stroke="#e9a8c4" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="600.00" y2="845.00" stroke="#e9a8c4" stroke-opacity=".25" />
+<ellipse cx="398.47" cy="761.53" rx="165" ry="117" transform="rotate(135 398.47 761.53)" fill="#8ec9f6" fill-opacity=".09" stroke="#8ec9f6" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="398.47" y2="761.53" stroke="#8ec9f6" stroke-opacity=".25" />
+<ellipse cx="315.00" cy="560.00" rx="165" ry="117" transform="rotate(180 315.00 560.00)" fill="#a9d88b" fill-opacity=".09" stroke="#a9d88b" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="315.00" y2="560.00" stroke="#a9d88b" stroke-opacity=".25" />
+<ellipse cx="398.47" cy="358.47" rx="165" ry="117" transform="rotate(225 398.47 358.47)" fill="#ffab8e" fill-opacity=".09" stroke="#ffab8e" stroke-opacity=".65" stroke-width="1.8" />
+<line x1="600" y1="560" x2="398.47" y2="358.47" stroke="#ffab8e" stroke-opacity=".25" />
+<circle cx="600" cy="560" r="154" fill="#0b172b" stroke="#a2daf6" stroke-opacity=".25"/>
+<circle cx="600" cy="560" r="139" fill="url(#core)"/>
+<text x="600" y="538" fill="#102942" font-size="55" font-weight="800">TSI</text>
+<text x="600" y="575" fill="#193c54" font-size="22" font-weight="700">własna sieć</text>
+<text x="600" y="607" fill="#335b71" font-size="19">enkoder · dekoder</text>
+<text x="600" y="635" fill="#335b71" font-size="16">odczyt → odpowiedź</text>
+<text x="600.00" y="236.00" fill="#70dcd2" opacity=".55" font-size="14" letter-spacing="3">01</text>
+<text x="600.00" y="265.00" fill="#70dcd2" font-size="23" font-weight="700" letter-spacing="1">JĘZYK</text>
+<text x="600.00" y="295.00" fill="#edf4ff" font-size="18">Słowniki PL / EN</text>
+<text x="600.00" y="321.00" fill="#afbed5" font-size="16">znaczenia · odmiana</text>
+<text x="801.53" y="319.47" fill="#94b8ff" opacity=".55" font-size="14" letter-spacing="3">02</text>
+<text x="801.53" y="348.47" fill="#94b8ff" font-size="23" font-weight="700" letter-spacing="1">PAMIĘĆ</text>
+<text x="801.53" y="378.47" fill="#edf4ff" font-size="18">Kontekst rozmowy</text>
+<text x="801.53" y="404.47" fill="#afbed5" font-size="16">tematy · dane lokalne</text>
+<text x="885.00" y="521.00" fill="#c5a2ff" opacity=".55" font-size="14" letter-spacing="3">03</text>
+<text x="885.00" y="550.00" fill="#c5a2ff" font-size="23" font-weight="700" letter-spacing="1">LOGIKA</text>
+<text x="885.00" y="580.00" fill="#edf4ff" font-size="18">Reguły i relacje</text>
+<text x="885.00" y="606.00" fill="#afbed5" font-size="16">dwa i trzy stany</text>
+<text x="801.53" y="722.53" fill="#f0be6d" opacity=".55" font-size="14" letter-spacing="3">08</text>
+<text x="801.53" y="751.53" fill="#f0be6d" font-size="23" font-weight="700" letter-spacing="1">SYGNAŁY</text>
+<text x="801.53" y="781.53" fill="#edf4ff" font-size="18">Trendy · anomalie</text>
+<text x="801.53" y="807.53" fill="#afbed5" font-size="16">okresowość</text>
+<text x="801.53" y="835.53" fill="#f0be6d" font-size="13">OSOBNY TRENING</text>
+<text x="600.00" y="806.00" fill="#e9a8c4" opacity=".55" font-size="14" letter-spacing="3">07</text>
+<text x="600.00" y="835.00" fill="#e9a8c4" font-size="23" font-weight="700" letter-spacing="1">APLIKACJE</text>
+<text x="600.00" y="865.00" fill="#edf4ff" font-size="18">Panel TSI · MUZ</text>
+<text x="600.00" y="891.00" fill="#afbed5" font-size="16">walidator matematyczny</text>
+<text x="398.47" y="722.53" fill="#8ec9f6" opacity=".55" font-size="14" letter-spacing="3">06</text>
+<text x="398.47" y="751.53" fill="#8ec9f6" font-size="23" font-weight="700" letter-spacing="1">ŹRÓDŁA</text>
+<text x="398.47" y="781.53" fill="#edf4ff" font-size="18">Wiedza z internetu</text>
+<text x="398.47" y="807.53" fill="#afbed5" font-size="16">opcjonalny konsultant AI</text>
+<text x="315.00" y="521.00" fill="#a9d88b" opacity=".55" font-size="14" letter-spacing="3">05</text>
+<text x="315.00" y="550.00" fill="#a9d88b" font-size="23" font-weight="700" letter-spacing="1">DOKUMENTY</text>
+<text x="315.00" y="580.00" fill="#edf4ff" font-size="18">Tekst · PDF · DOCX</text>
+<text x="315.00" y="606.00" fill="#afbed5" font-size="16">odczyt i opracowanie</text>
+<text x="398.47" y="319.47" fill="#ffab8e" opacity=".55" font-size="14" letter-spacing="3">04</text>
+<text x="398.47" y="348.47" fill="#ffab8e" font-size="23" font-weight="700" letter-spacing="1">MATEMATYKA</text>
+<text x="398.47" y="378.47" fill="#edf4ff" font-size="18">Lokalne narzędzia</text>
+<text x="398.47" y="404.47" fill="#afbed5" font-size="16">równania · całki · macierze</text>
+<path d="M170 1013H1030" stroke="#a8c9ef" stroke-opacity=".16"/>
+<text x="600" y="1048" fill="#dce9fb" font-size="18">Lokalne działanie · własne dane · opcjonalny dostęp do źródeł online</text>
+<text x="600" y="1080" fill="#9aadc8" font-size="15">Płatki przedstawiają funkcje systemu; nie oznaczają wspólnych wag wszystkich modułów.</text>
+<text x="600" y="1106" fill="#9aadc8" font-size="15">Przerywany płatek: analiza sygnałów rozwijana i trenowana oddzielnie.</text>
+</g></svg>

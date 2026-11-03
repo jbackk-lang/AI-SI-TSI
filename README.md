@@ -4,6 +4,12 @@
 
 Repozytorium zawiera dokumentację. Aktualny kod TSI, wagi i prywatna pamięć pozostają lokalne. Dawny kod AI-SI i modele zewnętrzne są w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
+## Rdzeń i moduły TSI
+
+![TSI — rdzeń i moduły w układzie kwiatu](docs/tsi-moduly.svg)
+
+Rdzeń współpracuje z językiem, pamięcią, regułami i narzędziami. Analiza sygnałów ma obecnie osobny trening. To mapa funkcji systemu; szczegółowy stan wdrożenia opisano poniżej.
+
 ## Co potrafi obecna aplikacja
 
 - Odczytuje nazwane dane i odpowiada na pytania o podany materiał; wskazuje braki i sprzeczności.
