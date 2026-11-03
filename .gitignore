@@ -19,3 +19,11 @@ __pycache__/
 *.log
 *core*.py
 !tools/training/run_bielik_coding_adapter.py
+
+/TSI/
+
+/archiwum/
+
+*.zip.*
+
+/traffic_snapshots/

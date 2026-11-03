@@ -39,3 +39,17 @@ Automatyczne pozycje GitHuba **Source code (zip)** i **Source code (tar.gz)** za
 To nie jest kompletna kopia dawnej prywatnej instalacji ani wydanie portable. Usunięcie lokalnych plików dotyczy wyłącznie zawartości objętej opublikowanymi paczkami. Pozostałe prywatne pliki i obecny TSI zostają lokalnie.
 
 [Powrót do aktualnego stanu](../README.md) · [Historia](../HISTORIA_TSI.md)
+
+## Uzupełnienie archiwum — 3 listopada 2026
+
+[Wydanie archiwalne z 3 listopada](https://github.com/jbackk-lang/AI-SI-TSI/releases/tag/archive-cleanup-2026-11-03) zawiera:
+
+| Zestaw | Zawartość |
+|---|---|
+| AI-SI-legacy-Qwen3-output-2026-10-05 | Stary wariant Qwen3 z odrębnym wyjściem; 3 części ZIP, około 2,82 GB |
+| AI-SI-legacy-NLI | Dwie historyczne kopie modelu DeBERTa NLI; 1 część ZIP, około 0,76 GB |
+| AI-SI-legacy-public-code | Dawne publiczne pliki aplikacji AI-SI i licencja, bez katalogu data/ |
+
+Pobierz komplet części oraz MANIFEST.json, RESTORE.py i archive_split_io.py. Uruchom `python RESTORE.py NOWY_KATALOG`. Skrypt weryfikuje SHA-256 i odtwarza pliki do nowego katalogu. Dołączono licencje, opis pochodzenia i SHA256SUMS.txt. Poszczególne części .001/.002/.003 nie są niezależnymi ZIP-ami.
+
+To uzupełnienie poprzedniego wydania. Aktualny TSI, jego treningi, pamięć, prywatne bazy i dokumenty nie są publikowane. Lokalne usunięcie dotyczy wyłącznie plików objętych opublikowanym manifestem.

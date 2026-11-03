@@ -1,4 +1,12 @@
-# Zakres publicznego repozytorium
+# Zakres publicznego repozytorium — 3 listopada 2026
+
+Aktualna gałąź główna służy dokumentacji TSI. Obecny kod, wagi, checkpointy, prywatna pamięć, dokumenty użytkownika i klucze pozostają lokalne.
+
+Dawne publiczne pliki AI-SI oraz wybrane stare modele zewnętrzne są przechowywane w [Releases](PACZKI_STAREGO_AI_SI.md), wraz z manifestami i licencjami. Nowe archiwum z 3 listopada nie obejmuje katalogu `data/`. Starsze commity zachowują swoją historię; porządki nie przepisują historii Git.
+
+Poniższy opis dotyczy wcześniejszej postaci repozytorium.
+
+## Zakres historyczny
 
 Użytkownik wybrał publikację interfejsu, integracji oraz narzędzi treningowych. Nie publikujemy prywatnego rdzenia SI/TIMDR.
 

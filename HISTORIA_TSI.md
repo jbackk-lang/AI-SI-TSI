@@ -2,6 +2,13 @@
 
 Ten plik przechowuje przebieg prac i wcześniejsze pomiary. Aktualne możliwości oraz ograniczenia są opisane w [README](https://github.com/jbackk-lang/AI-SI-TSI/blob/main/README.md). Wyników odmiennych zestawów i modeli nie należy dodawać ani porównywać jak jednego sprawdzianu.
 
+
+## 3 listopada — porządki i aktualny stan
+
+Opublikowano uzupełniające archiwum dawnych modeli i kodu AI-SI, usunięto objęte nim lokalne pliki oraz zabezpieczono prywatnie dawne kopie TSI z klonu dokumentacji. [Zakres, pomiar miejsca i odtwarzanie](docs/PORZADKI_20261103.md).
+
+Moduł odpowiedzi aplikacji pozostaje na kroku 5217 (9 074 672 parametrów). Większa sieć treningowa ma 21 731 408 parametrów; ostatni zachowany stan to krok 5576. Bloki 19–20 zachowały chronione odpowiedzi 7/7; ostatni wynik to znane prośby 8/8, wszystkie ćwiczone warianty 45/48, nowe sformułowania 0/4. Odczyt kontekstu spadł z 47/48 do 45/48, dlatego kontroler wstrzymał dalsze bloki. Zachowano ostatnie wagi, optymalizator i stan losowania; nie wdrożono większej sieci. Swobodna rozmowa nie osiągnęła wymaganego poziomu.
+
 ## 1 listopada — odczyt ról i przejście do zdań złożonych
 
 ### Podłączenie MUZ i walidatora
