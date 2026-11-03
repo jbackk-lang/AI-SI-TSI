@@ -618,3 +618,8 @@ Zapis 4497: 6/8, późniejszy 4677: 4/8. Na tych samych wagach wybór wielu prze
 ### Proporcja powtórek 3:1 — zapis 4827
 
 Ustawiono trzy powtórki na jeden nowy przykład. Blok: 5/8 kontroli podstaw, jedna utracona odpowiedź wykryta przez kontrolę dialogu. Kolejna próba dobiera powtórki według rodzajów zadań i utraconej odpowiedzi. [Zasady i wyniki](docs/POWTORKI_3_DO_1_20261101.md).
+
+
+## 3 listopada 2026 — rozmowa, narzędzia i podłączenie aplikacji
+
+Jednostki, audyt równań, zadania łączone i obsługa korekt zostały podłączone do wspólnego TSI oraz obu aplikacji. Naprawiono przechwycenie pytania o przyczynę przez moduł obliczeń. Sprawdzono 15/15 prób integracji oraz 7/7 HTTP w każdej aplikacji. Wdrożony moduł odpowiedzi: 5217; najnowszy zapis większej sieci treningowej: 5664, poza aplikacjami. Dokładne wyniki etapów, ograniczenia i przebieg opisano w [raporcie](docs/INTEGRACJA_TSI_20261103.md).
