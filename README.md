@@ -24,10 +24,10 @@ Repozytorium zawiera dokumentację. Aktualny kod TSI, wagi i prywatna pamięć p
 | Próby rozmowy o źródle | **30/30** |
 | Próby całej aplikacji: dane, dokument, brak, sprzeczność, PL/EN i obliczenie | **10/10** |
 | Odczyt kontekstu / transfer danych | **48/48 · 17/17** |
-| Rozwijana większa sieć | **krok 5576; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
-| Ostatnia ocena większej sieci | znane pytania **8/8**, wszystkie ćwiczone warianty **45/48**, chronione odpowiedzi **7/7**, odczyt kontekstu **45/48** |
-| Ostatnia zakończona sesja | **wstrzymana przez kontrolę pogorszenia odczytu**; większych wag nie wdrożono |
-| Korekta odczytu, 3 listopada | Uruchomiono jeden ograniczony blok z kroku 5576: równy udział sześciu dziedzin, pary danych obecnych i brakujących, wszystkie role co trzy aktualizacje. Wynik tej próby wymaga osobnej oceny. |
+| Rozwijana większa sieć | **krok 5584; 21 731 408 parametrów**, zachowane stany optymalizatora i losowania |
+| Ostatnia ocena większej sieci | znane pytania **8/8**, wszystkie ćwiczone warianty **47/48**, chronione odpowiedzi **7/7**, odczyt kontekstu **45/48** |
+| Ostatnia zakończona sesja | **8 aktualizacji korekcyjnych**; ćwiczone warianty **45/48 → 47/48**, odczyt **45/48 → 45/48**; większych wag nie wdrożono |
+| Korekta odczytu, 3 listopada | Zakończono jeden ograniczony blok z kroku 5576 do 5584: równy udział sześciu dziedzin, pary danych obecnych i brakujących, wszystkie role co trzy aktualizacje. Nowe sformułowania: **0/4**; swobodna rozmowa wymaga dalszej pracy. |
 
 Stałe reguły logiki dwu- i trójstanowej pozostają osobnym, kontrolowanym elementem. Zwykłe odpowiedzi „tak”, „nie” i „nie wiem” nie są automatycznie zadaniami T/F/U.
 

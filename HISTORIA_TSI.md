@@ -13,6 +13,10 @@ Moduł odpowiedzi aplikacji pozostaje na kroku 5217 (9 074 672 parametrów). Wi�
 
 Rozpoznano dwa rodzaje błędów: nadmiernie długi wybrany fragment (godzina wraz z kolejnym polem) i przypisanie godziny do brakującego czasu postoju. Dotychczasowy trening utrwalał odczyt na dwóch losowych parach na aktualizację. Dodano opcjonalny, równomierny zestaw par obecność/brak we wszystkich sześciu dziedzinach; każda rola występuje w ciągu trzech aktualizacji. Sprawdzono 1440 przykładów, z wykluczeniem odłożonych wartości liczbowych. Z kroku 5576 uruchomiono jeden blok do ośmiu aktualizacji. To zmiana doboru lekcji; nie zmienia generowania ani nie podstawia odpowiedzi. Zachowano kontrolę pogorszenia i rozdzielenie wag aplikacji od bieżącej próby.
 
+### Wynik korekty — krok 5584
+
+Osiem aktualizacji zakończono normalnie. Ćwiczone warianty poprawiły się z 45/48 do 47/48; znane prośby 8/8 i chronione odpowiedzi 7/7 pozostały zachowane. Odczyt kontekstu nadal 45/48, transfer 17/17, kopiowanie 24/24, pola 24/24 i plany 4/4; kontrola stałych reguł logicznych przeszła. Nowe sformułowania nadal 0/4. Dwa rodzaje błędów odczytu pozostały: zbyt długi fragment godziny przyjazdu i wskazanie godziny zamiast brakującego czasu postoju (drugi przypadek występuje w ocenie dwukrotnie). Zapis 5584 zachowuje optymalizator i losowanie. Nie zmieniono wag aplikacji.
+
 ## 1 listopada — odczyt ról i przejście do zdań złożonych
 
 ### Podłączenie MUZ i walidatora
