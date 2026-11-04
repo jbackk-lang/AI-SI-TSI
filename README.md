@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 3 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, reguły logiczne i lokalne narzędzia matematyczne. Wspólna obsługa **`2026-11-03-consumers-11`** jest podłączona do walidatora i MUZ. Konsultant AI oraz źródła internetowe są opcjonalne.
+**Stan: 4 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, reguły logiczne i lokalne narzędzia matematyczne. Wspólna obsługa **`2026-11-03-consumers-11`** jest podłączona do walidatora i MUZ. Konsultant AI oraz źródła internetowe są opcjonalne.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
@@ -13,6 +13,8 @@ To mapa funkcji systemu. Analiza sygnałów ma osobny trening.
 ## Co działa
 
 - Odczyt podanego tekstu i dokumentów, pytania o dane, wskazywanie braków i sprzeczności oraz wybrane odwołania, role i przyczyny w rozmowie.
+- Polska gramatyka GF składa i przekształca obsługiwane zdania, uzgadnia odmianę i rozróżnia czas zdarzenia od punktu odniesienia. Obsługuje dwie części zdania połączone przez „i”, „lub”, „ale”, „bo” lub „więc”. Wskazuje część, w której „teraz” koliduje z czasem przeszłym.
+- Pamięć miejsc i podróży rozdziela zdarzenia osób wymienionych w opisie. TSI odpowiada, gdzie dana osoba jest teraz i gdzie była wcześniej. Korekta bez imienia dotyczy ostatniej zapisanej podróży. Przy niejednoznacznym zaimku TSI prosi o imię. Obsługa dotyczy wskazanych polskich konstrukcji.
 - Dokumenty TXT, MD, CSV, DOCX i PDF. Stary DOC wymaga Microsoft Worda.
 - Słowniki, odmiana wyrazów, notatki i lokalna pamięć. Nowe odpowiedzi ze źródeł są zapisywane do weryfikacji. Zatwierdzoną wiedzę można odnaleźć również przy zmianie sformułowania i odmiany słowa, przy pełnej zgodności rozpoznanych pojęć i warunków.
 - Dokładne przeliczanie jednostek: długość, pole, objętość, masa, czas, prędkość, temperatura, ciśnienie i energia. Zachowanie ułamków, sprawdzanie wymiarów i rozróżnianie wielkości liter symboli SI.
@@ -33,6 +35,9 @@ To mapa funkcji systemu. Analiza sygnałów ma osobny trening.
 | Zadania łączone o ruchu jednostajnym | **19/19**, dodatkowo **13/13** kroków rozmowy w panelu |
 | Podłączenie walidatora | **15/15**, dodatkowo **7/7 HTTP** |
 | Podłączenie MUZ | **15/15**, dodatkowo **7/7 HTTP** |
+| Zdania GF z „ale”, „bo” i „więc”, kierunek przyczyny i konflikt czasu | **5/5** przez usługę rozmowy walidatora |
+| Dopytania o miejsca jednej osoby | **6/6** kroków przez usługę rozmowy walidatora |
+| Zdarzenia dwóch osób, korekta podróży i rozpoznanie brakującej informacji | **7/7** kroków przez usługę rozmowy walidatora |
 | Dotychczasowe testy kontekstu, korekt i odzyskiwania odpowiedzi | **35/35** |
 
 Zestawy częściowo sprawdzają te same mechanizmy — wyników nie sumujemy w jeden ogólny wskaźnik. [Przebieg, wykryte błędy i naprawy](HISTORIA_TSI.md#3-listopada-2026--rozmowa-narzędzia-i-podłączenie-aplikacji).
@@ -69,6 +74,19 @@ x=450
 ```
 
 W kontekście poprzedniego zadania wskazany zostaje pierwszy wiersz: pominięto zmianę minut na godziny. Samodzielny audyt równań rozpoczyna się poleceniem **„Audyt równań:”**; każdy krok wpisz w osobnym wierszu. Założenie można podać w nagłówku, np. **„Audyt równań dla x≠0:”**.
+
+Przykład rozmowy o miejscach:
+
+```text
+Ty: Ola była w domu, a Jan w ogrodzie. Potem Ola poszła do szkoły.
+TSI: Zapisane.
+Ty: Gdzie jest teraz Ola?
+TSI: W szkole.
+Ty: Pomyłka, poszła do biblioteki. A gdzie była wcześniej?
+TSI: W domu.
+Ty: Gdzie jest teraz Ola?
+TSI: W bibliotece.
+```
 
 W **Ustawienia AI i źródeł** wybierz dostawcę albo **Bez AI**. Klucz zapisuj lokalnie. Bez klucza TSI pomija konsultację; bez internetu korzysta z dostępnych narzędzi i materiału lokalnego. Repozytorium dokumentacyjne nie instaluje aplikacji. Pełne lokalne portable i ZIP-y zaktualizowano 3 listopada. [Rozmiary i sprawdzenie paczek](docs/PORTABLE_20261103.md). Publiczne demo pozostaje osobnym wydaniem.
 
