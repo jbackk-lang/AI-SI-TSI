@@ -70,7 +70,7 @@ x=450
 
 W kontekście poprzedniego zadania wskazany zostaje pierwszy wiersz: pominięto zmianę minut na godziny. Samodzielny audyt równań rozpoczyna się poleceniem **„Audyt równań:”**; każdy krok wpisz w osobnym wierszu. Założenie można podać w nagłówku, np. **„Audyt równań dla x≠0:”**.
 
-W **Ustawienia AI i źródeł** wybierz dostawcę albo **Bez AI**. Klucz zapisuj lokalnie. Bez klucza TSI pomija konsultację; bez internetu korzysta z dostępnych narzędzi i materiału lokalnego. Repozytorium dokumentacyjne nie instaluje aplikacji. Dotychczasowych ZIP-ów i publicznego demo nie przebudowano w tej aktualizacji.
+W **Ustawienia AI i źródeł** wybierz dostawcę albo **Bez AI**. Klucz zapisuj lokalnie. Bez klucza TSI pomija konsultację; bez internetu korzysta z dostępnych narzędzi i materiału lokalnego. Repozytorium dokumentacyjne nie instaluje aplikacji. Pełne lokalne portable i ZIP-y zaktualizowano 3 listopada. [Rozmiary i sprawdzenie paczek](docs/PORTABLE_20261103.md). Publiczne demo pozostaje osobnym wydaniem.
 
 ## Podgląd panelu
 
