@@ -10,6 +10,16 @@ Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i 
 
 To mapa funkcji systemu. Analiza sygnałów ma osobny trening.
 
+## Możliwości do rozwinięcia i sprawdzenia
+
+Kierunki z projektu [TSI Predikt Motor](https://github.com/jbackk-lang/TSI-Predikt-Motor).
+
+- **Analizator na mikrokontrolerze.** Profil badawczy FordA ma 97 wartości, czyli 388 bajtów w zapisie `float32`. To same parametry profilu. Na prototypie z STM32H743 trzeba przenieść obliczanie cech do firmware’u i zmierzyć pamięć zajętą przez bufory i analizę widma, czas przetwarzania oraz zgodność wyników z wersją Python. [STM32H743](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html)
+- **Predikt Motor jako samodzielne urządzenie.** Kandydatem do prototypu z dashboardem, raportami i zapisem pomiarów jest Raspberry Pi Compute Module 5 z 2 GB RAM i 16 GB eMMC. Do przygotowania jest wydanie Linux ARM64. Trzeba sprawdzić działanie z interfejsem OBD‑II i mikrofonem oraz zmierzyć zużycie pamięci i czas analizy. [Compute Module 5](https://www.raspberrypi.com/documentation/computers/compute-module.html)
+- **Seria sygnałowa TSI.** Motor, Solar PV i Grid Monitor mogą używać wspólnego formatu profilu i kodu do liczenia cech. Każdy moduł potrzebuje własnych wejść, danych treningowych i progów. W każdym teście trzeba mierzyć wykryte zdarzenia i fałszywe alarmy na danych odłożonych od treningu.
+
+Na oficjalnym teście FordA profil wykrył **618 z 639** przebiegów z oznaczonym objawem i zgłosił **29 alarmów w 681** przebiegach bez niego. Zbiór nie identyfikuje w raporcie konkretnej usterki. Wynik służy do porównań metod analizy sygnału. [Opis zbioru FordA](https://www.timeseriesclassification.com/description.php?Dataset=FordA)
+
 ## Co działa
 
 - Odczyt podanego tekstu i dokumentów, pytania o dane, wskazywanie braków i sprzeczności oraz wybrane odwołania, role i przyczyny w rozmowie.
