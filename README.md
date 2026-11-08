@@ -10,6 +10,12 @@ Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i 
 
 To mapa funkcji systemu. Analiza sygnałów ma osobny trening.
 
+## Badania równoległe: helisa i Chronoproces
+
+Rdzeń TSI jest oparty na helisie, dlatego równolegle do prac nad Helix-Lock prowadzony jest tor badawczy dotyczący pełnego przejścia trójpętlowego, relacji fazowych, historii czasowej i ciągłości informacji. To kierunek eksperymentalny, nie wdrożona funkcja TSI. Wyników z modeli GIA-TIMDR ani symulacji sprzężonych oscylatorów nie należy automatycznie przypisywać działaniu rdzenia TSI.
+
+[Notatka badawcza TSI — helisa, Chronoproces i ciągłość informacji](docs/HELIX_CHRONOPROCESS_TSI_RESEARCH_20261108.md).
+
 ## Możliwości do rozwinięcia i sprawdzenia
 
 Kierunki z projektu [TSI Predikt Motor](https://github.com/jbackk-lang/TSI-Predikt-Motor).
