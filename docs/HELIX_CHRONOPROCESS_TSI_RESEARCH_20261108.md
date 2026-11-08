@@ -81,3 +81,12 @@ Wpływ na TSI można uznać dopiero wtedy, gdy:
 **Helisa jest wspólnym kierunkiem badawczym dla GIA-TIMDR, Helix-Lock i TSI, ale wyniki eksperymentów pozostają przypisane do konkretnego modelu, w którym je uzyskano.**
 
 Tożsamość źródła, relacji i historii musi być zachowana niezależnie od adaptacji reprezentacji.
+
+
+## 8. Nowy artefakt badawczy w Helix-Lock (2026-11-08)
+
+W Helix-Lock powstała pierwsza implementacja ograniczonej pamięci cech historycznych: `helix_pro/airp_history_memory.py` (`AIRPHistoryMemory`). Przetwarza ona metadane zdarzeń w stałych oknach, wymaga ciągłości sekwencji, emituje deterministyczne podsumowania powiązane z hashem checkpointu i nie zachowuje payloadów ani identyfikatorów. Stan roboczy jest ograniczony do jednego niepełnego okna; gotowe podsumowania przekazywane są do zewnętrznego magazynu.
+
+To **nie jest implementacja TSI** i nie stanowi dowodu samonaprawy helisy. Jest to kontrolowany prototyp pamięci historii, który może posłużyć do sformułowania testów dla TSI po audycie kodu źródłowego. Szczegóły i ograniczenia: [Helix-Lock: CHRONOPROCESS_MEMORY_BOUNDARIES.md](https://github.com/jbackk-lang/Helix-Lock/blob/main/docs/CHRONOPROCESS_MEMORY_BOUNDARIES.md), [moduł](https://github.com/jbackk-lang/Helix-Lock/blob/main/helix_pro/airp_history_memory.py).
+
+CI Helix-Lock dla Python 3.11 i 3.12 przeszło dla testów nowego modułu. Nie należy przenosić tego wyniku na rdzeń TSI bez osobnej integracji i walidacji.
