@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-**Stan: 4 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, reguły logiczne i lokalne narzędzia matematyczne. Wspólna obsługa **`2026-11-03-consumers-11`** jest podłączona do walidatora i MUZ. Konsultant AI oraz źródła internetowe są opcjonalne.
+**Stan: 9 listopada 2026.** TSI łączy własną sieć enkoder–dekoder, słowniki, pamięć, reguły logiczne i lokalne narzędzia matematyczne. Wspólna obsługa **`2026-11-03-consumers-11`** jest podłączona do walidatora i MUZ. Konsultant AI oraz źródła internetowe są opcjonalne.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
@@ -10,11 +10,13 @@ Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i 
 
 To mapa funkcji systemu. Analiza sygnałów ma osobny trening.
 
-## Badania równoległe: helisa i Chronoproces
+## Architektura rdzenia i kierunek rozwoju
 
-Rdzeń TSI jest oparty na helisie, dlatego równolegle do prac nad Helix-Lock prowadzony jest tor badawczy dotyczący pełnego przejścia trójpętlowego, relacji fazowych, historii czasowej i ciągłości informacji. To kierunek eksperymentalny, nie wdrożona funkcja TSI. Wyników z modeli GIA-TIMDR ani symulacji sprzężonych oscylatorów nie należy automatycznie przypisywać działaniu rdzenia TSI.
+**Nadrzędny plan konstrukcyjny:** [TSI — architektura rdzenia i skomasowany plan rozwoju](docs/TSI_CORE_ROADMAP_AND_ARCHITECTURE.md).
 
-[Notatka badawcza TSI — helisa, Chronoproces i ciągłość informacji](docs/HELIX_CHRONOPROCESS_TSI_RESEARCH_20261108.md).
+To jedno miejsce określające docelowy podział rdzenia, potwierdzony stan, kolejność budowy, kryteria bezpieczeństwa i walidacji. Raporty wcześniejszych etapów pozostają materiałem źródłowym i historią, a nie osobnymi roadmapami.
+
+Badania helisy i Chronoprocesu są częścią tego planu, ale pozostają eksperymentalne. Nie są wdrożoną funkcją TSI ani dowodem samonaprawy. Szczegóły badań: [notatka z 8 listopada](docs/HELIX_CHRONOPROCESS_TSI_RESEARCH_20261108.md).
 
 ## Możliwości do rozwinięcia i sprawdzenia
 
@@ -114,4 +116,4 @@ Zrzut z 29 października przedstawia układ panelu.
 
 ## Historia
 
-[Historia prac](HISTORIA_TSI.md) · [Szczegóły podłączenia](docs/INTEGRACJA_TSI_20261103.md) · [Poprzedni README](docs/archiwum/README_przed_integracja_20261103.md) · [Archiwa dawnego AI-SI](docs/PACZKI_STAREGO_AI_SI.md) · [Uczestnicy](CONTRIBUTORS.md)
+[Architektura rdzenia i roadmapa](docs/TSI_CORE_ROADMAP_AND_ARCHITECTURE.md) · [Historia prac](HISTORIA_TSI.md) · [Szczegóły podłączenia](docs/INTEGRACJA_TSI_20261103.md) · [Poprzedni README](docs/archiwum/README_przed_integracja_20261103.md) · [Archiwa dawnego AI-SI](docs/PACZKI_STAREGO_AI_SI.md) · [Uczestnicy](CONTRIBUTORS.md)
