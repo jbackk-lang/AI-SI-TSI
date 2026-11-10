@@ -1,0 +1,8 @@
+# Patch for TSI/integrated_math/code/tsi_core/system.py
+# Add the following method inside class TSISystem (before vector_reply).
+# This is an exact excerpt from the archived system.py.
+
+ def geometry_candidate_reply(self,left,right):
+  """Opt-in geometry classifier; separate from active inference and verified logic."""
+  from geometry_candidate_adapter import classify_geometry
+  return classify_geometry(left,right)
