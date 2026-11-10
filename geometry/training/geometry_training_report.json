@@ -1,0 +1,14 @@
+{
+  "scope": "isolated geometric relation classifier candidate, not TSI active core",
+  "train_samples": 4096,
+  "holdout_samples": 1024,
+  "accuracy": 1,
+  "correct_per_class_out_of_256": [
+    256,
+    256,
+    256,
+    256
+  ],
+  "steps": 160,
+  "seed": 20261110
+}
