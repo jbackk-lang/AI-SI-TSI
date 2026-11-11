@@ -1,18 +1,18 @@
 # TSI — instrukcja wznowienia
 
-**Aktualizacja: 2026-11-11. Ostatni ukończony etap: 030. Następny: 031.**
+**2026-11-11. Ostatni etap 031. Następny 032.**
 
-## Jawność symulacji
-Zanim użyjesz symulatora, wyraźnie napisz użytkownikowi **SYMULACJA** i co jest symulowane. Oddziel: trening wag, inferencję, integrację i symulację. Użytkownik oczekuje pracy na realnych checkpointach H512.
+## Obowiązek: SYMULACJA
+Przed uruchomieniem jakiegokolwiek symulatora wyraźnie uprzedź użytkownika: **SYMULACJA**, podaj co jest symulowane. Nie myl treningu wag, inferencji i symulacji.
 
-## Etap 030 — audyt rzeczywistych checkpointów, bez symulacji i bez treningu
-Lokalny ZIP rozmowy: `TSI_H512_AUDIT_030.zip` (audit.py, result.json, run.log, README.md). Do odtworzenia wymagane katalogi 005, 027, 028 i 029, w tym checkpointy. Komenda: `python TSI_H512_AUDIT_030/audit.py`.
+## 031: test rzeczywistych checkpointów H512 — bez symulacji i bez treningu
+Lokalny artefakt: `TSI_H512_ROBUSTNESS_031.zip`; zawiera `robustness.py`, `result.json`, `run.log`, `README.md`. Uruchom `python TSI_H512_ROBUSTNESS_031/robustness.py`; wymagane katalogi 005, 028, 029 oraz PyTorch.
 
-Porównanie oryginalnego H512 z kandydatem 029: 21 przykładów z 027: **6/21 vs 7/21**; pełne 70 z 028: **24/70 vs 28/70** (13 naprawionych, 9 regresji); podział 029: treningowe 21 **8/21 vs 8/21**, walidacyjne 14 **5/14 vs 8/14**, testowe 35 **11/35 vs 12/35**.
+Na 70 znanych instrukcjach (z etapu 028), 4 wersje formatowania, 560 wywołań modelu. Oryginalny H512: oryginał **24/70**, uppercase **12/70**, pytajnik **26/70**, spacje **24/70**. Kandydat 029: oryginał **28/70**, uppercase **9/70**, pytajnik **25/70**, spacje **28/70**. Niezmienność predykcji po uppercase: bazowy 9/70, kandydat 3/70. Wniosek: poważna wrażliwość na wielkość liter, szczególnie 029; nie promować checkpointu.
 
-**OSTRZEŻENIE: dane nie są niezależne!** Wszystkie polecenia pisał ten sam asystent, 70 z 028 było już analizowanych, 21/70 użyto do treningu 029, 14/70 do wyboru checkpointu. Wynik 28/70 jest częściowo skażony treningiem; NIE jest miarą generalizacji. Etap 030 nie aktualizował wag. Nie promować 029 do głównego rdzenia.
+**Ograniczenie:** ponownie wykorzystano przykłady z 028. To nie jest zewnętrzny benchmark ani nowy trening. W 031 nie aktualizowano wag.
 
-## Następny etap 031
-Pozyskać naprawdę niezależny zbiór zewnętrzny (źródło i licencja), zablokować go przed treningiem, ocenić na nim H512-005 i H512-029. Następnie planować trening z kontrolą retencji. Nie wprowadzać symulacji bez jawnego uprzedzenia.
+## 032
+Sprawdź kod przetwarzania tekstu (normalizacja wielkości liter) i wykonaj kontrolowane porównanie z i bez normalizacji, bez ingerencji w checkpointy. Poszukaj zewnętrznego zbioru poleceń z pochodzeniem i licencją. Wyniki negatywne zachowuj.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
