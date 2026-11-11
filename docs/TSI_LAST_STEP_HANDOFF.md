@@ -41,3 +41,20 @@ Zbudować niezależny zestaw zapytań na rzeczywistych encjach, z kontrolami abs
 ## Następny etap 043
 
 Przygotować rozdzielone zbiory treningowy, walidacyjny i testowy oraz stały zestaw retencji. Zachować wynik leksykalny jako punkt odniesienia. Jeśli trenowana będzie bramka, zapisać osobny checkpoint i ocenić go przed rozważeniem użycia w normalnym odczycie.
+
+
+## Aktualizacja 2026-11-11 — potwierdzenie etapu 043 (Belzi)
+
+Od użytkownika otrzymano instrukcję lokalnego wznowienia: główny katalog Windows `C:\Users\jback\Downloads\a\AI-SI-TSI`, panel `Otworz-panel-TSI.bat`, kopia `TSI-001.zip`, pełny etap 043 `C:\Users\jback\Documents\Codex\2026-11-11\w-plikach-download-jest-katalog-timdr\outputs\TSI-043.zip`. Katalog Windows **nie jest dostępny bezpośrednio z tego środowiska**; nie zakładać, że panel został zmodyfikowany.
+
+Zweryfikowano w `jbackk-lang/Belzi/archive/TSI-043`: `README.md`, `result.json` i `h512-stage043.pt` (plik 8 548 216 bajtów). Raport: **prawdziwy trening H512 120 kroków na danych Wikidata**, walidacja 55→53/100, test 86→65/100, retencja 6→7/12; 21 poprawnych odpowiedzi zostało zablokowanych po treningu. Autor raportu zaznacza, że checkpoint 043 **nie został aktywowany w panelu**. Źródło: https://github.com/jbackk-lang/Belzi/tree/main/archive/TSI-043 . Podany lokalny plik `TSI-043.zip` nie został tutaj otwarty, a checkpoint 043 nie został uruchomiony.
+
+## Etap 044 — prototyp rozdzielenia intencji od stanu pamięci
+
+Kod, testy, lokalny bezpieczny instalator i wyniki: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage044 . Paczka rozmowy: `TSI_WIKIMEMORY_044.zip`, SHA256 `3b1f372e4f852ce59608dd66def4b98405abb6cfe4d6aeffa0e15533e9a4290d`.
+
+`read_policy.py` implementuje **deterministyczny**, czytelny router: tekst pytania faktograficznego → odczyt niezależny od błędnego operatora H512; zdanie logiczne → osobna ścieżka; niepewność → abstencja lub odczyt wyłącznie dla operatora READ; brak encji, właściwości i niejednoznaczność → abstencja. Klucz encja/właściwość jest **nadal dostarczany z zewnątrz, a nie wybierany przez H512**. `test_policy.py`: **12/12** testów transakcji SQLite na **sztucznych fiksturach**. Audyt prawdziwego raportu 043: 21/21 celowo wybranych wcześniejszych błędów ma rozpoznawalną postać pytania faktograficznego, 12/12 przypadków retencji analogicznie, 8/8 prób logiki rozpoznanych. To **retrospektywna analiza już poznanych danych; nie niezależny dowód poprawy**. **Brak treningu, brak nowej inferencji H512-043 i brak modyfikacji lokalnego panelu Windows.** Etapu 044 nie promować jako działającego modelu lub poprawionego wyniku na pełnych 100 pytaniach.
+
+## Następny etap 045
+
+Pracować **na lokalnej instalacji** użytkownika, po rzeczywistym zapewnieniu dostępu do `TSI-043.zip` i indeksu Wikidata. Zweryfikować i ostrożnie uruchomić `install-local.ps1` w kopii roboczej; nie nadpisywać panelu lub głównego checkpointu bez audytu. Ustalić *nowy* niewykorzystany w doborze reguł zbiór pytań przed uruchomieniem eksperymentu. Zmierzyć pełną odpowiedź i abstencję (nie tylko rozpoznanie szablonów) w trzech wariantach: leksykalna pamięć, H512-043, nowy router; dodatkowo sprawdzić retencję oryginalnych operatorów, pochodzenie faktów i regresje. Dopiero wtedy rozważyć integrację z panelem.
