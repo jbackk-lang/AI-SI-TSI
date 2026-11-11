@@ -1,0 +1,11 @@
+{
+  "stage": 39,
+  "dataset": "4 artificial test fixtures; NOT Wikidata facts",
+  "entities_imported_from_real_wikidata": 0,
+  "fixture_entities": 4,
+  "tests_passed": 8,
+  "tests_total": 8,
+  "persistent": true,
+  "h512_training": false,
+  "h512_inference": false
+}
