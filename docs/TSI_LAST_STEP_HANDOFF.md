@@ -15,3 +15,6 @@ Uzyskać prawdziwy dump Wikidata (oficjalne źródło: https://dumps.wikimedia.o
 
 ## Pliki źródłowe etapu 038 na GitHub
 Kod, test, instrukcja, wynik i log zostały zapisane w `tools/tsi_wikimemory/` na gałęzi `main`: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory . To nadal wyłącznie importer i testy na fiksturach, bez rzeczywistego importu Wikidata.
+
+## Etap 039 — indeks nazw i aliasów
+Kod, testy i wynik: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage039 . 8/8 testów na **czterech sztucznych fiksturach**, trwałość po restarcie. Implementacja: dokładne dopasowanie nazw/aliasów PL/EN, `unknown_entity`, `unknown_property`, `ambiguous`, źródło importu i numer rewizji. **0 prawdziwych encji Wikidata, 0 treningu/inferencji H512.** Sieć kontenera nie umożliwia pobrania Wikidata. Następny etap: prawdziwy import i niezależny test, bez twierdzenia o uczeniu modelu.
