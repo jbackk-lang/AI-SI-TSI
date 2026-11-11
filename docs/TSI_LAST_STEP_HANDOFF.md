@@ -1,16 +1,16 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni ukończony etap 036. Następny 037.**
+**2026-11-11. Ostatni etap 037. Następny 038.**
 
 ## Jawność
-Zawsze przed symulacją powiedz **SYMULACJA** i co symulujesz. 036: rzeczywista inferencja checkpointu H512-005, **bez symulacji i bez treningu wag**.
+Zawsze **przed** symulacją oznacz **SYMULACJA** i określ jej zakres. 037: **rzeczywisty trening wag PyTorch, bez symulacji**.
 
-## 036 — bramka wiedzy sterowana rzeczywistym H512
-Archiwum rozmowy: `TSI_KNOWLEDGE_036.zip` z `experiment.py`, `result.json`, `run.log`, `README.md`. Zależności: katalogi 005, 033, 035 i PyTorch. Uruchom `python TSI_KNOWLEDGE_036/experiment.py`.
+## Etap 037 — trening operatora READ H512
+Archiwum rozmowy `TSI_KNOWLEDGE_TRAIN_037.zip`, zawiera `train.py`, `result.json`, `run.log`, `README.md`, `h512_trained_037.pt`. Do reprodukcji potrzebne są katalogi 005, 028, 035, PyTorch.
 
-Na 16 pytaniach z 035 parser regułowy bez bramki uzyskał **16/16**, z bramką sterowaną wyjściem H512 (odczyt dozwolony wyłącznie dla operatora `READ`) **9/16**. H512 wskazał `READ` 8 razy. To istotny negatywny wynik: połączenie realnej decyzji H512 pogorszyło skuteczność. **H512 nie wybiera klucza faktu; robi to nadal parser regułowy.** Dane nie są niezależne, model nie zdobył nowej wiedzy w wagach. Import skryptu 035 uruchamia również jego test, więc run.log zawiera dwa raporty.
+Z oryginalnego checkpointu H512-005 trenowano przez 8 epok AdamW lr 0.00015 parametry `expansion_operator` i `expansion_context` na 28 przykładach: 16 pytań z 035 oznaczonych READ (w tym pytania o brakujące fakty) i 12 nie-READ z 028. Wynik na **treningowych** przykładach: **9/28 przed → 15/28 po**. Kontrola retencji na 56 wcześniej znanych przykładach z 028: **18/56 → 17/56**. To regresja o jeden przypadek, nie promować checkpointu. Nie było niezależnego testu ani treningu wiedzy faktograficznej; operator READ nie oznacza, że model zna odpowiedź. Zbiór kontrolny był wykorzystywany w poprzednich etapach.
 
-## 037 — następny krok
-Przygotować dane z prawdziwymi pytaniami o odczyt vs inne intencje, podzielić train/validation/test **przed** treningiem, wytrenować rzeczywisty klasyfikator H512, zmierzyć poprawę bramki i retencję wcześniejszych operatorów. Nie traktować małych ręcznie pisanych testów jako niezależnej generalizacji. Dążyć do realnego wykorzystania wiedzy, nie symulacji.
+## Etap 038
+Rozdzielić zadanie: (1) klasyfikacja intencji odczytu, (2) wydobycie klucza wiedzy, (3) weryfikowalna odpowiedź i abstencja. Zbudować zewnętrzny odłożony test z dokumentacją źródeł; trenować tylko na zbiorze treningowym, nie selekcjonować modelu według testu. Zmierzyć retencję operatorów i działanie pełnego potoku. Bez udawania autonomicznego uczenia.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
