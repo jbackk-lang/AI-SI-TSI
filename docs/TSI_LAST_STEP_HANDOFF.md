@@ -18,3 +18,6 @@ Kod, test, instrukcja, wynik i log zostały zapisane w `tools/tsi_wikimemory/` n
 
 ## Etap 039 — indeks nazw i aliasów
 Kod, testy i wynik: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage039 . 8/8 testów na **czterech sztucznych fiksturach**, trwałość po restarcie. Implementacja: dokładne dopasowanie nazw/aliasów PL/EN, `unknown_entity`, `unknown_property`, `ambiguous`, źródło importu i numer rewizji. **0 prawdziwych encji Wikidata, 0 treningu/inferencji H512.** Sieć kontenera nie umożliwia pobrania Wikidata. Następny etap: prawdziwy import i niezależny test, bez twierdzenia o uczeniu modelu.
+
+## Etap 040 — realny pomiar rozmiaru SQLite
+https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage040 — skrypt pomiaru, wynik i README. Na 4 sztucznych encjach: 4 stwierdzenia, 6 nazw, 4 partycje, 163840 bajtów stron SQLite i 294912 bajtów plików. **0 autentycznych encji Wikidata**, brak treningu/inferencji H512. Próba pobrania danych przez HTTPS nie powiodła się (DNS). Pełny pakiet kodu/testów w archiwum rozmowy `TSI_WIKIMEMORY_040.zip`. Następny krok: import rzeczywistego dumpu.
