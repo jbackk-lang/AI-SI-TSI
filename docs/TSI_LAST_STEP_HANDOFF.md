@@ -1,20 +1,24 @@
 # TSI — instrukcja wznowienia (nadpisywana)
 
-**Data:** 2026-11-11. **Ostatni etap:** TSI_CURIOSITY_022. **Następny:** 023.
+**Data:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_023. **Następny:** 024.
 
-## Etap 022 — test checkpointu 021
-Pakiet lokalny rozmowy: `TSI_CURIOSITY_022.zip` (`evaluate.py`, `value_predictor.pt`, `result.json`, `README.md`). Kod odtwarzania: `python evaluate.py` z PyTorch. Test 300 epizodów dla znanych nazw tematów oraz 300 dla nowych, wszystkie trzy strategie w każdym epizodzie. Wyniki kontrfaktyczne są deterministycznie przypisane do (seed, obiekt, relacja) przez SHA256 i nie zależą od kolejności losowań strategii. To symulacja w pamięci, nie test trwałości grafu.
+## Etap 023 — trening opóźnionej wartości informacji
+Lokalny artefakt rozmowy: `TSI_CURIOSITY_023.zip` (kod `experiment.py`, `value_predictor_023.pt`, `result.json`, `run.log`, `README.md`). Archiwum ma 5 plików, test integralności ZIP przeszedł. Uruchomienie: `python experiment.py` z PyTorch. Nowy model 9→32→16→1, 1200 epizodów treningowych, ocena na 250 seedach z każdego zestawu. Wyniki pytania deterministyczne dla (seed, temat, relacja), więc strategie można porównywać parami.
 
-| Strategia | Znane nazwy | Nowe nazwy |
+| Polityka | Znane warunki | Odłożone seedy |
 |---|---:|---:|
-| Losowa | 3,0130 | 2,8325 |
-| Heurystyka | 5,7165 | 5,6102 |
-| Wyuczona | 5,7068 | 5,6633 |
+| Losowa | 3,0754 | 3,1090 |
+| Nowość | 2,7660 | 2,9716 |
+| Heurystyka | 4,2885 | 4,6961 |
+| Wyuczona | 4,6126 | 4,7774 |
 
-Różnica wyuczona minus heurystyka: znane −0,00967 (bootstrap 95% CI −0,14983..0,12083); nowe +0,05317 (CI −0,09183..0,18850). Brak wiarygodnej przewagi; oba modele wybierają docelowy temat przez 100% kroków. Brak dowodu długoterminowych zainteresowań. Środowisko syntetyczne, nowe tylko etykiety tematów, generator ten sam. H512 bez zmian.
+Wyuczona minus heurystyka: +0,3241 (bootstrap 95% CI +0,1039..+0,5359) na znanych warunkach; +0,0814 (CI −0,1665..+0,3115) na odłożonych seedach. **Brak wiarygodnej przewagi w teście odłożonym.** Około 3 różne tematy na 8 pytań — nie jest to dowód długoterminowych zainteresowań.
 
-## Następny krok 023
-Trenować na wielu odmiennych strukturach grafu, z opóźnionym zyskiem informacyjnym, bez łatwego sygnału identyfikującego temat docelowy. Testować nowe generatory, retencję zainteresowań między epizodami, kalibrację i baseline'y. Zachować oryginalne checkpointy.
+## Ograniczenia
+Wszystkie dane i odpowiedzi są symulowane. Odłożone seedy nie oznaczają niezależnego generatora dziedzin. Uczenie na zdyskontowanych nagrodach z własnych trajektorii nie zapewnia bezstronnej wyceny alternatywnych pytań. Brak trwałej pamięci preferencji między sesjami, brak samodzielnego tworzenia pytań przez H512; checkpoint H512 bez zmian.
 
-## Zasady kontynuacji
-Przy wznowieniu odczytaj ten plik, sprawdź faktyczną dostępność lokalnego ZIP/checkpointu; nie zakładaj ich obecności w kolejnej sesji. Po każdym zakończonym etapie **nadpisz ten plik** i zachowaj historię w Git.
+## Następny krok 024
+Dodać zapisywaną między sesjami pamięć preferencji, niezależne generatory środowiska i wielokrotne nasiona treningu. Zmierzyć trwałość zainteresowań, rzeczywisty przyrost sprawdzonej wiedzy oraz odporność na zmianę środowiska. Zachować baseline'y i wyniki negatywne.
+
+## Procedura wznowienia
+Odczytać ten plik; zweryfikować dostępność ZIP i checkpointu w aktualnej sesji (lokalny artefakt rozmowy może nie być dostępny później). Po kolejnym etapie **nadpisać ten sam plik** i zachować historię przez commit Git.
