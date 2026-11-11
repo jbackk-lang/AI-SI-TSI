@@ -1,16 +1,18 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni ukończony etap: 033. Następny: 034 — rzeczywiste pozyskiwanie wiedzy.**
+**2026-11-11. Ostatni etap: 034. Następny: 035.**
 
-## Jawność
-Zawsze uprzedzaj **przed** symulacją słowem **SYMULACJA** i określ zakres. W 033 nie używano symulatora ani nie trenowano wag. Rozróżniaj pamięć zewnętrzną od wiedzy wyuczonej w parametrach H512.
+## Obowiązkowe oznaczenie symulacji
+Zanim uruchomisz symulator, wyraźnie napisz użytkownikowi **SYMULACJA** i zakres. Etap 034: **BEZ SYMULACJI, BEZ TRENINGU WAG**.
 
-## Etap 033 — wiedza, nie sam klasyfikator instrukcji
-Archiwum rozmowy: `TSI_KNOWLEDGE_033.zip` (`knowledge.py`, `test.py`, `result.json`, `run.log`, `README.md`). Zależności: katalogi 005 i 028, PyTorch. Uruchom `python TSI_KNOWLEDGE_033/test.py`.
+## Etap 034 — fakty z NASA + pamięć TSI
+Archiwum w rozmowie: `TSI_KNOWLEDGE_034.zip`. Zawiera `experiment.py`, `result.json`, `run.log`, `README.md`. Do reprodukcji potrzebne są sąsiednie katalogi `TSI_H512_RUN_005` (checkpoint H512-005), `TSI_KNOWLEDGE_033` (ledger) i PyTorch. Uruchom: `python TSI_KNOWLEDGE_034/experiment.py`.
 
-Rzeczywisty graf `TSI_H512_RUN_005/graph` zawierał **1 fakt**: `woda / stan / ciekly`. Dodano osobny trwały rejestr pochodzenia i statusów faktów, detekcję konfliktu, wycofanie i odpowiedź `unknown`; testy zapisu, odczytu po ponownym otwarciu, konfliktu, wycofania i braku wiedzy zaliczone. Rzeczywisty checkpoint H512-005 wykonał inferencję na `jaki jest stan wody` i przewidział operator `READ`, ale **nie odczytywał z rejestru odpowiedzi**. Testowe ustawienie statusu `verified` ręcznie nie jest niezależną weryfikacją prawdy. **Nie dodano sprawdzonej wiedzy zewnętrznej i nie trenowano wag.**
+Ręcznie wydobyto i sprawdzono 14 faktów z 3 stron NASA: https://science.nasa.gov/planetary-science/focus-areas/ ; https://science.nasa.gov/solar-system/solar-system-facts/ ; https://science.nasa.gov/solar-system/moons/facts/ . Każdy fakt ma URL pochodzenia i status ręcznego sprawdzenia. Test: **15/15** poprawnych wyników przy podanym wprost kluczu subject/relation (14 znanych + 1 brak wiedzy). Restart ledgeru przeszedł. Inferencja rzeczywistego H512-005 została wykonana i zalogowana dla każdego pytania.
 
-## Etap 034
-Pozyskać prawdziwe źródła z pochodzeniem/licencją, zbudować odczyt faktów do odpowiedzi na pytania, porównać odpowiedzi z i bez pamięci. Następnie zbadać uczenie wag H512 na weryfikowalnym materiale i test niezależny. Nie wracać do samych symulatorów.
+**KRYTYCZNE OGRANICZENIE:** H512 nie wybierał kluczy wyszukiwania i nie generował odpowiedzi; subject/relation podawał evaluator. 15/15 nie jest miarą rozumienia pytań ani autonomicznego uczenia. Nie trenowano wag. Status verified = ręcznie sprawdzone źródło NASA, nie niezależny fact-check.
+
+## Etap 035
+Połączyć pytanie użytkownika z wyborem subject/relation i wyszukiwaniem, testować na nowych parafrazach i przypadkach negatywnych. Raportować błędy parsera. Dopiero po tym rzeczywisty trening wag na wiedzy z odłożonym zbiorem. Nie wracać do symulatorów bez uprzedzenia.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
