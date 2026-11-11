@@ -1,16 +1,16 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap: 035. Następny: 036.**
+**2026-11-11. Ostatni ukończony etap 036. Następny 037.**
 
-## Jawność metod
-Przed jakąkolwiek symulacją napisz wyraźnie **SYMULACJA** i co jest symulowane. Nie utożsamiaj regułowego parsera z wiedzą wyuczoną przez H512. Etap 035: **bez symulacji, bez treningu wag**.
+## Jawność
+Zawsze przed symulacją powiedz **SYMULACJA** i co symulujesz. 036: rzeczywista inferencja checkpointu H512-005, **bez symulacji i bez treningu wag**.
 
-## Etap 035 — tekst pytania → parser regułowy → trwała pamięć
-Archiwum rozmowy: `TSI_KNOWLEDGE_035.zip` (`experiment.py`, `result.json`, `run.log`, `README.md`). Wymaga katalogów 005, 033 oraz PyTorch. Uruchom `python TSI_KNOWLEDGE_035/experiment.py`.
+## 036 — bramka wiedzy sterowana rzeczywistym H512
+Archiwum rozmowy: `TSI_KNOWLEDGE_036.zip` z `experiment.py`, `result.json`, `run.log`, `README.md`. Zależności: katalogi 005, 033, 035 i PyTorch. Uruchom `python TSI_KNOWLEDGE_036/experiment.py`.
 
-Na 16 pytaniach po polsku: **16/16** poprawnych rezultatów, z czego **11/11** znanych faktów i **5/5** właściwych odmów. Fakty (11) ręcznie przepisane z wcześniejszego zestawu NASA; nie weryfikowano źródeł na nowo. Parser regułowy sam odczytuje subject/relation z pytania, ale **H512 nie wybiera klucza ani nie generuje odpowiedzi** — jego inferencja jest wykonywana i zapisywana oddzielnie. Wynik 16/16 to test integracyjny na małej liczbie przykładów, nie niezależny benchmark rozumienia, nie uczenie wag. Normalizacja usuwa diakrytyki, obsługuje ł.
+Na 16 pytaniach z 035 parser regułowy bez bramki uzyskał **16/16**, z bramką sterowaną wyjściem H512 (odczyt dozwolony wyłącznie dla operatora `READ`) **9/16**. H512 wskazał `READ` 8 razy. To istotny negatywny wynik: połączenie realnej decyzji H512 pogorszyło skuteczność. **H512 nie wybiera klucza faktu; robi to nadal parser regułowy.** Dane nie są niezależne, model nie zdobył nowej wiedzy w wagach. Import skryptu 035 uruchamia również jego test, więc run.log zawiera dwa raporty.
 
-## Następny etap 036
-Zbudować mechanizm, w którym rzeczywiste wyjście H512 wpływa na wybór klucza lub odpowiedzi, z bezpiecznym odrzuceniem niepewnych predykcji. Porównać z regułowym baseline'em na odłożonych pytaniach, pozyskać niezależny materiał i trenować na nim wagi dopiero po rozdzieleniu danych. Zachować wyniki negatywne.
+## 037 — następny krok
+Przygotować dane z prawdziwymi pytaniami o odczyt vs inne intencje, podzielić train/validation/test **przed** treningiem, wytrenować rzeczywisty klasyfikator H512, zmierzyć poprawę bramki i retencję wcześniejszych operatorów. Nie traktować małych ręcznie pisanych testów jako niezależnej generalizacji. Dążyć do realnego wykorzystania wiedzy, nie symulacji.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
