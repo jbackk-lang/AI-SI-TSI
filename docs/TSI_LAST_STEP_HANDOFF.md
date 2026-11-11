@@ -1,18 +1,16 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni ukończony etap 032. Następny 033.**
+**2026-11-11. Ostatni ukończony etap: 033. Następny: 034 — rzeczywiste pozyskiwanie wiedzy.**
 
-## Obowiązkowa jawność
-**Przed każdą symulacją** poinformuj użytkownika: **SYMULACJA** i dokładny zakres. Odróżniaj trening wag, inferencję, integrację i symulację. Nie deklaruj treningu, jeśli nie aktualizowano wag.
+## Jawność
+Zawsze uprzedzaj **przed** symulacją słowem **SYMULACJA** i określ zakres. W 033 nie używano symulatora ani nie trenowano wag. Rozróżniaj pamięć zewnętrzną od wiedzy wyuczonej w parametrach H512.
 
-## Etap 032 — normalizacja wejścia, rzeczywista inferencja, bez symulacji i treningu
-Archiwum rozmowy: `TSI_H512_NORMALIZE_032.zip` z `evaluate.py`, `result.json`, `run.log`, `README.md`. Zależności: katalogi 005, 028, 029, 031 i PyTorch. Uruchom: `python TSI_H512_NORMALIZE_032/evaluate.py`.
+## Etap 033 — wiedza, nie sam klasyfikator instrukcji
+Archiwum rozmowy: `TSI_KNOWLEDGE_033.zip` (`knowledge.py`, `test.py`, `result.json`, `run.log`, `README.md`). Zależności: katalogi 005 i 028, PyTorch. Uruchom `python TSI_KNOWLEDGE_033/test.py`.
 
-Normalizacja przed wejściem: Unicode NFC, lower(), strip(), usunięcie końcowych znaków ?!. i scalenie białych znaków. Porównano 70 wcześniej użytych instrukcji × 4 warianty × 2 checkpointy × 2 sposoby wejścia.
+Rzeczywisty graf `TSI_H512_RUN_005/graph` zawierał **1 fakt**: `woda / stan / ciekly`. Dodano osobny trwały rejestr pochodzenia i statusów faktów, detekcję konfliktu, wycofanie i odpowiedź `unknown`; testy zapisu, odczytu po ponownym otwarciu, konfliktu, wycofania i braku wiedzy zaliczone. Rzeczywisty checkpoint H512-005 wykonał inferencję na `jaki jest stan wody` i przewidział operator `READ`, ale **nie odczytywał z rejestru odpowiedzi**. Testowe ustawienie statusu `verified` ręcznie nie jest niezależną weryfikacją prawdy. **Nie dodano sprawdzonej wiedzy zewnętrznej i nie trenowano wag.**
 
-H512-005: bez normalizacji poprawne odpowiedzi (oryginał/uppercase/pytajnik/spacje) **24/12/26/24 na 70**; po normalizacji **24/24/24/24**. H512-029: bez **28/9/25/28**, po **28/28/28/28**. Zgodność predykcji z oryginałem po normalizacji 70/70 dla wszystkich trzech wariantów, co wynika z identycznego kanonicznego wejścia. **Nie wzrosła podstawowa trafność; nie jest to dowód nowej zdolności modelu.** Checkpointy bez zmian. Wszystkie przykłady pochodzą z wcześniej używanego zestawu, nie z niezależnego benchmarku.
-
-## Etap 033
-Zweryfikować normalizację na trudnych przykładach, gdzie wielkość liter/interpunkcja jest semantycznie istotna, oraz pozyskać zewnętrzny, licencjonowany, niezależny zbiór danych. Dopiero potem rozważać dalszy trening H512. Nie wdrażać kandydata 029 jako głównego rdzenia.
+## Etap 034
+Pozyskać prawdziwe źródła z pochodzeniem/licencją, zbudować odczyt faktów do odpowiedzi na pytania, porównać odpowiedzi z i bez pamięci. Następnie zbadać uczenie wag H512 na weryfikowalnym materiale i test niezależny. Nie wracać do samych symulatorów.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
