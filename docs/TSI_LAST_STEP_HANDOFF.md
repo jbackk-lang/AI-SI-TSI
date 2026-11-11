@@ -1,21 +1,21 @@
-# TSI — instrukcja wznowienia (nadpisywana)
+# TSI — instrukcja wznowienia
 
-**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_H512_EVAL_028. **Następny:** 029.
+**Aktualizacja 2026-11-11. Ostatni etap: 029. Następny: 030.**
 
-## Obowiązkowa jawność metod
-**PRZED** każdą symulacją wyraźnie napisz użytkownikowi: **SYMULACJA**, podaj co jest symulowane i co NIE jest testem rzeczywistego H512. Nie przedstawiaj nagród symulatora jako uczenia sieci. Rozróżniaj: (a) rzeczywisty trening wag, (b) test checkpointu bez treningu, (c) test integracji, (d) symulacja.
+## Obowiązkowa jawność
+Przed jakąkolwiek symulacją ogłoś **SYMULACJA** i jej zakres. Nie myl symulacji, inferencji i treningu wag. Użytkownik wyraźnie oczekuje pracy na rzeczywistym H512.
 
-## Etap 028 — rzeczywista inferencja checkpointów, bez symulacji
-Lokalny ZIP rozmowy: `TSI_H512_EVAL_028.zip`, zawiera `evaluate.py`, `result.json`, `README.md`. Wymaga sąsiednich katalogów `TSI_H512_RUN_005` i `TSI_H512_REAL_TRAIN_027` oraz PyTorch. Uruchom: `python TSI_H512_EVAL_028/evaluate.py`.
+## Etap 029 — RZECZYWISTY TRENING WAG, BEZ SYMULACJI
+Archiwum w rozmowie: `TSI_H512_REAL_TRAIN_029.zip` (kod, `h512_candidate_029.pt`, wyniki, log, README). Wymaga sąsiednich katalogów 005, 027, 028 i PyTorch. Uruchom: `python TSI_H512_REAL_TRAIN_029/train.py`.
 
-70 dodatkowych, ręcznie napisanych przez asystenta instrukcji (10 dla każdego operatora), wspólne wejścia dla obu checkpointów. **Oryginalny H512: 24/70 (34,29%). H512 po treningu 027: 22/70 (31,43%).** Naprawiono 12 błędów, wprowadzono 14 nowych; READ spadł z 8/10 do 2/10, IMPLIES wzrósł z 2/10 do 7/10. **Nie promować checkpointu 027** do głównego rdzenia. Oryginalny H512 zachować.
+Punkt startowy: oryginalny H512 z 005, nie checkpoint 027. Trening 63 oznaczone przykłady, walidacja 14, końcowy test 35. Zmiany tylko w `expansion_context` i `expansion_operator`; AdamW 0.0003, 20 epok, najlepsza walidacja w epoce 4.
 
-To rzeczywisty test inferencji modelu, ale nie zewnętrzny niezależny benchmark: 70 przykładów pochodzi od asystenta, testuje tylko klasyfikację operatorów; nie bada pełnej aplikacji ani trwałości pamięci. Nie wykonano treningu w 028.
+Walidacja: bazowy 5/14 (35,7%), kandydat 8/14 (57,1%). Test: bazowy 11/35 (31,4%), kandydat 12/35 (34,3%). **Nie promować kandydata do głównego rdzenia.** Różnica testowa to tylko jeden przykład; test jest częścią 70 poleceń wcześniej użytych w 028, a teksty mają tego samego autora. Brak niezależnego benchmarku i testu retencji. Wynik jest wstępny.
 
-SHA256 oryginału: `23e7c2f208129776705ea075f855c1afd5d26caf2bd7f1620fdae96b16c48851`. SHA256 checkpointu 027: `6f764725d5ead91060e3a3da74eee690437819634d2ee95a37cd4397caedeb36`.
+## Etap 028
+Na 70 ręcznie napisanych instrukcjach bazowy H512 24/70, checkpoint 027 22/70; regresja. Nie wdrażać 027.
 
-## Następny etap 029
-Zdobyć większy, **niezależnie przygotowany** zestaw poleceń, osobny zestaw regresji i trening. Rozważyć kontrolowany fine-tuning z ochroną dotychczasowych umiejętności; porównywać checkpointy na tych samych wejściach. Nie używać symulacji bez uprzedniej zgody i jawnego oznaczenia.
+## Etap 030
+Pozyskać rzeczywiście niezależny zbiór zewnętrzny i zweryfikować jakość, testować retencję oraz inne zdolności H512. Nie używać symulatora bez uprzedniego oznaczenia. Utrzymać niezmieniony checkpoint bazowy.
 
-## Powrót
-Odczytaj ten plik oraz [metodologię uczenia](TSI_LEARNING_METHODOLOGY.md). Sprawdź dostępność plików i checkpointów. Po następnym etapie nadpisz ten sam plik.
+[Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
