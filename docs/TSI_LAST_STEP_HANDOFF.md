@@ -12,3 +12,6 @@ Archiwum rozmowy `TSI_WIKIMEMORY_038.zip` (SHA256 `7d561f69cfe1fd3783fdf709071a4
 Uzyskać prawdziwy dump Wikidata (oficjalne źródło: https://dumps.wikimedia.org/wikidatawiki/entities/), zachować datę i warunki licencji, zaimportować próbkę i zweryfikować wartości i pochodzenie. Nie deklarować importu bez dowodu. Potem dodać wyszukiwanie encji i porównanie odpowiedzi z i bez pamięci. W dalszym etapie podłączyć H512 jako kontroler i wykonać prawdziwy trening wag z niezależną ewaluacją.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
+
+## Pliki źródłowe etapu 038 na GitHub
+Kod, test, instrukcja, wynik i log zostały zapisane w `tools/tsi_wikimemory/` na gałęzi `main`: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory . To nadal wyłącznie importer i testy na fiksturach, bez rzeczywistego importu Wikidata.
