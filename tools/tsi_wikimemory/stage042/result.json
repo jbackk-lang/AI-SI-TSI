@@ -1,0 +1,483 @@
+{
+  "stage": 42,
+  "dump_date": "2026-11-09",
+  "license": "CC0-1.0",
+  "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+  "prefix_sha256": "a42bb6e48c2d3f914082382bf3142004419245b2eb21c10ffd58e9a163b27a80",
+  "sample_sha256": "5a74b11279bd5a87d134408f2b3c607b339356d7a7f80b132cff9accfad54924",
+  "sample": "Distinct QIDs 51–300 in dump order, disjoint from stage 041",
+  "import": {
+    "entities": 250,
+    "statements_seen": 37837,
+    "invalid_lines": 0,
+    "shards": 4
+  },
+  "checkpoints": {
+    "h512.pt": "23e7c2f208129776705ea075f855c1afd5d26caf2bd7f1620fdae96b16c48851",
+    "null_gate_75.pt": "a1541e9d69858769b62f4dea3365cbde7579bb61f56936abde38f9fbb286a57f"
+  },
+  "h512_inference": true,
+  "h512_training": false,
+  "retention_measured": false,
+  "torch_version": "2.14.0+cpu",
+  "operators": {
+    "NOT": 3,
+    "EQUIV": 3,
+    "IMPLIES": 1,
+    "READ": 5
+  },
+  "metrics": {
+    "baseline": {
+      "correct": 12,
+      "total": 12,
+      "answerable_correct": 8,
+      "answerable_total": 8,
+      "abstentions": 4,
+      "unanswerable_correct": 4,
+      "unanswerable_total": 4
+    },
+    "gated": {
+      "correct": 6,
+      "total": 12,
+      "answerable_correct": 2,
+      "answerable_total": 8,
+      "abstentions": 10,
+      "unanswerable_correct": 4,
+      "unanswerable_total": 4
+    }
+  },
+  "rows": [
+    {
+      "question": "W jakim kraju jest avenue des Champs-Élysées?",
+      "label": "avenue des Champs-Élysées",
+      "pid": "P17",
+      "expected_qid": "Q550",
+      "expected": [
+        "Q142"
+      ],
+      "model_input": "w jakim kraju jest avenue des champs elysees",
+      "operator": "NOT",
+      "confidence": 0.4883134663105011,
+      "baseline": {
+        "status": "found",
+        "qid": "Q550",
+        "values": [
+          "Q142"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q550",
+            "pid": "P17",
+            "revision": 2556475552
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "What kind of entity is hydrogen?",
+      "label": "hydrogen",
+      "pid": "P31",
+      "expected_qid": "Q556",
+      "expected": [
+        "Q11344",
+        "Q2313842"
+      ],
+      "model_input": "what kind of entity is hydrogen",
+      "operator": "EQUIV",
+      "confidence": 0.45226800441741943,
+      "baseline": {
+        "status": "found",
+        "qid": "Q556",
+        "values": [
+          "Q11344",
+          "Q2313842"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q556",
+            "pid": "P31",
+            "revision": 2558492364
+          },
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q556",
+            "pid": "P31",
+            "revision": 2558492364
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "What is The Intouchables?",
+      "label": "The Intouchables",
+      "pid": "P31",
+      "expected_qid": "Q595",
+      "expected": [
+        "Q11424"
+      ],
+      "model_input": "what is the intouchables",
+      "operator": "EQUIV",
+      "confidence": 0.7963831424713135,
+      "baseline": {
+        "status": "found",
+        "qid": "Q595",
+        "values": [
+          "Q11424"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q595",
+            "pid": "P31",
+            "revision": 2564702791
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "Gdzie urodził się Nicolaus Copernicus?",
+      "label": "Nicolaus Copernicus",
+      "pid": "P19",
+      "expected_qid": "Q619",
+      "expected": [
+        "Q47554"
+      ],
+      "model_input": "gdzie urodzil sie nicolaus copernicus",
+      "operator": "NOT",
+      "confidence": 0.9948897361755371,
+      "baseline": {
+        "status": "found",
+        "qid": "Q619",
+        "values": [
+          "Q47554"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q619",
+            "pid": "P19",
+            "revision": 2564789066
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "Where was Neil Young born?",
+      "label": "Neil Young",
+      "pid": "P19",
+      "expected_qid": "Q633",
+      "expected": [
+        "Q172"
+      ],
+      "model_input": "where was neil young born",
+      "operator": "NOT",
+      "confidence": 0.9637691378593445,
+      "baseline": {
+        "status": "found",
+        "qid": "Q633",
+        "values": [
+          "Q172"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q633",
+            "pid": "P19",
+            "revision": 2565556224
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "What kind of entity is Po?",
+      "label": "Po",
+      "pid": "P31",
+      "expected_qid": "Q643",
+      "expected": [
+        "Q4022"
+      ],
+      "model_input": "what kind of entity is po",
+      "operator": "IMPLIES",
+      "confidence": 0.8763113617897034,
+      "baseline": {
+        "status": "found",
+        "qid": "Q643",
+        "values": [
+          "Q4022"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q643",
+            "pid": "P31",
+            "revision": 2565894009
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": false
+      }
+    },
+    {
+      "question": "W jakim kraju jest Rennes?",
+      "label": "Rennes",
+      "pid": "P17",
+      "expected_qid": "Q647",
+      "expected": [
+        "Q142"
+      ],
+      "model_input": "w jakim kraju jest rennes",
+      "operator": "READ",
+      "confidence": 0.7884175181388855,
+      "baseline": {
+        "status": "found",
+        "qid": "Q647",
+        "values": [
+          "Q142"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q647",
+            "pid": "P17",
+            "revision": 2563307584
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "found",
+        "qid": "Q647",
+        "values": [
+          "Q142"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q647",
+            "pid": "P17",
+            "revision": 2563307584
+          }
+        ],
+        "correct": true
+      }
+    },
+    {
+      "question": "What is the capital of Vanuatu?",
+      "label": "Vanuatu",
+      "pid": "P36",
+      "expected_qid": "Q686",
+      "expected": [
+        "Q37806"
+      ],
+      "model_input": "what is the capital of vanuatu",
+      "operator": "READ",
+      "confidence": 0.7193176746368408,
+      "baseline": {
+        "status": "found",
+        "qid": "Q686",
+        "values": [
+          "Q37806"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q686",
+            "pid": "P36",
+            "revision": 2564827975
+          }
+        ],
+        "correct": true
+      },
+      "gated": {
+        "status": "found",
+        "qid": "Q686",
+        "values": [
+          "Q37806"
+        ],
+        "candidates": [],
+        "evidence": [
+          {
+            "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+            "qid": "Q686",
+            "pid": "P36",
+            "revision": 2564827975
+          }
+        ],
+        "correct": true
+      }
+    },
+    {
+      "question": "What is the capital of IL?",
+      "label": "IL",
+      "pid": "P36",
+      "expected_qid": null,
+      "expected": "ambiguous",
+      "model_input": "what is the capital of il",
+      "operator": "READ",
+      "confidence": 0.42262017726898193,
+      "baseline": {
+        "status": "ambiguous",
+        "qid": null,
+        "values": [],
+        "candidates": [
+          "Q1204",
+          "Q801"
+        ],
+        "evidence": [],
+        "correct": true
+      },
+      "gated": {
+        "status": "ambiguous",
+        "qid": null,
+        "values": [],
+        "candidates": [
+          "Q1204",
+          "Q801"
+        ],
+        "evidence": [],
+        "correct": true
+      }
+    },
+    {
+      "question": "What kind of entity is Belgium?",
+      "label": "Belgium",
+      "pid": "P31",
+      "expected_qid": null,
+      "expected": "unknown_entity",
+      "model_input": "what kind of entity is belgium",
+      "operator": "EQUIV",
+      "confidence": 0.8959594964981079,
+      "baseline": {
+        "status": "unknown_entity",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      },
+      "gated": {
+        "status": "gate_abstention",
+        "qid": null,
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      }
+    },
+    {
+      "question": "Where was hydrogen born?",
+      "label": "hydrogen",
+      "pid": "P19",
+      "expected_qid": null,
+      "expected": "unknown_property",
+      "model_input": "where was hydrogen born",
+      "operator": "READ",
+      "confidence": 0.6051136255264282,
+      "baseline": {
+        "status": "unknown_property",
+        "qid": "Q556",
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      },
+      "gated": {
+        "status": "unknown_property",
+        "qid": "Q556",
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      }
+    },
+    {
+      "question": "What is the capital of Rennes?",
+      "label": "Rennes",
+      "pid": "P36",
+      "expected_qid": null,
+      "expected": "unknown_property",
+      "model_input": "what is the capital of rennes",
+      "operator": "READ",
+      "confidence": 0.5801255106925964,
+      "baseline": {
+        "status": "unknown_property",
+        "qid": "Q647",
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      },
+      "gated": {
+        "status": "unknown_property",
+        "qid": "Q647",
+        "values": [],
+        "candidates": [],
+        "evidence": [],
+        "correct": true
+      }
+    }
+  ]
+}

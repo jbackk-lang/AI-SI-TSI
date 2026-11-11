@@ -1,6 +1,6 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap: 041. Następny: 042.**
+**2026-11-11. Ostatni etap: 042. Następny: 043.**
 
 ## Obowiązkowa jawność
 Przed każdą symulacją napisz użytkownikowi **SYMULACJA** i co jest symulowane. Nie przedstawiaj fikstur testowych jako rzeczywistej wiedzy lub uczenia. W etapie 038 **nie trenowano wag H512 i nie wykonywano inferencji H512**.
@@ -29,6 +29,15 @@ https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage040
 
 Oryginalny H512 jest w lokalnym archiwum `C:/Users/jback/Downloads/_checkpoint/TSI_H512_RUN_005.zip` jako `src/h512.pt`; jego SHA256 zgadza się z instrukcją. Archiwum zawiera też `src/null_gate_75.pt` i moduły. Eksperymentalny 037 jest w `TSI_KNOWLEDGE_TRAIN_037.zip` w tym samym katalogu. Pliku `h512_candidate_029.pt` nie odnaleziono w sprawdzonych lokalizacjach.
 
-## Następny etap 042
+## Plan etapu 042
 
 Zbudować niezależny zestaw zapytań na rzeczywistych encjach, z kontrolami abstencji. Porównać tę samą pamięć i zestaw zapytań w trybie leksykalnym oraz z faktyczną inferencją oryginalnego H512. Oddzielnie zmierzyć trafność, abstencję i retencję. Zachować checkpoint bazowy.
+
+
+## Etap 042 — inferencja H512 jako bramka READ
+
+[Skrypt, wynik i log](../tools/tsi_wikimemory/stage042). Na 250 encjach rozłącznych z etapem 041 porównano 12 ręcznie ułożonych pytań z ustalonym kluczem encji i właściwości. Leksykalnie 12/12, bramka oryginalnego H512 6/12, w tym 2/8 poprawnych odpowiedzi na pytania z danymi i 4/4 poprawne abstencje. Sześć dodatkowych abstencji zablokowało poprawne odpowiedzi. Checkpointy przeszły kontrolę SHA256. Bez treningu i pomiaru retencji. Pakiet sesji `TSI_WIKIMEMORY_042.zip` zawiera fragment zrzutu, kod, wynik, log i instrukcje.
+
+## Następny etap 043
+
+Przygotować rozdzielone zbiory treningowy, walidacyjny i testowy oraz stały zestaw retencji. Zachować wynik leksykalny jako punkt odniesienia. Jeśli trenowana będzie bramka, zapisać osobny checkpoint i ocenić go przed rozważeniem użycia w normalnym odczycie.

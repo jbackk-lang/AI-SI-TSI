@@ -1,0 +1,49 @@
+{
+  "stage": 42,
+  "dump_date": "2026-11-09",
+  "license": "CC0-1.0",
+  "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+  "prefix_sha256": "a42bb6e48c2d3f914082382bf3142004419245b2eb21c10ffd58e9a163b27a80",
+  "sample_sha256": "5a74b11279bd5a87d134408f2b3c607b339356d7a7f80b132cff9accfad54924",
+  "sample": "Distinct QIDs 51–300 in dump order, disjoint from stage 041",
+  "import": {
+    "entities": 250,
+    "statements_seen": 37837,
+    "invalid_lines": 0,
+    "shards": 4
+  },
+  "checkpoints": {
+    "h512.pt": "23e7c2f208129776705ea075f855c1afd5d26caf2bd7f1620fdae96b16c48851",
+    "null_gate_75.pt": "a1541e9d69858769b62f4dea3365cbde7579bb61f56936abde38f9fbb286a57f"
+  },
+  "h512_inference": true,
+  "h512_training": false,
+  "retention_measured": false,
+  "torch_version": "2.14.0+cpu",
+  "operators": {
+    "NOT": 3,
+    "EQUIV": 3,
+    "IMPLIES": 1,
+    "READ": 5
+  },
+  "metrics": {
+    "baseline": {
+      "correct": 12,
+      "total": 12,
+      "answerable_correct": 8,
+      "answerable_total": 8,
+      "abstentions": 4,
+      "unanswerable_correct": 4,
+      "unanswerable_total": 4
+    },
+    "gated": {
+      "correct": 6,
+      "total": 12,
+      "answerable_correct": 2,
+      "answerable_total": 8,
+      "abstentions": 10,
+      "unanswerable_correct": 4,
+      "unanswerable_total": 4
+    }
+  }
+}
