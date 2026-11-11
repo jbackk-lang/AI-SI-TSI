@@ -1,0 +1,20 @@
+{
+  "stage": 44,
+  "method": "retrospective analysis of actual stage043 recorded questions and decisions, NOT new H512 inference/training",
+  "date": "2026-11-11",
+  "archive_repo": "jbackk-lang/Belzi/archive/TSI-043/result.json",
+  "test_stage043_before": 86,
+  "test_stage043_after": 65,
+  "known_regressions": 21,
+  "known_regressions_matched_fact_pattern": 21,
+  "retention_rows": 12,
+  "retention_rows_matched_fact_pattern": 12,
+  "logical_probe_count": 8,
+  "logical_probe_count_matched_logic": 8,
+  "independent_evaluation": false,
+  "stage043_checkpoint_executed": false,
+  "new_real_wikidata_lookup_performed": false,
+  "local_windows_installation_changed": false,
+  "known_failures_selected_after_observation": true,
+  "caveat": "21 cases selected for having become blocked by checkpoint; regex match is retrospective and cannot demonstrate generalization. No final-answer accuracy reported for proposed route on the full 100 test cases."
+}
