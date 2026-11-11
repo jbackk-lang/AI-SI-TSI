@@ -1,0 +1,97 @@
+{
+  "stage": 41,
+  "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+  "dump_date": "2026-11-09",
+  "license": "CC0-1.0",
+  "prefix_bytes": 8388608,
+  "prefix_sha256": "a42bb6e48c2d3f914082382bf3142004419245b2eb21c10ffd58e9a163b27a80",
+  "sample_sha256": "972904b45ed96a6043fd3542b1672fb35c04fe96947a86345e2c6ae3c9963537",
+  "sample_selection": "First 50 distinct QIDs in dump order",
+  "real_wikidata_entities": 50,
+  "import": {
+    "entities": 50,
+    "statements_seen": 14319,
+    "invalid_lines": 0,
+    "shards": 4
+  },
+  "sqlite": {
+    "status": "ok",
+    "shards": 4,
+    "entities": 50,
+    "statements": 14126,
+    "names": 258,
+    "database_bytes": 3657728,
+    "file_bytes": 3788800,
+    "files": [
+      {
+        "shard": "shard_00.sqlite",
+        "bytes": 1179648,
+        "entities": 12,
+        "statements": 4351,
+        "names": 65
+      },
+      {
+        "shard": "shard_01.sqlite",
+        "bytes": 532480,
+        "entities": 10,
+        "statements": 1928,
+        "names": 33
+      },
+      {
+        "shard": "shard_02.sqlite",
+        "bytes": 741376,
+        "entities": 17,
+        "statements": 2833,
+        "names": 100
+      },
+      {
+        "shard": "shard_03.sqlite",
+        "bytes": 1335296,
+        "entities": 11,
+        "statements": 5014,
+        "names": 60
+      }
+    ]
+  },
+  "checks_after_reopen": [
+    {
+      "qid": "Q8",
+      "pid": "P31",
+      "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+      "revision": 2565246109,
+      "label": "happiness",
+      "values": [
+        "Q141800263"
+      ],
+      "expected": "Q141800263"
+    },
+    {
+      "qid": "Q45",
+      "pid": "P36",
+      "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+      "revision": 2565314690,
+      "label": "Portugal",
+      "values": [
+        "Q45412",
+        "Q597"
+      ],
+      "expected": "Q597"
+    },
+    {
+      "qid": "Q23",
+      "pid": "P31",
+      "source": "https://dumps.wikimedia.org/wikidatawiki/entities/20261109/wikidata-20261109-all.json.bz2",
+      "revision": 2564320705,
+      "label": "George Washington",
+      "values": [
+        "Q5"
+      ],
+      "expected": "Q5"
+    }
+  ],
+  "unknown_entity_abstention": true,
+  "h512_inference": false,
+  "h512_training": false
+}
+
+Regresja etapu 039: 8/8, trwałość po restarcie. Cztery sztuczne fikstury testowe.
