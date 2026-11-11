@@ -1,26 +1,22 @@
 # TSI — instrukcja wznowienia (nadpisywana)
 
-**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_026. **Następny:** 027.
+**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_H512_REAL_TRAIN_027. **Następny:** 028.
 
-## Metodologia
-[Metodologia uczenia TSI](TSI_LEARNING_METHODOLOGY.md) — osobny dokument opisujący pamięć, politykę ciekawości i ewentualne dostrajanie H512. Traktować jako plan badawczy, nie potwierdzoną zdolność autonomicznego uczenia.
+## Ważna korekta kierunku
+Etapy 020–026 dotyczyły głównie syntetycznych symulatorów ciekawości, **nie treningu H512**. Nie należy przedstawiać ich jako dowodu autonomicznego uczenia TSI. Etap 027 to pierwszy w tej sekwencji rzeczywisty nadzorowany trening parametrów H512, ale nie trening ciekawości.
 
-## Etap 026 — wpływ odczytu faktów na pytania
-Lokalny artefakt rozmowy: `TSI_CURIOSITY_026.zip` (skrypt `experiment.py`, `result.json`, `run.log`, `README.md`, `METODOLOGIA_UCZENIA_TSI.md`). Wymaga sąsiednich katalogów `TSI_CURIOSITY_025` i `TSI_CURIOSITY_023` z checkpointem `value_predictor_023.pt` oraz PyTorch. Uruchomienie: `python TSI_CURIOSITY_026/experiment.py`.
+## Etap 027 — trening rzeczywistego H512
+Lokalny artefakt rozmowy: `TSI_H512_REAL_TRAIN_027.zip`, zawiera `train.py`, `README.md`, `result.json`, `h512_finetuned_027.pt`. Bazowy checkpoint `TSI_H512_RUN_005/src/h512.pt`, SHA-256 `23e7c2f208129776705ea075f855c1afd5d26caf2bd7f1620fdae96b16c48851`. Zmienione warstwy: `expansion_context.*`, `expansion_operator.*`; pozostałe parametry porównano z checkpointem bazowym i zachowano.
 
-100 scenariuszy × 5 sesji × 8 pytań; dane i weryfikacja syntetyczne. Trzy strategie: losowa, wyuczona bez odczytu faktów, wyuczona z regułą uwzględniającą fakty.
+42 ręcznie oznaczone polskie instrukcje treningowe (7 operatorów), 21 odłożonych przykładów. Trafność na odłożonych: **6/21 (28,57%) przed**, **11/21 (52,38%) po**. Kod i etykiety jawne w skrypcie. Trening nadzorowany, bez symulowanych odpowiedzi. Mały, ręcznie przygotowany zbiór; brak niezależnego zewnętrznego benchmarku i brak dowodu ogólnego uczenia lub ciekawości.
 
-| Metryka (średnia) | Losowa | Bez odczytu | Z odczytem |
-|---|---:|---:|---:|
-| Nagroda | 35,7340 | 33,2485 | 32,7590 |
-| Różne relacje | 17,07 | 8,55 | 16,83 |
-| Poprawne konsensusy | 11,53 | 7,96 | 13,66 |
-| Powtórzone pytania | 22,93 | 31,45 | 23,17 |
+Uruchomienie: katalogi `TSI_H512_RUN_005` i `TSI_H512_REAL_TRAIN_027` obok siebie; PyTorch; `python TSI_H512_REAL_TRAIN_027/train.py`. Wyniki i checkpoint w katalogu 027. **Nie zastępować oryginalnego H512.**
 
-Różnica nagrody z odczytem minus bez: −0,4895 (bootstrap 95% CI −1,0845..+0,1120). Nie stwierdzono przewagi nagrody. Nie trenowano nowych wag; H512 bez zmian. Historia faktów przechowywana w RAM między sesjami w jednym procesie, nie na dysku. Prawda używana tylko do oceny, nie w selektorze.
+## Następny krok 028
+1. Zbudować większy niezależny zbiór rzeczywistych instrukcji, z rozdzieleniem autorów i szablonów między treningiem i testem.
+2. Sprawdzić retencję dotychczasowych możliwości i regresje po fine-tuningu.
+3. Dopiero potem badać wybór pytań przez H512 na sprawdzalnych źródłach, bez generowania sztucznej prawdy.
+4. Raportować także porażki i ograniczenia.
 
-## Następny etap 027
-Trwały magazyn faktów na dysku między procesami; zapis pochodzenia, wersjonowanie korekt, niepewność i test restartu. Sprawdzić odporność na błędne odpowiedzi i realne wykorzystanie zapisanej wiedzy; nie mylić symulowanej weryfikacji z niezależnym źródłem.
-
-## Procedura powrotu
-Odczytaj ten plik i metodologię. Sprawdź faktyczną dostępność ZIP 023, 025, 026 oraz checkpointu 023; pliki lokalne mogą nie być dostępne w nowej sesji. Po etapie 027 nadpisz **ten sam plik** i zachowaj historię Git.
+## Powrót
+Odczytaj ten plik oraz [metodologię uczenia](TSI_LEARNING_METHODOLOGY.md). Zweryfikuj dostępność ZIP i checkpointów w nowej sesji. Po kolejnym etapie **nadpisz ten sam plik**.
