@@ -4,6 +4,25 @@
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
+## TSI v003 — niezależny test komponentów (11 listopada 2026)
+
+**Status: eksperymentalny pakiet badawczy, nie zamiennik wdrożonego modułu odpowiedzi opisanego niżej.** W repozytorium [Belzi, gałąź tsi-v003-curiosity](https://github.com/jbackk-lang/Belzi/tree/tsi-v003-curiosity) utworzono dokumentację wersji po v001/v002. Pełne lokalne archiwum `TSI_V003_FULL_LOCAL.zip` (91 plików, 7 670 933 bajty, SHA-256 `525f07d88330edb54a39193478736c85f2624d885ed331a21ef9ceb5e7c40dca`) pozostaje artefaktem rozmowy ChatGPT; **nie jest opublikowane jako pełny model z wagami w GitHubie**.
+
+Test wykonano przez rozpakowanie archiwum do nowego katalogu i uruchomienie skryptów z tej kopii (Python i PyTorch):
+
+| Sprawdzenie | Wynik |
+|---|---|
+| `TSI_MEMORY_001/test_memory.py` | 3/3 testy poprawne |
+| `TSI_NEURAL_MEMORY_002/test_adapter.py` | 2/2 testy poprawne |
+| `TSI_H512_RUN_005/run.py` | Oryginalny checkpoint H512 wczytany; `READ(stan)` → `READ(ciekly)` po dopisaniu kontekstu grafu; różnica normy logitów 7,2370 |
+| `TSI_CURIOSITY_019/run.py` | Pamięć grafowa i polityka wyboru pytań działają; nowe fakty w 8 krokach: losowo 6, nowość 7, polityka wyuczona 7; kontrola ponownego odczytu i odrzucenia odpowiedzi z błędnym ID zaliczona |
+
+**Granice wyniku:** H512 nie generował pytań, nie był douczany i nie weryfikował samodzielnie odpowiedzi. Pytania pochodziły ze stałego katalogu ośmiu pozycji, a odpowiedzi i flagi weryfikacji z przygotowanego zestawu demonstracyjnego. Polityka wyuczona **nie przewyższyła** w tym teście heurystyki nowości. Nie przeprowadzono jednego zintegrowanego testu end-to-end całej aplikacji ani niezależnej walidacji autonomii. Wagi oryginalnego H512 pozostawiono bez zmian.
+
+**Odtworzenie:** rozpakować lokalny pakiet v003 i uruchomić `python TSI_MEMORY_001/test_memory.py`, `python TSI_NEURAL_MEMORY_002/test_adapter.py`, `python TSI_H512_RUN_005/run.py`, `python TSI_CURIOSITY_019/run.py` z katalogu głównego paczki. Skrypty zapisują własne `result.json`; wymagane są zależności odpowiednie dla modułu (H512 wymaga PyTorch).
+
+---
+
 ## Rdzeń i moduły TSI
 
 ![TSI — rdzeń i moduły](docs/tsi-moduly.svg)
