@@ -1,18 +1,18 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap 031. Następny 032.**
+**2026-11-11. Ostatni ukończony etap 032. Następny 033.**
 
-## Obowiązek: SYMULACJA
-Przed uruchomieniem jakiegokolwiek symulatora wyraźnie uprzedź użytkownika: **SYMULACJA**, podaj co jest symulowane. Nie myl treningu wag, inferencji i symulacji.
+## Obowiązkowa jawność
+**Przed każdą symulacją** poinformuj użytkownika: **SYMULACJA** i dokładny zakres. Odróżniaj trening wag, inferencję, integrację i symulację. Nie deklaruj treningu, jeśli nie aktualizowano wag.
 
-## 031: test rzeczywistych checkpointów H512 — bez symulacji i bez treningu
-Lokalny artefakt: `TSI_H512_ROBUSTNESS_031.zip`; zawiera `robustness.py`, `result.json`, `run.log`, `README.md`. Uruchom `python TSI_H512_ROBUSTNESS_031/robustness.py`; wymagane katalogi 005, 028, 029 oraz PyTorch.
+## Etap 032 — normalizacja wejścia, rzeczywista inferencja, bez symulacji i treningu
+Archiwum rozmowy: `TSI_H512_NORMALIZE_032.zip` z `evaluate.py`, `result.json`, `run.log`, `README.md`. Zależności: katalogi 005, 028, 029, 031 i PyTorch. Uruchom: `python TSI_H512_NORMALIZE_032/evaluate.py`.
 
-Na 70 znanych instrukcjach (z etapu 028), 4 wersje formatowania, 560 wywołań modelu. Oryginalny H512: oryginał **24/70**, uppercase **12/70**, pytajnik **26/70**, spacje **24/70**. Kandydat 029: oryginał **28/70**, uppercase **9/70**, pytajnik **25/70**, spacje **28/70**. Niezmienność predykcji po uppercase: bazowy 9/70, kandydat 3/70. Wniosek: poważna wrażliwość na wielkość liter, szczególnie 029; nie promować checkpointu.
+Normalizacja przed wejściem: Unicode NFC, lower(), strip(), usunięcie końcowych znaków ?!. i scalenie białych znaków. Porównano 70 wcześniej użytych instrukcji × 4 warianty × 2 checkpointy × 2 sposoby wejścia.
 
-**Ograniczenie:** ponownie wykorzystano przykłady z 028. To nie jest zewnętrzny benchmark ani nowy trening. W 031 nie aktualizowano wag.
+H512-005: bez normalizacji poprawne odpowiedzi (oryginał/uppercase/pytajnik/spacje) **24/12/26/24 na 70**; po normalizacji **24/24/24/24**. H512-029: bez **28/9/25/28**, po **28/28/28/28**. Zgodność predykcji z oryginałem po normalizacji 70/70 dla wszystkich trzech wariantów, co wynika z identycznego kanonicznego wejścia. **Nie wzrosła podstawowa trafność; nie jest to dowód nowej zdolności modelu.** Checkpointy bez zmian. Wszystkie przykłady pochodzą z wcześniej używanego zestawu, nie z niezależnego benchmarku.
 
-## 032
-Sprawdź kod przetwarzania tekstu (normalizacja wielkości liter) i wykonaj kontrolowane porównanie z i bez normalizacji, bez ingerencji w checkpointy. Poszukaj zewnętrznego zbioru poleceń z pochodzeniem i licencją. Wyniki negatywne zachowuj.
+## Etap 033
+Zweryfikować normalizację na trudnych przykładach, gdzie wielkość liter/interpunkcja jest semantycznie istotna, oraz pozyskać zewnętrzny, licencjonowany, niezależny zbiór danych. Dopiero potem rozważać dalszy trening H512. Nie wdrażać kandydata 029 jako głównego rdzenia.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
