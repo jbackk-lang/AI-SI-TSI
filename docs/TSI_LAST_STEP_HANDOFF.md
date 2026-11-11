@@ -1,6 +1,6 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap: 038. Następny: 039.**
+**2026-11-11. Ostatni etap: 041. Następny: 042.**
 
 ## Obowiązkowa jawność
 Przed każdą symulacją napisz użytkownikowi **SYMULACJA** i co jest symulowane. Nie przedstawiaj fikstur testowych jako rzeczywistej wiedzy lub uczenia. W etapie 038 **nie trenowano wag H512 i nie wykonywano inferencji H512**.
@@ -21,3 +21,14 @@ Kod, testy i wynik: https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi
 
 ## Etap 040 — realny pomiar rozmiaru SQLite
 https://github.com/jbackk-lang/AI-SI-TSI/tree/main/tools/tsi_wikimemory/stage040 — skrypt pomiaru, wynik i README. Na 4 sztucznych encjach: 4 stwierdzenia, 6 nazw, 4 partycje, 163840 bajtów stron SQLite i 294912 bajtów plików. **0 autentycznych encji Wikidata**, brak treningu/inferencji H512. Próba pobrania danych przez HTTPS nie powiodła się (DNS). Pełny pakiet kodu/testów w archiwum rozmowy `TSI_WIKIMEMORY_040.zip`. Następny krok: import rzeczywistego dumpu.
+
+
+## Etap 041 — pierwszy import autentycznych danych Wikidata
+
+[Skrypt, wynik i log](../tools/tsi_wikimemory/stage041). Oficjalny zrzut z 2026-11-09, CC0. Zaimportowano pierwsze 50 różnych QID z pobranego fragmentu 8 MiB. SQLite zawiera 14 126 unikatowych stwierdzeń i 258 nazw lub aliasów. Trzy kontrole wartości, źródła i rewizji oraz jedna kontrola abstencji przeszły po ponownym otwarciu bazy. Regresja 039 przeszła 8/8 na sztucznych fiksturach. Pakiet sesji `TSI_WIKIMEMORY_041.zip` zawiera kod, dane wejściowe, wynik, log i instrukcje. Bez inferencji i treningu H512.
+
+Oryginalny H512 jest w lokalnym archiwum `C:/Users/jback/Downloads/_checkpoint/TSI_H512_RUN_005.zip` jako `src/h512.pt`; jego SHA256 zgadza się z instrukcją. Archiwum zawiera też `src/null_gate_75.pt` i moduły. Eksperymentalny 037 jest w `TSI_KNOWLEDGE_TRAIN_037.zip` w tym samym katalogu. Pliku `h512_candidate_029.pt` nie odnaleziono w sprawdzonych lokalizacjach.
+
+## Następny etap 042
+
+Zbudować niezależny zestaw zapytań na rzeczywistych encjach, z kontrolami abstencji. Porównać tę samą pamięć i zestaw zapytań w trybie leksykalnym oraz z faktyczną inferencją oryginalnego H512. Oddzielnie zmierzyć trafność, abstencję i retencję. Zachować checkpoint bazowy.
