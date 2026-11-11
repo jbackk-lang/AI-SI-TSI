@@ -1,28 +1,20 @@
 # TSI — instrukcja wznowienia (nadpisywana)
 
-**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_021. **Następny:** 022.
+**Data:** 2026-11-11. **Ostatni etap:** TSI_CURIOSITY_022. **Następny:** 023.
 
-## Kontekst
-TSI: oryginalny H512, graf pamięci i osobne eksperymentalne moduły ciekawości. H512 pozostaje zamrożony. Etap 020: 32 syntetyczne epizody treningu; polityka wyuczona 2,8775, heurystyka 4,5800. Etap 021 rozszerza trening przewidywania wartości informacji i sprawdza inne nazwy dziedzin.
+## Etap 022 — test checkpointu 021
+Pakiet lokalny rozmowy: `TSI_CURIOSITY_022.zip` (`evaluate.py`, `value_predictor.pt`, `result.json`, `README.md`). Kod odtwarzania: `python evaluate.py` z PyTorch. Test 300 epizodów dla znanych nazw tematów oraz 300 dla nowych, wszystkie trzy strategie w każdym epizodzie. Wyniki kontrfaktyczne są deterministycznie przypisane do (seed, obiekt, relacja) przez SHA256 i nie zależą od kolejności losowań strategii. To symulacja w pamięci, nie test trwałości grafu.
 
-## Etap 021 — rzeczywiście wykonany
-Plik lokalny: `TSI_CURIOSITY_021.zip`, zawiera `train.py`, `distributed_memory.py`, `checkpoints/value_predictor.pt`, `result.json`, `README.md`. PyTorch, model 7→24→1. 64 epizody treningowe; 20 epizodów oceny dla każdego zestawu. Zestaw treningowy: fizyka, biologia, astronomia, informatyka. Zestaw testowy: geologia, chemia, ekologia, lingwistyka.
-
-| Strategia | Dziedziny treningowe | Nowe nazwy dziedzin |
+| Strategia | Znane nazwy | Nowe nazwy |
 |---|---:|---:|
-| Losowa | 2,2750 | 3,1575 |
-| Heurystyka grafowa | 5,2525 | 5,6875 |
-| Wyuczona | 5,7600 | 5,8325 |
+| Losowa | 3,0130 | 2,8325 |
+| Heurystyka | 5,7165 | 5,6102 |
+| Wyuczona | 5,7068 | 5,6633 |
 
-Checkpoint zapisany i ponownie wczytany; porównanie wyjścia po odczycie przeszło. **Ograniczenia:** symulowane odpowiedzi i weryfikacja, szablony relacji, mała próba; nowe nazwy tematów, ale ten sam generator środowiska; losowanie odpowiedzi zależy od sekwencji działań polityki, więc nie jest to ścisły test sparowany ze wspólnymi wynikami. Nie wnioskować o autonomii ani świadomości. H512 nietknięty.
+Różnica wyuczona minus heurystyka: znane −0,00967 (bootstrap 95% CI −0,14983..0,12083); nowe +0,05317 (CI −0,09183..0,18850). Brak wiarygodnej przewagi; oba modele wybierają docelowy temat przez 100% kroków. Brak dowodu długoterminowych zainteresowań. Środowisko syntetyczne, nowe tylko etykiety tematów, generator ten sam. H512 bez zmian.
 
-## Następny krok 022
-Zaprojektować rygorystyczną ocenę z predefiniowanymi wynikami dla każdego (epizod, podmiot, relacja, próba), oddzielonymi od kolejności losowań strategii; zwiększyć liczbę seedów i raportować niepewność. Zmierzyć także trwałość zainteresowań i rzeczywisty przyrost wiedzy. Dopiero później rozważać integrację z H512.
+## Następny krok 023
+Trenować na wielu odmiennych strukturach grafu, z opóźnionym zyskiem informacyjnym, bez łatwego sygnału identyfikującego temat docelowy. Testować nowe generatory, retencję zainteresowań między epizodami, kalibrację i baseline'y. Zachować oryginalne checkpointy.
 
-## Procedura powrotu
-1. Pobierz ten plik z GitHub i odczytaj jako instrukcję ostatniego kroku.
-2. Sprawdź dostępność ZIP i checkpointu w nowej sesji; nie zakładaj, że lokalny plik przetrwał.
-3. Odtwórz testy i zapisuj tylko zweryfikowane wyniki.
-4. Po ukończeniu następnego etapu nadpisz **ten sam plik**, zachowując historię przez Git commity.
-
-Repozytoria: https://github.com/jbackk-lang/AI-SI-TSI oraz https://github.com/jbackk-lang/Belzi/tree/tsi-v003-curiosity.
+## Zasady kontynuacji
+Przy wznowieniu odczytaj ten plik, sprawdź faktyczną dostępność lokalnego ZIP/checkpointu; nie zakładaj ich obecności w kolejnej sesji. Po każdym zakończonym etapie **nadpisz ten plik** i zachowaj historię w Git.
