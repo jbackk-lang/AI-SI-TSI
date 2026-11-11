@@ -1,16 +1,14 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap 037. Następny 038.**
+**2026-11-11. Ostatni etap: 038. Następny: 039.**
 
-## Jawność
-Zawsze **przed** symulacją oznacz **SYMULACJA** i określ jej zakres. 037: **rzeczywisty trening wag PyTorch, bez symulacji**.
+## Obowiązkowa jawność
+Przed każdą symulacją napisz użytkownikowi **SYMULACJA** i co jest symulowane. Nie przedstawiaj fikstur testowych jako rzeczywistej wiedzy lub uczenia. W etapie 038 **nie trenowano wag H512 i nie wykonywano inferencji H512**.
 
-## Etap 037 — trening operatora READ H512
-Archiwum rozmowy `TSI_KNOWLEDGE_TRAIN_037.zip`, zawiera `train.py`, `result.json`, `run.log`, `README.md`, `h512_trained_037.pt`. Do reprodukcji potrzebne są katalogi 005, 028, 035, PyTorch.
+## Etap 038 — TSI WikiMemory, rzeczywisty importer i baza
+Archiwum rozmowy `TSI_WIKIMEMORY_038.zip` (SHA256 `7d561f69cfe1fd3783fdf709071a476c3e32e3d2c32af9d699ae71c2a6b72c23`). Zawiera `wikimemory.py`, `test.py`, `result.json`, `run.log`, `README.md`. Importer obsługuje strumieniowo `latest-all.json[.bz2/.gz]`, SQLite partycjonowane deterministycznie po SHA256 QID, zapisywanie QID/PID i raw JSON datavalue, filtrację deprecated, restart i unknown. Test z **dwoma SZTUCZNYMI fiksturami QID** zaliczony; nie są to fakty Wikidata. **Rzeczywistych encji Wikidata zaimportowano 0**. Próba HTTPS pobrania z Wikidata w kontenerze nie powiodła się z powodu DNS. To partycjonowanie lokalne, nie rozproszony klaster; brak pełnych referencji claimów, FTS i kontrolera H512.
 
-Z oryginalnego checkpointu H512-005 trenowano przez 8 epok AdamW lr 0.00015 parametry `expansion_operator` i `expansion_context` na 28 przykładach: 16 pytań z 035 oznaczonych READ (w tym pytania o brakujące fakty) i 12 nie-READ z 028. Wynik na **treningowych** przykładach: **9/28 przed → 15/28 po**. Kontrola retencji na 56 wcześniej znanych przykładach z 028: **18/56 → 17/56**. To regresja o jeden przypadek, nie promować checkpointu. Nie było niezależnego testu ani treningu wiedzy faktograficznej; operator READ nie oznacza, że model zna odpowiedź. Zbiór kontrolny był wykorzystywany w poprzednich etapach.
-
-## Etap 038
-Rozdzielić zadanie: (1) klasyfikacja intencji odczytu, (2) wydobycie klucza wiedzy, (3) weryfikowalna odpowiedź i abstencja. Zbudować zewnętrzny odłożony test z dokumentacją źródeł; trenować tylko na zbiorze treningowym, nie selekcjonować modelu według testu. Zmierzyć retencję operatorów i działanie pełnego potoku. Bez udawania autonomicznego uczenia.
+## Etap 039
+Uzyskać prawdziwy dump Wikidata (oficjalne źródło: https://dumps.wikimedia.org/wikidatawiki/entities/), zachować datę i warunki licencji, zaimportować próbkę i zweryfikować wartości i pochodzenie. Nie deklarować importu bez dowodu. Potem dodać wyszukiwanie encji i porównanie odpowiedzi z i bez pamięci. W dalszym etapie podłączyć H512 jako kontroler i wykonać prawdziwy trening wag z niezależną ewaluacją.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
