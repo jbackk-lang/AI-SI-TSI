@@ -1,0 +1,14 @@
+{
+  "stage": 38,
+  "mode": "real SQLite sharded implementation; synthetic test FIXTURES only, not a simulated H512 experiment",
+  "fixture_entities": 2,
+  "fixture_statements": 2,
+  "persistent": true,
+  "shard_count": 4,
+  "unknown_abstains": true,
+  "deprecated_filtered": true,
+  "real_wikidata_entities_imported": 0,
+  "checkpoint_weights_updated": false,
+  "wikidata_download_attempt": "HTTPS DNS blocked in runtime",
+  "limitations": "Fixture records are intentionally artificial, not Wikipedia/Wikidata knowledge. No real Wikidata dump available in this environment; importer prepared but external ingestion not demonstrated. No H512 inference/training in this stage."
+}
