@@ -1,0 +1,12 @@
+{
+  "stage": 40,
+  "fixture_count": 4,
+  "real_wikidata_entities": 0,
+  "shards": 4,
+  "entities": 4,
+  "statements": 4,
+  "names": 6,
+  "database_bytes": 163840,
+  "file_bytes": 294912,
+  "h512_training": false
+}
