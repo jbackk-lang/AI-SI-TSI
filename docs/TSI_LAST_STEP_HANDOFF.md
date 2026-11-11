@@ -1,18 +1,16 @@
 # TSI — instrukcja wznowienia
 
-**2026-11-11. Ostatni etap: 034. Następny: 035.**
+**2026-11-11. Ostatni etap: 035. Następny: 036.**
 
-## Obowiązkowe oznaczenie symulacji
-Zanim uruchomisz symulator, wyraźnie napisz użytkownikowi **SYMULACJA** i zakres. Etap 034: **BEZ SYMULACJI, BEZ TRENINGU WAG**.
+## Jawność metod
+Przed jakąkolwiek symulacją napisz wyraźnie **SYMULACJA** i co jest symulowane. Nie utożsamiaj regułowego parsera z wiedzą wyuczoną przez H512. Etap 035: **bez symulacji, bez treningu wag**.
 
-## Etap 034 — fakty z NASA + pamięć TSI
-Archiwum w rozmowie: `TSI_KNOWLEDGE_034.zip`. Zawiera `experiment.py`, `result.json`, `run.log`, `README.md`. Do reprodukcji potrzebne są sąsiednie katalogi `TSI_H512_RUN_005` (checkpoint H512-005), `TSI_KNOWLEDGE_033` (ledger) i PyTorch. Uruchom: `python TSI_KNOWLEDGE_034/experiment.py`.
+## Etap 035 — tekst pytania → parser regułowy → trwała pamięć
+Archiwum rozmowy: `TSI_KNOWLEDGE_035.zip` (`experiment.py`, `result.json`, `run.log`, `README.md`). Wymaga katalogów 005, 033 oraz PyTorch. Uruchom `python TSI_KNOWLEDGE_035/experiment.py`.
 
-Ręcznie wydobyto i sprawdzono 14 faktów z 3 stron NASA: https://science.nasa.gov/planetary-science/focus-areas/ ; https://science.nasa.gov/solar-system/solar-system-facts/ ; https://science.nasa.gov/solar-system/moons/facts/ . Każdy fakt ma URL pochodzenia i status ręcznego sprawdzenia. Test: **15/15** poprawnych wyników przy podanym wprost kluczu subject/relation (14 znanych + 1 brak wiedzy). Restart ledgeru przeszedł. Inferencja rzeczywistego H512-005 została wykonana i zalogowana dla każdego pytania.
+Na 16 pytaniach po polsku: **16/16** poprawnych rezultatów, z czego **11/11** znanych faktów i **5/5** właściwych odmów. Fakty (11) ręcznie przepisane z wcześniejszego zestawu NASA; nie weryfikowano źródeł na nowo. Parser regułowy sam odczytuje subject/relation z pytania, ale **H512 nie wybiera klucza ani nie generuje odpowiedzi** — jego inferencja jest wykonywana i zapisywana oddzielnie. Wynik 16/16 to test integracyjny na małej liczbie przykładów, nie niezależny benchmark rozumienia, nie uczenie wag. Normalizacja usuwa diakrytyki, obsługuje ł.
 
-**KRYTYCZNE OGRANICZENIE:** H512 nie wybierał kluczy wyszukiwania i nie generował odpowiedzi; subject/relation podawał evaluator. 15/15 nie jest miarą rozumienia pytań ani autonomicznego uczenia. Nie trenowano wag. Status verified = ręcznie sprawdzone źródło NASA, nie niezależny fact-check.
-
-## Etap 035
-Połączyć pytanie użytkownika z wyborem subject/relation i wyszukiwaniem, testować na nowych parafrazach i przypadkach negatywnych. Raportować błędy parsera. Dopiero po tym rzeczywisty trening wag na wiedzy z odłożonym zbiorem. Nie wracać do symulatorów bez uprzedzenia.
+## Następny etap 036
+Zbudować mechanizm, w którym rzeczywiste wyjście H512 wpływa na wybór klucza lub odpowiedzi, z bezpiecznym odrzuceniem niepewnych predykcji. Porównać z regułowym baseline'em na odłożonych pytaniach, pozyskać niezależny materiał i trenować na nim wagi dopiero po rozdzieleniu danych. Zachować wyniki negatywne.
 
 [Metodologia uczenia](TSI_LEARNING_METHODOLOGY.md).
