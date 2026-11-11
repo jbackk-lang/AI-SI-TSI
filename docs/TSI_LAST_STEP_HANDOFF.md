@@ -1,24 +1,23 @@
 # TSI — instrukcja wznowienia (nadpisywana)
 
-**Data:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_023. **Następny:** 024.
+**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_024. **Następny:** 025.
 
-## Etap 023 — trening opóźnionej wartości informacji
-Lokalny artefakt rozmowy: `TSI_CURIOSITY_023.zip` (kod `experiment.py`, `value_predictor_023.pt`, `result.json`, `run.log`, `README.md`). Archiwum ma 5 plików, test integralności ZIP przeszedł. Uruchomienie: `python experiment.py` z PyTorch. Nowy model 9→32→16→1, 1200 epizodów treningowych, ocena na 250 seedach z każdego zestawu. Wyniki pytania deterministyczne dla (seed, temat, relacja), więc strategie można porównywać parami.
+## Etap 024 — pamięć preferencji między sesjami
+Pakiet lokalny: `TSI_CURIOSITY_024.zip` zawierający `experiment.py`, `result.json`, `run.log`, `README.md`. Zależność od `TSI_CURIOSITY_023/value_predictor_023.pt` (checkpoint nie jest duplikowany w paczce 024). Uruchomienie: `python TSI_CURIOSITY_024/experiment.py`, z oboma katalogami obok siebie. Wymaga PyTorch. 200 środowisk na wariant × 5 sesji; pamięć preferencji zapisywana i ponownie wczytywana z JSON pomiędzy sesjami.
 
-| Polityka | Znane warunki | Odłożone seedy |
+| Strategia | Zgodne warunki | Odwrócona zależność |
 |---|---:|---:|
-| Losowa | 3,0754 | 3,1090 |
-| Nowość | 2,7660 | 2,9716 |
-| Heurystyka | 4,2885 | 4,6961 |
-| Wyuczona | 4,6126 | 4,7774 |
+| Losowa | 17,8507 | 18,4297 |
+| Heurystyka | 38,4795 | 16,1086 |
+| Wyuczona | 37,5378 | 21,3863 |
+| Wyuczona + pamięć | 37,6088 | 22,6177 |
 
-Wyuczona minus heurystyka: +0,3241 (bootstrap 95% CI +0,1039..+0,5359) na znanych warunkach; +0,0814 (CI −0,1665..+0,3115) na odłożonych seedach. **Brak wiarygodnej przewagi w teście odłożonym.** Około 3 różne tematy na 8 pytań — nie jest to dowód długoterminowych zainteresowań.
+Wyuczona z pamięcią minus bez pamięci: zgodne +0,0710 (bootstrap 95% CI −0,2762..+0,3826); odwrócone +1,2314 (CI +0,8252..+1,6582). Wyniki to średnia sumy nagród w pięciu sesjach. Test odtwarzania JSON i integralność ZIP zaliczone.
 
-## Ograniczenia
-Wszystkie dane i odpowiedzi są symulowane. Odłożone seedy nie oznaczają niezależnego generatora dziedzin. Uczenie na zdyskontowanych nagrodach z własnych trajektorii nie zapewnia bezstronnej wyceny alternatywnych pytań. Brak trwałej pamięci preferencji między sesjami, brak samodzielnego tworzenia pytań przez H512; checkpoint H512 bez zmian.
+**Ograniczenia:** środowisko syntetyczne, przesunięcie rozkładu ręcznie skonstruowane, te same tematy w kolejnych sesjach, brak rzeczywistych faktów, brak generowania pytań przez H512. Pamięć JSON w katalogu tymczasowym podczas testu, nie trwała pamięć produkcyjna. H512 bez zmian.
 
-## Następny krok 024
-Dodać zapisywaną między sesjami pamięć preferencji, niezależne generatory środowiska i wielokrotne nasiona treningu. Zmierzyć trwałość zainteresowań, rzeczywisty przyrost sprawdzonej wiedzy oraz odporność na zmianę środowiska. Zachować baseline'y i wyniki negatywne.
+## Następny etap 025
+Sprawdzić reset pamięci jako ablation, nowe obiekty w kolejnych sesjach, retencję sprawdzonej wiedzy i trwałe preferencje w nowym środowisku. Zapisać negatywne wyniki i ocenić różnice na wspólnych scenariuszach.
 
-## Procedura wznowienia
-Odczytać ten plik; zweryfikować dostępność ZIP i checkpointu w aktualnej sesji (lokalny artefakt rozmowy może nie być dostępny później). Po kolejnym etapie **nadpisać ten sam plik** i zachować historię przez commit Git.
+## Powrót
+Odczytaj ten plik; sprawdź dostępność lokalnych ZIP 023 i 024 oraz checkpointu w nowej sesji. Nie zakładaj, że pliki z poprzedniej sesji są dostępne. Po etapie 025 nadpisz **ten sam plik**, zachowując historię Git.
