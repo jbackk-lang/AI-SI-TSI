@@ -1,23 +1,23 @@
 # TSI — instrukcja wznowienia (nadpisywana)
 
-**Aktualizacja:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_024. **Następny:** 025.
+**Data:** 2026-11-11. **Ostatni ukończony etap:** TSI_CURIOSITY_025. **Następny:** 026.
 
-## Etap 024 — pamięć preferencji między sesjami
-Pakiet lokalny: `TSI_CURIOSITY_024.zip` zawierający `experiment.py`, `result.json`, `run.log`, `README.md`. Zależność od `TSI_CURIOSITY_023/value_predictor_023.pt` (checkpoint nie jest duplikowany w paczce 024). Uruchomienie: `python TSI_CURIOSITY_024/experiment.py`, z oboma katalogami obok siebie. Wymaga PyTorch. 200 środowisk na wariant × 5 sesji; pamięć preferencji zapisywana i ponownie wczytywana z JSON pomiędzy sesjami.
+## Etap 025 — reset pamięci, nowe obiekty i retencja
+Archiwum rozmowy: `TSI_CURIOSITY_025.zip`, zawiera `experiment.py`, `result.json`, `run.log`, `README.md`. Do uruchomienia wymagany checkpoint `TSI_CURIOSITY_023/value_predictor_023.pt` oraz PyTorch. Komenda: `python TSI_CURIOSITY_025/experiment.py`. 100 środowisk na wariant, pięć sesji na środowisko; nowe identyfikatory obiektów w każdej sesji, niezmienione abstrakcyjne tematy.
 
 | Strategia | Zgodne warunki | Odwrócona zależność |
 |---|---:|---:|
-| Losowa | 17,8507 | 18,4297 |
-| Heurystyka | 38,4795 | 16,1086 |
-| Wyuczona | 37,5378 | 21,3863 |
-| Wyuczona + pamięć | 37,6088 | 22,6177 |
+| Losowa | 19,2177 | 20,0535 |
+| Wyuczona bez pamięci | 37,3083 | 22,3325 |
+| Reset pamięci co sesję | 37,3083 | 22,3325 |
+| Wyuczona + trwała pamięć | 37,5830 | 23,7637 |
 
-Wyuczona z pamięcią minus bez pamięci: zgodne +0,0710 (bootstrap 95% CI −0,2762..+0,3826); odwrócone +1,2314 (CI +0,8252..+1,6582). Wyniki to średnia sumy nagród w pięciu sesjach. Test odtwarzania JSON i integralność ZIP zaliczone.
+Persistent−reset: zgodne +0,2747 (95% bootstrap CI −0,1155..+0,7167), odwrócone +1,4312 (CI +0,7939..+2,1157). Średnia liczba zachowanych wcześniej faktów w ostatniej sesji: 21,28 i 14,98. Zapis JSON ponownie odczytany i sprawdzony.
 
-**Ograniczenia:** środowisko syntetyczne, przesunięcie rozkładu ręcznie skonstruowane, te same tematy w kolejnych sesjach, brak rzeczywistych faktów, brak generowania pytań przez H512. Pamięć JSON w katalogu tymczasowym podczas testu, nie trwała pamięć produkcyjna. H512 bez zmian.
+**Ograniczenia:** odpowiedzi i weryfikacja są symulowane, nie niezależne; trwałe fakty nie wpływają na wybór pytań; te same abstrakcyjne tematy występują we wszystkich sesjach; H512 bez zmian. To test pamięci, nie dowód autonomicznej ciekawości.
 
-## Następny etap 025
-Sprawdzić reset pamięci jako ablation, nowe obiekty w kolejnych sesjach, retencję sprawdzonej wiedzy i trwałe preferencje w nowym środowisku. Zapisać negatywne wyniki i ocenić różnice na wspólnych scenariuszach.
+## Następny etap 026
+Włączyć odzyskaną wiedzę do selekcji pytań; przeprowadzić ablation z wyłączonym odczytem pamięci; sprawdzić nowe relacje, błędne odpowiedzi i odporność na zmiany środowiska. Mierzyć rzeczywistą poprawę predykcji i poprawność wiedzy, nie tylko syntetyczną nagrodę.
 
 ## Powrót
-Odczytaj ten plik; sprawdź dostępność lokalnych ZIP 023 i 024 oraz checkpointu w nowej sesji. Nie zakładaj, że pliki z poprzedniej sesji są dostępne. Po etapie 025 nadpisz **ten sam plik**, zachowując historię Git.
+Odczytać ten plik, zweryfikować dostępność ZIP 025 i checkpointu 023, odtworzyć wyniki. Po kolejnym etapie nadpisać **ten sam plik**, zachowując historię Git.
