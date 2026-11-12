@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 081
+## Aktualny stan — etap 082
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -81,6 +81,8 @@ W sprawdzianie obie aplikacje rozwiązały 9 z 12 zadań. Pozostałe zadania dot
 Etap 080 dodaje obwód w postaci dokładnej i środek ciężkości trójkąta. Przeszły 4 próby w TSI i Math Walidatorze.
 
 Etap 081 dodaje równania prostych zawierających boki trójkąta i długości wysokości wyznaczone z pola. Przeszły 4 próby w TSI i Math Walidatorze.
+
+Etap 082 wyznacza równania wysokości i ortocentrum trójkąta. Przeszły 4 próby w TSI i Math Walidatorze, w tym przypadek ortocentrum poza trójkątem rozwartokątnym.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
