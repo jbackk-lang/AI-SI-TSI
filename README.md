@@ -14,6 +14,14 @@ Etap 065 szacuje błąd Simpsona na najgęstszej siatce z różnicy dwóch ostat
 
 Etap 066 lokalnie porównuje szacunek Simpsona z tolerancją. W etapie 067 osobny skrypt sprawdził tę samą regułę na exp(x), sin(x), szybko oscylującym cosinusie i pierwiastku z niegładkim końcem. Szacunek dla exp i sin różnił się od błędu odniesienia o mniej niż 1,5%. Dla pozostałych sześciu prób reguła wstrzymała szacunek. Funkcje te sprawdzono w audycie metody.
 
+## Podsumowanie cyklu matematycznego (etapy 040–067)
+
+**Poziom w sprawdzonym zakresie: analiza studencka i podstawowe metody numeryczne.** TSI i Math Walidator korzystają lokalnie ze wspólnego modułu. Obsługuje on analizę wzorów z zachowaniem dziedziny, wybrane całki i ekstrema, szeregi potęgowe oraz rozwinięcia Taylora z kontrolą błędu. Objaśnienia można dopasować do poziomu podstawówki, liceum lub studiów. Klasyfikator próśb o poziom w etapie 045 rozpoznał 12/12 odłożonych sformułowań.
+
+Przy całkowaniu numerycznym obsługiwanych potęg x TSI porównuje trapezy i Simpsona, dobiera siatkę do tolerancji i szacuje błąd na podstawie trzech siatek. Etap 066 przeszedł 6/6 wspólnych prób. Osobny audyt etapu 067 objął 12 prób. Dla exp(x) i sin(x) szacunki różniły się od błędów odniesienia o mniej niż 1,5%. Dla szybko oscylującego cosinusa i pierwiastka przy x = 0 reguła wstrzymała szacunek. Te funkcje badano w skrypcie audytowym poza panelami.
+
+Wyniki potwierdzają obsługę wymienionych typów zadań. Poziom ponadstudencki pozostaje do sprawdzenia na niezależnym zestawie, dlatego przykłady są dostępne w dotychczasowej Pomocy TSI i w czacie „Zapytaj TSI”.
+
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
 ## Rdzeń i moduły TSI
