@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 076
+## Aktualny stan — etap 077
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -65,6 +65,12 @@ Simpson obsługuje exp(-a*x) razy sinus lub cosinus dla całkowitych współczyn
 Dla tłumionych oscylacji TSI i Math Walidator dzielą najpierw panel z największą granicą błędu i sumują lokalne granice. Dla exp(-3*x)*sin(8*x) na [0,4] i tolerancji 1/10000 potrzeba 32 paneli i 65 wartości funkcji. Przeszło 23/23 wspólnych prób.
 
 > Oblicz całkę adaptacyjną metodą Simpsona od 0 do 4 z exp(-3*x)*sin(8*x) dx z błędem ≤ 1/10000.
+
+### Etap 077 — całki niewłaściwe przy zerze
+
+TSI i Math Walidator badają całki z x^p od zera do dodatniej granicy. Wyznaczają wartość dla p > −1 i rozpoznają rozbieżność dla p ≤ −1, w tym przypadek logarytmiczny. Przeszło 29/29 wspólnych prób.
+
+> Oblicz całkę niewłaściwą od 0 do 1 z x^(-1/2) dx.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
