@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 067
+## Aktualny stan — etap 068
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -21,6 +21,12 @@ Etap 066 lokalnie porównuje szacunek Simpsona z tolerancją. W etapie 067 osobn
 Przy całkowaniu numerycznym obsługiwanych potęg x TSI porównuje trapezy i Simpsona, dobiera siatkę do tolerancji i szacuje błąd na podstawie trzech siatek. Etap 066 przeszedł 6/6 wspólnych prób. Osobny audyt etapu 067 objął 12 prób. Dla exp(x) i sin(x) szacunki różniły się od błędów odniesienia o mniej niż 1,5%. Dla szybko oscylującego cosinusa i pierwiastka przy x = 0 reguła wstrzymała szacunek. Te funkcje badano w skrypcie audytowym poza panelami.
 
 Wyniki potwierdzają obsługę wymienionych typów zadań. Poziom ponadstudencki pozostaje do sprawdzenia na niezależnym zestawie, dlatego przykłady są dostępne w dotychczasowej Pomocy TSI i w czacie „Zapytaj TSI”.
+
+### Etap 068 — Simpson dla funkcji wykładniczej i sinusa
+
+W lokalnej TSI i czacie Math Walidatora można obliczyć całki z exp(x) i sin(x) metodą Simpsona na trzech siatkach. Moduł używa wspólnych wartości funkcji, porównuje wynik z wartością odniesienia z funkcji pierwotnej i pomija szacunek błędu, gdy różnice między siatkami są zbyt małe lub niespójne. Przeszło 6/6 wspólnych prób.
+
+> Oblicz całkę metodą Simpsona od 0 do pi z sin(x) dx dla n=4.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
