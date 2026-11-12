@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 077
+## Aktualny stan — etap 079
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -71,6 +71,12 @@ Dla tłumionych oscylacji TSI i Math Walidator dzielą najpierw panel z najwięk
 TSI i Math Walidator badają całki z x^p od zera do dodatniej granicy. Wyznaczają wartość dla p > −1 i rozpoznają rozbieżność dla p ≤ −1, w tym przypadek logarytmiczny. Przeszło 29/29 wspólnych prób.
 
 > Oblicz całkę niewłaściwą od 0 do 1 z x^(-1/2) dx.
+
+### Etapy 078–079 — sprawdzian i geometria analityczna
+
+W sprawdzianie obie aplikacje rozwiązały 9 z 12 zadań. Pozostałe zadania dotyczyły całki do nieskończoności, ekstremum na elipsie i rozwinięcia exp wokół punktu innego niż zero. Wynik potwierdza sprawdzony zakres studencki. Etap 079 analizuje trójkąt ze współrzędnych krok po kroku: boki, pole i typ trójkąta. Przeszły cztery próby w obu aplikacjach.
+
+> Przeanalizuj trójkąt A(0,0), B(4,0), C(0,3).
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
