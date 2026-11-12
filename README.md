@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 068
+## Aktualny stan — etap 069
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -27,6 +27,10 @@ Wyniki potwierdzają obsługę wymienionych typów zadań. Poziom ponadstudencki
 W lokalnej TSI i czacie Math Walidatora można obliczyć całki z exp(x) i sin(x) metodą Simpsona na trzech siatkach. Moduł używa wspólnych wartości funkcji, porównuje wynik z wartością odniesienia z funkcji pierwotnej i pomija szacunek błędu, gdy różnice między siatkami są zbyt małe lub niespójne. Przeszło 6/6 wspólnych prób.
 
 > Oblicz całkę metodą Simpsona od 0 do pi z sin(x) dx dla n=4.
+
+### Etap 069 — granica błędu Simpsona
+
+Dla exp(x) i sin(x) TSI i Math Walidator podają granicę błędu reguły Simpsona w arytmetyce dokładnej obok szacunku z trzech siatek. Przeszło 6/6 wspólnych prób.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
