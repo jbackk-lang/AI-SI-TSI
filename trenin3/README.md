@@ -1,3 +1,0 @@
-# trenin3 — checkpointy treningu TSI
-
-Kontynuacja modułu knowledge-018. Skrypt `continue_train.py` zapisuje `checkpoints/latest.pt` atomowo co 5 kroków i zachowuje `step-00005.pt`, `step-00010.pt` itd. Ustaw `TSI_GIT_REPO` na ścieżkę lokalnego klonu repozytorium, aby co 5 kroków kopiować checkpointy do repozytorium, wykonywać commit i push. Nie zastępuje to checkpointu rdzenia 5217. Dane i skrypt znajdują się w archiwum trenin3.zip dostarczonym osobno.
