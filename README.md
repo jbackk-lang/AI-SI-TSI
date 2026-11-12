@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 065
+## Aktualny stan — etap 067
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -11,6 +11,8 @@ Etap 063 dodaje ekstrapolację Richardsona dla trapezów i Simpsona. Dla całki 
 Etap 064 porównuje dwa kolejne obserwowane rzędy zbieżności na trzech siatkach. Dla całki z x⁴ na [0,1] Simpson daje rząd 4 zarówno przy przejściu z 4 do 8, jak i z 8 do 16 podprzedziałów. Przeszło 6/6 wspólnych prób.
 
 Etap 065 szacuje błąd Simpsona na najgęstszej siatce z różnicy dwóch ostatnich przybliżeń podzielonej przez 15. TSI podaje szacunek, gdy stosunek kolejnych różnic mieści się w przedziale [12, 20], i pokazuje rzeczywisty błąd dla obsługiwanych całek. Przeszło 6/6 wspólnych prób.
+
+Etap 066 lokalnie porównuje szacunek Simpsona z tolerancją. W etapie 067 osobny skrypt sprawdził tę samą regułę na exp(x), sin(x), szybko oscylującym cosinusie i pierwiastku z niegładkim końcem. Szacunek dla exp i sin różnił się od błędu odniesienia o mniej niż 1,5%. Dla pozostałych sześciu prób reguła wstrzymała szacunek. Funkcje te sprawdzono w audycie metody.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
