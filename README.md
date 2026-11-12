@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 072
+## Aktualny stan — etap 073
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -47,6 +47,10 @@ Dla całek z exp(x) i sin(x) TSI oraz Math Walidator dobierają najmniejszą obs
 Metoda Simpsona obsługuje cos(k*x) dla całkowitych k od 1 do 99. Granica błędu uwzględnia k⁴. Przy zbyt rzadkiej siatce TSI wstrzymuje szacunek z różnic przybliżeń. Przeszło 14/14 wspólnych prób w TSI i Math Walidatorze.
 
 > Oblicz całkę metodą Simpsona od 0 do 1 z cos(8*x) dx dla n=4.
+
+### Etap 073 — sinus o zadanej częstotliwości
+
+Simpson obsługuje sin(k*x) dla całkowitych k od 1 do 99, także z automatycznym doborem siatki. Granica błędu uwzględnia k⁴. Przeszło 16/16 wspólnych prób w TSI i Math Walidatorze.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
