@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 074
+## Aktualny stan — etap 075
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -55,6 +55,10 @@ Simpson obsługuje sin(k*x) dla całkowitych k od 1 do 99, także z automatyczny
 ### Etap 074 — oscylacje tłumione
 
 TSI i Math Walidator całkują exp(-x)*sin(k*x) i exp(-x)*cos(k*x) metodą Simpsona. Granica błędu uwzględnia tłumienie i częstotliwość. Przeszło 18/18 wspólnych prób.
+
+### Etap 075 — współczynnik tłumienia
+
+Simpson obsługuje exp(-a*x) razy sinus lub cosinus dla całkowitych współczynników a od 1 do 9. TSI i Math Walidator uwzględniają tłumienie oraz częstotliwość w granicy błędu. Przeszło 20/20 wspólnych prób.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
