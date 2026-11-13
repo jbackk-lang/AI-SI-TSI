@@ -1,6 +1,6 @@
 # AI-SI-TSI — lokalny system TSI
 
-## Aktualny stan — etap 115
+## Aktualny stan — etap 118
 
 TSI i Math Walidator korzystają lokalnie ze wspólnego modułu analizy matematycznej. TSI zachowuje dziedzinę oryginalnego wzoru, analizuje całki, ekstrema, szeregi i rozwinięcia Taylora oraz dopasowuje wyjaśnienie do poziomu ucznia.
 
@@ -87,6 +87,12 @@ Etap 082 wyznacza równania wysokości i ortocentrum trójkąta. Przeszły 4 pr�
 ### Etapy 112–115 — geometria trójkąta
 
 TSI i Math Walidator wyznaczają prostą Eulera i okrąg dziewięciu punktów oraz sprawdzają twierdzenia Eulera i Feuerbacha. W dialogu TSI potrafi uzasadnić styczność na podstawie odległości środków i promieni. Przeszły 242 kroki prób w obu aplikacjach.
+
+### Etap 118 — podsumowanie cyklu geometrii trójkąta
+
+TSI i Math Walidator analizują trójkąty ze współrzędnych całkowitych. Podają boki, pole, wysokości, środki i równania prostych. Porównują trójkąty i wyznaczają dokładne wzory podobieństw, przekształcenia odwrotne oraz punkty stałe. Dialog pozwala skorygować wierzchołek, cofnąć lub ponowić zmianę i uzasadnić wynik na podstawie aktualnych obliczeń.
+
+Sprawdzian końcowy objął sześć nowych zestawów współrzędnych. Obie aplikacje zwróciły zgodne wyniki w 6/6 przypadków. Dla czterech trójkątów zweryfikowano pole, okręgi i styczność. Dwa pozostałe przypadki sprawdzały punkty współliniowe lub pokrywające się. Ostatni etap sprawdzał istniejące funkcje. Wagi pozostały bez zmian.
 
 Repozytorium publikuje dokumentację. Aktualny kod, wagi, pamięć, dokumenty i dane użytkownika pozostają lokalnie. Dawne AI-SI i modele zewnętrzne są opisane w [archiwach Releases](docs/PACZKI_STAREGO_AI_SI.md).
 
